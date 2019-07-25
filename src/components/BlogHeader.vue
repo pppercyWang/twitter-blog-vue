@@ -1,15 +1,19 @@
 <template>
   <div>
     <div class="container">
-
+      <div class="menu-item-wrap">
+      <menu-item></menu-item>
+      </div>
     </div>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
+import MenuItem from "@/components/header/MenuItem.vue";
 @Component({
-  components: {}
+  components: {
+    MenuItem
+  }
 })
 export default class extends Vue {
 }
@@ -21,5 +25,8 @@ export default class extends Vue {
   height: 46px;
   border-bottom: 1px solid #CCCCCC;
   box-shadow: 1px 1px 2px #CBCBCB
+}
+.menu-item-wrap{
+  margin-left: 15%;
 }
 </style>
