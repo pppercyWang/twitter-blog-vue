@@ -1,4 +1,4 @@
-# b-percy
+# blog-percy-ui
 
-**percy的个人博客**
+## percy的个人博客前端代码
 
