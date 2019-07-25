@@ -13,4 +13,7 @@ export default class extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+div{
+  margin-left: 20px;
+}
 </style>
