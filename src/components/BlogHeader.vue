@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="container">
-      <div class="menu-item-wrap">
-      <menu-item></menu-item>
+      <div class="menu-wrap">
+        <menu-item></menu-item>
       </div>
     </div>
   </div>
@@ -15,18 +15,18 @@ import MenuItem from "@/components/header/MenuItem.vue";
     MenuItem
   }
 })
-export default class extends Vue {
-}
+export default class extends Vue {}
 </script>
 <style scoped lang="scss">
-.container{
+.container {
   background-color: #ffffff;
   width: 100%;
   height: 46px;
-  border-bottom: 1px solid #CCCCCC;
-  box-shadow: 1px 1px 2px #CBCBCB
-}
-.menu-item-wrap{
-  margin-left: 15%;
+  border-bottom: 1px solid #cccccc;
+  box-shadow: 1px 1px 2px #cbcbcb;
+  .menu-wrap {
+    height: 100%;
+    margin-left: 15%;
+  }
 }
 </style>
