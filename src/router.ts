@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from '@/views/Layout.vue';
 import NotFound from '@/views/NotFound.vue';
+import About from '@/views/About.vue';
 import Index from '@/views/indexPage/Index.vue';
 Vue.use(Router);
 export default new Router({
@@ -20,6 +21,11 @@ export default new Router({
           path: '/welcome',
           name: '首页',
           component: Index,
+        },
+        {
+          path: '/about',
+          name: '关于',
+          component: About,
         },
       ]
     },

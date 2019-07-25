@@ -2,7 +2,11 @@
   <div>
     <div class="container">
       <div class="menu-wrap">
-        <menu-item></menu-item>
+        <div class="logo">
+          <img src="@/../public/img/home.png" />
+        </div>
+        <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
+        <menu-item class="menu-item" title="About" to="/about"></menu-item>
       </div>
     </div>
   </div>
@@ -15,7 +19,14 @@ import MenuItem from "@/components/header/MenuItem.vue";
     MenuItem
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  private pushHome() {
+    console.log("111111111111");
+  }
+  private pushAbout() {
+    console.log("22222222222");
+  }
+}
 </script>
 <style scoped lang="scss">
 .container {
@@ -27,6 +38,17 @@ export default class extends Vue {}
   .menu-wrap {
     height: 100%;
     margin-left: 15%;
+    .logo {
+      img {
+        margin-top: 7px;
+        float: left;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .menu-item {
+      display: inline-block;
+    }
   }
 }
 </style>
