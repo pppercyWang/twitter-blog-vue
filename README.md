@@ -7,9 +7,11 @@
 
 respect for Dariel Noel~~
 
-### 实时进度
-![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo.png)
-
 ### 日志
-2019/7/25  实现menu部分,hover动画效果
+``` bash
+2019/7/25  menu-item组件,hover动画效果
 2019/7/26  实现拉幕效果，字体抖动
+```
+
+### 实时进度
+![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo.gif)
