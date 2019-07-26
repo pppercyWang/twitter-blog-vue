@@ -30,6 +30,7 @@ import BlogHeader from "@/components/BlogHeader.vue";
 export default class extends Vue {}
 </script>
 <style scoped lang="scss">
+
 .header {
   z-index: 999;
   position: fixed;
@@ -45,6 +46,7 @@ export default class extends Vue {}
     height: 300px;
     width: 100%;
     position: fixed;
+    background-color: #f3f6f8;
     .welcome_msg {
       position: absolute;
       font-weight: bold;
