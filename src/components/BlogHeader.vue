@@ -6,7 +6,7 @@
           <img src="@/../public/img/home.png" />
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
-        <menu-item class="menu-item" title="About" to="/about"></menu-item>
+        <menu-item class="menu-item" title="About me" to="/about"></menu-item>
       </div>
     </div>
   </div>
@@ -20,12 +20,6 @@ import MenuItem from "@/components/header/MenuItem.vue";
   }
 })
 export default class extends Vue {
-  private pushHome() {
-    console.log("111111111111");
-  }
-  private pushAbout() {
-    console.log("22222222222");
-  }
 }
 </script>
 <style scoped lang="scss">

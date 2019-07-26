@@ -10,4 +10,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 export default class extends Vue {}
 </script>
 <style scoped lang="scss">
+div{
+  margin-left: 20px;
+}
 </style>

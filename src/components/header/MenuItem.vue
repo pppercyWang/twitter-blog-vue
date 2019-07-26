@@ -29,14 +29,14 @@ export default class extends Vue {
     height: 90%;
     text-align: center;
     line-height: 42px;
-    color: #66757f;
+    color: $twitter-font;
     font-weight: bold;
   }
   .bottom {
     height: 10%;
     position: relative;
     .blue {
-      background-color: #1da1f2;
+      background-color: $twitter-blue;
       height: 0px;
       width: 80px;
       transition: height 0.1s;
@@ -52,6 +52,6 @@ export default class extends Vue {
   height: 2px;
 }
 :hover > .top {
-  color: #1da1f2;
+  color: $twitter-blue;
 }
 </style>
