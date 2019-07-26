@@ -1,19 +1,15 @@
 <template>
-  <div>
-    Welcome页面
-  </div>
+  <div class="blog-body" id="blogBody">Welcome页面</div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 @Component({
-  components: {
-  }
+  components: {}
 })
-export default class extends Vue {
-}
+export default class extends Vue {}
 </script>
 <style lang="scss" scoped>
-div{
-  margin-left: 20px;
+div {
+  height: 1000px;
 }
 </style>
