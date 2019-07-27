@@ -24,7 +24,6 @@ export default class extends Vue {
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
-
     if (scrollTop > 300) {
       if (!this.fixedFlag) {
         const obj = document!.getElementById("index-menu");

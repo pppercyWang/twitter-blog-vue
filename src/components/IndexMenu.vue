@@ -2,8 +2,8 @@
   <div>
     <div class="index-menu" id="index-menu">
       <div class="menu-wrap">
-        <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
-        <menu-item class="menu-item" title="About me" to="/about"></menu-item>
+        <!-- <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
+        <menu-item class="menu-item" title="About me" to="/about"></menu-item> -->
       </div>
     </div>
   </div>
