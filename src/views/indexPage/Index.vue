@@ -14,6 +14,8 @@ import IndexMenu from "@/components/IndexMenu.vue";
   }
 })
 export default class extends Vue {
+  private fixedFlag: boolean = false;
+  private unFixedFlag: boolean = true;
   private mounted() {
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -22,18 +24,29 @@ export default class extends Vue {
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
-    const obj = document!.getElementById("index-menu");
-    const obj2 = document!.getElementById("fake-area");
+
     if (scrollTop > 300) {
-      obj!.style.position = "fixed";
-      obj!.style.top = "77px";
-      obj2!.style.position = "fixed";
-      obj2!.style.top = "47px";
+      if (!this.fixedFlag) {
+        const obj = document!.getElementById("index-menu");
+        const obj2 = document!.getElementById("fake-area");
+        obj!.style.position = "fixed";
+        obj!.style.top = "77px";
+        obj2!.style.position = "fixed";
+        obj2!.style.top = "47px";
+        this.fixedFlag = true;
+        this.unFixedFlag = false;
+      }
     } else {
-      obj!.style.position = "";
-      obj!.style.top = "";
-      obj2!.style.position = "";
-      obj2!.style.top = "";
+      if (!this.unFixedFlag) {
+        const obj = document!.getElementById("index-menu");
+        const obj2 = document!.getElementById("fake-area");
+        obj!.style.position = "";
+        obj!.style.top = "";
+        obj2!.style.position = "";
+        obj2!.style.top = "";
+        this.unFixedFlag = true;
+        this.fixedFlag = false;
+      }
     }
   }
 }
