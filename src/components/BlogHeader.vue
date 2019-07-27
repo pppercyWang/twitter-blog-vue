@@ -26,7 +26,7 @@ export default class extends Vue {
 .container {
   background-color: #ffffff;
   width: 100%;
-  height: 46px;
+  height: $height-header;
   border-bottom: 1px solid #cccccc;
   box-shadow: 1px 1px 2px #cbcbcb;
   .menu-wrap {

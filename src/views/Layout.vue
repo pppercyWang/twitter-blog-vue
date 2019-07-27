@@ -30,20 +30,19 @@ import BlogHeader from "@/components/BlogHeader.vue";
 export default class extends Vue {}
 </script>
 <style scoped lang="scss">
-
 .header {
   z-index: 999;
   position: fixed;
   width: 100%;
 }
 .body {
-  top: 47px;
+  top: $height-header;
   // background: url(./../../public/img/welcome.jpg) no-repeat fixed top;
   // background-size: 100% 600px;
-  height: 1200px;
+  height: $height-excepted-header;
   position: relative;
   .welcome {
-    height: 300px;
+    height: $height-welcome;
     width: 100%;
     position: fixed;
     background-color: #f3f6f8;
@@ -81,9 +80,8 @@ export default class extends Vue {}
     animation-play-state: running;
   }
   .router-view-area {
-    background-color: $twitter-blue;
     position: absolute;
-    height: 900px;
+    height: $height-excepted-header - $height-welcome;
     width: 100%;
     bottom: 0;
   }
