@@ -37,8 +37,6 @@ export default class extends Vue {}
 }
 .body {
   top: $height-header;
-  // background: url(./../../public/img/welcome.jpg) no-repeat fixed top;
-  // background-size: 100% 600px;
   height: $height-excepted-header;
   position: relative;
   .welcome {

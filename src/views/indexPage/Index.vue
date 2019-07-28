@@ -2,7 +2,7 @@
   <div class="index-page">
     <div class="fake-area" id="fake-area"></div>
     <index-menu></index-menu>
-    <div class="body">aaabbbbbbbbbbbbbbbbb</div>
+    <div class="body">aaaaaaaaa</div>
   </div>
 </template>
 <script lang='ts'>
