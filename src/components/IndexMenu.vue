@@ -21,7 +21,8 @@ import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
     ProfileHeading
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+}
 </script>
 <style scoped lang="scss">
 .fake-area {

@@ -12,12 +12,15 @@
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import IndexMenu from "@/components/IndexMenu.vue";
+import { Action, Mutation, State, Getter } from "vuex-class";
 @Component({
   components: {
     IndexMenu
   }
 })
 export default class extends Vue {
+  @Action("bigHeadingShowTrue") private actionBigHeadingShowTrue;
+  @Action("bigHeadingShowFalse") private actionBigHeadingShowFalse;
   private fixedFlag: boolean = false;
   private unFixedFlag: boolean = true;
   private mounted() {
@@ -30,6 +33,7 @@ export default class extends Vue {
       document.body.scrollTop;
     if (scrollTop > 300) {
       if (!this.fixedFlag) {
+        this.actionBigHeadingShowFalse();
         const obj = document!.getElementById("profile-nav");
         const obj2 = document!.getElementById("fake-area");
         obj!.style.position = "fixed";
@@ -41,6 +45,7 @@ export default class extends Vue {
       }
     } else {
       if (!this.unFixedFlag) {
+        this.actionBigHeadingShowTrue();
         const obj = document!.getElementById("profile-nav");
         const obj2 = document!.getElementById("fake-area");
         obj!.style.position = "";
