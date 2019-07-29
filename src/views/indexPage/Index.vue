@@ -52,6 +52,9 @@ export default class extends Vue {
       }
     }
   }
+  private beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
 }
 </script>
 <style lang="scss" scoped>
