@@ -2,7 +2,11 @@
   <div class="index-page">
     <div class="fake-area" id="fake-area"></div>
     <index-menu></index-menu>
-    <div class="body">aaaaaaaaa</div>
+    <div class="body">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 <script lang='ts'>
@@ -26,7 +30,7 @@ export default class extends Vue {
       document.body.scrollTop;
     if (scrollTop > 300) {
       if (!this.fixedFlag) {
-        const obj = document!.getElementById("index-menu");
+        const obj = document!.getElementById("profile-nav");
         const obj2 = document!.getElementById("fake-area");
         obj!.style.position = "fixed";
         obj!.style.top = "77px";
@@ -37,7 +41,7 @@ export default class extends Vue {
       }
     } else {
       if (!this.unFixedFlag) {
-        const obj = document!.getElementById("index-menu");
+        const obj = document!.getElementById("profile-nav");
         const obj2 = document!.getElementById("fake-area");
         obj!.style.position = "";
         obj!.style.top = "";
@@ -60,7 +64,7 @@ export default class extends Vue {
   .body {
     background-color: #ffffff;
     height: $height-excepted-header - $height-welcome - $height-fake-area -
-      $height-index-menu;
+      $height-profile-nav-wrap;
   }
 }
 </style>
