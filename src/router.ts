@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Layout from '@/views/Layout.vue';
 import NotFound from '@/views/NotFound.vue';
 import About from '@/views/About.vue';
-import Index from '@/views/indexPage/Index.vue';
+import IndexLayout from '@/views/indexPage/IndexLayout.vue';
 import ArticleCollection from '@/views/indexPage/ArticleCollection.vue';
 import ArticlePersonal from '@/views/indexPage/ArticlePersonal.vue';
 Vue.use(Router);
@@ -22,7 +22,7 @@ export default new Router({
         {
           path: '/index',
           name: '首页',
-          component: Index,
+          component: IndexLayout,
           children: [
             {
               path: '/welcome',

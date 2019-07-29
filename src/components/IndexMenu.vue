@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="profile-nav-wrap" id="profile-nav">
-      <div class="profile-heading">heading area</div>
+      <div class="profile-heading">
+        <profile-heading></profile-heading>
+      </div>
       <div class="profile-nav-list">
         <menu-item class="menu-item" title="文章" number="1,276" index="/welcome" :default-active="true"></menu-item>
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
@@ -12,9 +14,11 @@
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/indexMenu/MenuItem.vue";
+import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
 @Component({
   components: {
-    MenuItem
+    MenuItem,
+    ProfileHeading
   }
 })
 export default class extends Vue {}
