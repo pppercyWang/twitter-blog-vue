@@ -5,9 +5,19 @@
         <profile-heading></profile-heading>
       </div>
       <div class="profile-nav-list">
-        <menu-item class="menu-item" title="文章" number="1,276" index="/welcome" :default-active="true"></menu-item>
+        <menu-item
+          class="menu-item"
+          title="文章"
+          number="1,276"
+          index="/welcome"
+          :default-active="true"
+        ></menu-item>
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
       </div>
+      <div class="right-btn">
+        <blog-button @click="test"></blog-button>
+      </div>
+      <div class="btn-click-wrap"></div>
     </div>
   </div>
 </template>
@@ -15,13 +25,18 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/indexMenu/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
+import BlogButton from "@/components/BlogButton.vue";
 @Component({
   components: {
     MenuItem,
-    ProfileHeading
+    ProfileHeading,
+    BlogButton
   }
 })
 export default class extends Vue {
+  private test() {
+    console.log("111111111");
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -52,6 +67,22 @@ export default class extends Vue {
     .menu-item {
       display: inline-block;
     }
+  }
+  .right-btn {
+    position: absolute;
+    right: 10%;
+    top: 10px;
+    z-index: 999;
+  }
+  .btn-click-wrap {
+    width: 117px;
+    height: 46px;
+    position: absolute;
+    right: 9.7%;
+    top: 6px;
+    border: 1px solid $twitter-blue;
+    box-sizing: border-box;
+    border-radius: 100px;
   }
 }
 </style>
