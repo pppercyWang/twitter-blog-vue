@@ -1,5 +1,8 @@
 <template>
+<div>
   <div @click="handleClick" class="btn-msg" id="my-btn">{{msg}}</div>
+  <!-- <div class="btn-click-wrap">aaa</div> -->
+</div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";

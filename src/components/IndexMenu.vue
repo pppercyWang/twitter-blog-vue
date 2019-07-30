@@ -70,7 +70,7 @@ export default class extends Vue {
   }
   .right-btn {
     position: absolute;
-    right: 10%;
+    right: 20px;
     top: 10px;
     z-index: 999;
   }
@@ -78,9 +78,9 @@ export default class extends Vue {
     width: 117px;
     height: 46px;
     position: absolute;
-    right: 9.7%;
+    right: 15px;
     top: 6px;
-    border: 1px solid $twitter-blue;
+    border: 2px solid $twitter-blue;
     box-sizing: border-box;
     border-radius: 100px;
   }
