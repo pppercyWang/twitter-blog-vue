@@ -78,10 +78,10 @@ export default class extends Vue {
     width: 117px;
     height: 46px;
     position: absolute;
-    right: 15px;
-    top: 6px;
+    right: 14px;
+    top: 5px;
     border: 2px solid $twitter-blue;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 100px;
   }
 }
