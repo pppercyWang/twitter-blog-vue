@@ -15,7 +15,7 @@
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
       </div>
       <div class="right-btn">
-        <blog-button @click="test" info="登录" type="primary" size="200"></blog-button>
+        <blog-button @click="test" info="关注"></blog-button>
       </div>
     </div>
   </div>
