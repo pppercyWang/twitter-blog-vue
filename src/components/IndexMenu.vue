@@ -17,7 +17,6 @@
       <div class="right-btn">
         <blog-button @click="test"></blog-button>
       </div>
-      <div class="btn-click-wrap"></div>
     </div>
   </div>
 </template>
@@ -73,16 +72,6 @@ export default class extends Vue {
     right: 20px;
     top: 10px;
     z-index: 999;
-  }
-  .btn-click-wrap {
-    width: 117px;
-    height: 46px;
-    position: absolute;
-    right: 14px;
-    top: 5px;
-    border: 2px solid $twitter-blue;
-    box-sizing: content-box;
-    border-radius: 100px;
   }
 }
 </style>
