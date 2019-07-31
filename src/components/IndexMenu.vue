@@ -15,7 +15,7 @@
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
       </div>
       <div class="right-btn">
-        <blog-button @click="test"></blog-button>
+        <blog-button @click="test" info="登录" type="primary" size="200"></blog-button>
       </div>
     </div>
   </div>
@@ -69,9 +69,8 @@ export default class extends Vue {
   }
   .right-btn {
     position: absolute;
-    right: 20px;
+    right: 20%;
     top: 10px;
-    z-index: 999;
   }
 }
 </style>

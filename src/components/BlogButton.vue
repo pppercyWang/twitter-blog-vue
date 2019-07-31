@@ -1,5 +1,9 @@
 <template>
-  <div class="btn-msg bounce" @click="handleClick" id="my-btn">{{msg}}</div>
+  <div
+    :class="['btn-msg','bounce',isPrimary?'primary':'']"
+    @click="handleClick"
+    id="my-btn"
+  >{{info}}</div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
@@ -7,9 +11,25 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
   components: {}
 })
 export default class extends Vue {
-  private msg: string = "关注";
+  @Prop()
+  private info!: string;
+  @Prop()
+  private type!: string;
+  @Prop()
+  private size!: string;
+  private isPrimary: boolean = false;
   private handleClick(evt) {
     this.$emit("click", evt);
+  }
+  private mounted() {
+    if (this.size) {
+      if (!isNaN(Number(this.size))) {
+        document.getElementById("my-btn")!.style.width = this.size + "px";
+      }
+    }
+    if (this.type === "primary") {
+      this.isPrimary = true;
+    }
   }
 }
 </script>
@@ -51,7 +71,8 @@ export default class extends Vue {
   opacity: 0.7;
   transition: all 0.1s;
 }
-.bounce:active:after { //.ripple元素 active时 伪元素:after的样式
+.bounce:active:after {
+  //.ripple元素 active时 伪元素:after的样式
   opacity: 1;
   top: -5px;
   left: -5px;
@@ -60,5 +81,12 @@ export default class extends Vue {
   border-radius: 100px;
   border: 2px solid $twitter-blue;
   transition: all 0.2s;
+}
+.primary {
+  color: #ffffff;
+  background-color: #4ab3f4;
+}
+.primary:hover {
+  background-color: $twitter-blue;
 }
 </style>
