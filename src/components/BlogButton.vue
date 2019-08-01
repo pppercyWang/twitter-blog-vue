@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="['btn-msg','bounce',isPrimary?'primary':'']"
-    @click="handleClick"
-    id="my-btn"
-  >{{info}}</div>
+  <div :class="['btn-msg','bounce',isPrimary?'primary':'']" ref="btn" @click="handleClick">{{info}}</div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
@@ -24,7 +20,8 @@ export default class extends Vue {
   private mounted() {
     if (this.size) {
       if (!isNaN(Number(this.size))) {
-        document.getElementById("my-btn")!.style.width = this.size + "px";
+        const elBtn = this.$refs.btn as HTMLElement;
+        elBtn.style.width = this.size + "px";
       }
     }
     if (this.type === "primary") {
@@ -72,7 +69,7 @@ export default class extends Vue {
   transition: all 0.1s;
 }
 .bounce:active:after {
-  //.ripple元素 active时 伪元素:after的样式
+  //.bounce active时 伪元素:after的样式
   opacity: 1;
   top: -5px;
   left: -5px;

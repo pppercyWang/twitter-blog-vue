@@ -68,9 +68,9 @@ export default class extends Vue {
     }
   }
   .right-btn {
-    position: absolute;
-    right: 20%;
-    top: 10px;
+      position: absolute;
+      right: 20%;
+      top: 10px;
   }
 }
 </style>
