@@ -17,7 +17,7 @@ export default new Router({
     {
       path: '/',
       component: Layout,
-      redirect: {path: "/welcome"},
+      redirect: { path: "/welcome" },
       children: [
         {
           path: '/index',
@@ -45,7 +45,7 @@ export default new Router({
     },
     {
       path: '/*',
-      redirect: {path: '/404'}
+      redirect: { path: '/404' }
     }
   ],
 });

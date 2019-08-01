@@ -70,7 +70,9 @@ export default class extends Vue {
     background-color: #f3f6f8;
   }
   .body {
-    background-color: #ffffff;
+    background-color: $backgroud-main;
+    display: flex;
+    justify-content: center;
     height: $height-excepted-header - $height-welcome - $height-fake-area -
       $height-profile-nav-wrap;
   }

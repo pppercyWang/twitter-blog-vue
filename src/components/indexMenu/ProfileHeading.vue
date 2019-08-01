@@ -42,6 +42,8 @@ export default class extends Vue {
   position: relative;
   height: 62px;
   .big-heading {
+    position: absolute;
+    left: 0px;
     img {
       height: 150px;
       width: 150px;
@@ -63,7 +65,7 @@ export default class extends Vue {
   }
   .small-heading {
     position: absolute;
-    left: 10%;
+    left: 0px;
     .slide-fade-enter-active {
       transition: all 0.4s ease;
     }

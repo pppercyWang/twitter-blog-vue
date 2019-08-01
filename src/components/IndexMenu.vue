@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="profile-nav-wrap" id="profile-nav">
+  <div class="cantainer" id="profile-nav">
+    <div class="profile-nav-wrap">
       <div class="profile-heading">
         <profile-heading></profile-heading>
       </div>
@@ -15,7 +15,9 @@
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
       </div>
       <div class="right-btn">
-        <blog-button @click="test" info="关注"></blog-button>
+        <div class="right">
+          <blog-button @click="test" info="关注"></blog-button>
+        </div>
       </div>
     </div>
   </div>
@@ -44,33 +46,43 @@ export default class extends Vue {
   height: $height-fake-area;
   background-color: #f3f6f8;
 }
-.profile-nav-wrap {
-  background-color: #ffffff;
+.cantainer {
   width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
   height: $height-profile-nav-wrap;
   border-bottom: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
   box-shadow: 1px 1px 2px #cbcbcb;
-  position: relative;
-  .profile-heading {
-    position: absolute;
-    height: 62px;
-    left: 15%;
-    width: 20%;
-  }
-  .profile-nav-list {
-    position: absolute;
-    height: 62px;
-    left: 35%;
-    width: 65%;
-    .menu-item {
-      display: inline-block;
-    }
-  }
-  .right-btn {
+  .profile-nav-wrap {
+    width: 1220px;
+    position: relative;
+    .profile-heading {
       position: absolute;
-      right: 20%;
+      height: 62px;
+      left: 0px;
+      width: 310px;
+    }
+    .profile-nav-list {
+      position: absolute;
+      height: 62px;
+      left: 310px;
+      width: 610px;
+      .menu-item {
+        display: inline-block;
+      }
+    }
+    .right-btn {
+      position: absolute;
+      right: 0px;
+      width: 300px;
       top: 10px;
+      .right{
+        position: absolute;
+        right: 0px;
+      }
+    }
   }
 }
 </style>

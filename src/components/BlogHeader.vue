@@ -29,9 +29,11 @@ export default class extends Vue {
   height: $height-header;
   border-bottom: 1px solid #cccccc;
   box-shadow: 1px 1px 2px #cbcbcb;
+  display: flex;
+  justify-content: center;
   .menu-wrap {
     height: 100%;
-    margin-left: 15%;
+    width: 1220px;
     .logo {
       img {
         margin-top: 7px;
