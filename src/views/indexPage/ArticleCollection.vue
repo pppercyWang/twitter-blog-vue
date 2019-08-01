@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     bbb
   </div>
 </template>
@@ -13,4 +13,11 @@ export default class extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+.container {
+  width: 1220px;
+  height: $height-excepted-header - $height-welcome - 92px;
+  position: relative;
+  margin-top: 10px;
+ 
+}
 </style>
