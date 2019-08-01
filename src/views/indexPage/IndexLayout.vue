@@ -1,7 +1,7 @@
 <template>
   <div class="index-page">
     <div class="fake-area" id="fake-area"></div>
-    <index-menu></index-menu>
+    <index-menu class="header"></index-menu>
     <div class="body">
       <transition name="fade" mode="out-in">
         <router-view></router-view>
@@ -68,13 +68,16 @@ export default class extends Vue {
     width: 100%;
     height: $height-fake-area;
     background-color: #f3f6f8;
+     z-index: 998;
+  }
+  .header{
+    z-index: 999;
   }
   .body {
     background-color: $backgroud-main;
     display: flex;
     justify-content: center;
-    height: $height-excepted-header - $height-welcome - $height-fake-area -
-      $height-profile-nav-wrap;
+    height: 100%;
   }
 }
 </style>

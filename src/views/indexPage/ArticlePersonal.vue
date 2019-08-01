@@ -1,16 +1,20 @@
 <template>
   <div class="container">
-    <div class="info-wrap">aaa</div>
-    <div class="article-wrap">bbb</div>
-    <div class="pigeonhole-wrap">ccc</div>
+    <div class="left">
+      <div class="info-topper">
+        <blogger-info></blogger-info>
+      </div>
+    </div>
+    <div class="center">Center</div>
+    <div class="right">Right</div>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/BlogButton.vue";
+import BloggerInfo from "@/components/articlePersonal/BloggerInfo.vue";
 @Component({
   components: {
-    BlogButton
+    BloggerInfo
   }
 })
 export default class extends Vue {}
@@ -18,27 +22,33 @@ export default class extends Vue {}
 <style lang="scss" scoped>
 .container {
   width: 1220px;
-  height: 100%;
-  padding-top: 20px;
-  .info-wrap {
+  height: $height-excepted-header - $height-welcome - 92px;
+  position: relative;
+  margin-top: 10px;
+  .left {
     width: 300px;
     height: 100%;
-    display: inline-block;
+    background-color: $backgroud-main;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .info-topper{
+      margin-top: 40px;
+    }
   }
-  .article-wrap {
-    background-color: aquamarine;
-    border-radius:2px; 
-    width: 600px;
+  .center {
+    height: 500px;
     height: 100%;
-    margin: 0px 10px;
-    display: inline-block;
+    background-color: purple;
+    margin: 0px 310px 0 310px;
   }
-  .pigeonhole-wrap {
-    background-color:saddlebrown;
-    border-radius:2px; 
+  .right {
     width: 300px;
     height: 100%;
-    display: inline-block;
+    background-color: red;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 </style>

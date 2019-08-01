@@ -42,6 +42,7 @@ export default class extends Vue {
   position: relative;
   height: 62px;
   .big-heading {
+    z-index: 999;
     position: absolute;
     left: 0px;
     img {
