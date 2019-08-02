@@ -1,20 +1,24 @@
 <template>
   <div class="container">
     <div class="left">
-      <div class="info-topper">
+      <div class="left-wrap">
         <blogger-info></blogger-info>
       </div>
     </div>
-    <div class="center">Center</div>
+    <div class="center">
+      <article-item></article-item>
+    </div>
     <div class="right">Right</div>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BloggerInfo from "@/components/articlePersonal/BloggerInfo.vue";
+import ArticleItem from "@/components/articlePersonal/ArticleItem.vue";
 @Component({
   components: {
-    BloggerInfo
+    BloggerInfo,
+    ArticleItem
   }
 })
 export default class extends Vue {}
@@ -32,20 +36,20 @@ export default class extends Vue {}
     position: absolute;
     left: 0;
     top: 0;
-    .info-topper{
+    .left-wrap{
       margin-top: 40px;
     }
   }
   .center {
     height: 500px;
     height: 100%;
-    background-color: purple;
+    // background-color: purple;
     margin: 0px 310px 0 310px;
   }
   .right {
     width: 300px;
     height: 100%;
-    background-color: red;
+    // background-color: red;
     position: absolute;
     right: 0;
     top: 0;
