@@ -31,7 +31,7 @@ export default class extends Vue {}
 </script>
 <style scoped lang="scss">
 .header {
-  z-index: 999;
+  z-index: 1000;
   position: fixed;
   width: 100%;
 }
