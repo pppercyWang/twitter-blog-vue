@@ -6,7 +6,7 @@
           <img src="@/../public/img/home.png" />
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
-        <menu-item class="menu-item" title="About me" to="/about"></menu-item>
+        <menu-item class="menu-item" title="About" to="/about"></menu-item>
       </div>
     </div>
   </div>

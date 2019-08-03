@@ -43,13 +43,13 @@ export default class extends Vue {}
   .center {
     height: 500px;
     height: 100%;
-    // background-color: purple;
+    background-color: #ffffff;
     margin: 0px 310px 0 310px;
   }
   .right {
     width: 300px;
     height: 100%;
-    // background-color: red;
+    background-color: #ffffff;
     position: absolute;
     right: 0;
     top: 0;

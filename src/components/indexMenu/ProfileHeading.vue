@@ -13,7 +13,7 @@
           </div>
           <div class="right">
             <div class="top">Percy Wang</div>
-            <div class="bottom" @click="pushGithub()">@pppercyWang</div>
+            <div class="bottom" @click="pushGithub()">@pppercy_Wang</div>
           </div>
         </div>
       </transition>
