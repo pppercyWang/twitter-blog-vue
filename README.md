@@ -20,6 +20,8 @@ respect for Dariel Noel~~
 2019/8/7   markdown编辑 input组件
 
 ```
+### 查看详情
+[用vue模仿twitter写一个自己的博客](https://blog.csdn.net/weixin_42565137/article/details/97619525)
 
 ### 实时进度
 ![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo.gif)
