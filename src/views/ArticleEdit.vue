@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <div class="title-input">
-        <blog-input placeholder="请输入文章标题" v-model="msg"></blog-input>
+        <blog-input placeholder="请输入文章标题" width="100%" height="30" fontSize="18" v-model="msg"></blog-input>
       </div>
       <div class="push-article">
         <blog-button info="发布文章" @click="saveArticle" type="primary"></blog-button>
@@ -16,7 +16,7 @@
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/BlogButton.vue";
-import BlogInput from "@/components/articleEdit/BlogInput.vue";
+import BlogInput from "@/components/BlogInput.vue";
 @Component({
   components: {
     BlogButton,
@@ -59,12 +59,12 @@ export default class extends Vue {
   height: 100%;
   width: 100%;
   .header {
-    background-color: blueviolet;
-    height: 56px;
+    background-color: #ffffff;
+    height: 10%;
     display: flex;
-    justify-content: center;
     align-items: center;
     .title-input {
+      margin-left: 20px;
       height: 36px;
       width: 80%;
       display: inline-block;
@@ -78,7 +78,7 @@ export default class extends Vue {
   }
   .body {
     width: 100%;
-    height: 100%;
+    height: 90%;
     .markdown-body {
       width: 100%;
       height: 100%;

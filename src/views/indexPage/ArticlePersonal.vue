@@ -21,7 +21,9 @@ import ArticleItem from "@/components/articlePersonal/ArticleItem.vue";
     ArticleItem
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+
+}
 </script>
 <style lang="scss" scoped>
 .container {

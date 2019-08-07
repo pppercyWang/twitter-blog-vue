@@ -1,14 +1,29 @@
 <template>
   <div class="login-form-wrap">
-      aaa
+    <div class="arrow"></div>
+    <div class="input-area">
+      <div class="input-item">
+        <blog-input placeholder="username"></blog-input>
+      </div>
+      <div class="input-item">
+        <blog-input placeholder="password"></blog-input>
+      </div>
+    </div>
+    <div class="btn-area">
+      <div class="btn-item">
+        <blog-button  size="200" info="Log in" type="primary"></blog-button>
+      </div>
+    </div>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from '@/components/BlogButton.vue';
+import BlogButton from "@/components/BlogButton.vue";
+import BlogInput from "@/components/BlogInput.vue";
 @Component({
   components: {
-      BlogButton
+    BlogButton,
+    BlogInput
   }
 })
 export default class extends Vue {}
@@ -16,9 +31,38 @@ export default class extends Vue {}
 <style scoped lang="scss">
 .login-form-wrap {
   position: absolute;
-  top: 47px;
+  top: 50px;
   right: 0px;
   height: 180px;
   width: 260px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #cbcbcb;
+  .arrow {
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+  }
+  .input-area {
+    height: 100px;
+    margin-top: 20px;
+    .input-item{
+      margin-left: 15px;
+      margin-bottom: 20px;
+    }
+  }
+  .btn-area{
+    height: 60px;
+    .btn-item{
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
 </style>

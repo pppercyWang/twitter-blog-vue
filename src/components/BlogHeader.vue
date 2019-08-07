@@ -8,9 +8,9 @@
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="About" to="/about"></menu-item>
         <div class="right">
-          <login-area @click="test"></login-area>
+          <login-area @click="test" ref="loginArea"></login-area>
         </div>
-        <login v-show="loginFormShow"></login>
+        <login v-show="loginFormShow" ref="loginForm"></login>
       </div>
     </div>
   </div>
@@ -24,13 +24,28 @@ import Login from "@/components/header/Login.vue";
   components: {
     MenuItem,
     LoginArea,
-    Login,
+    Login
   }
 })
 export default class extends Vue {
   private loginFormShow: boolean = false;
   private test() {
     this.loginFormShow = !this.loginFormShow;
+  }
+  private mounted() {
+    const vm = this;
+    document.addEventListener("click", (e) => {
+      const loginForm = vm.$refs.loginForm as Vue;
+      const loginArea = vm.$refs.loginArea as Vue;
+      if (loginForm) {
+        const obj = loginForm.$el;
+        const obj2 = loginArea.$el;
+        const a = e.target as Node;
+        if (!obj.contains(a) && !obj2.contains(a)) {
+          vm.loginFormShow = false;
+        }
+      }
+    });
   }
 }
 </script>
