@@ -7,6 +7,10 @@
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="About" to="/about"></menu-item>
+        <div class="right">
+          <login-area @click="test"></login-area>
+        </div>
+        <login v-show="loginFormShow"></login>
       </div>
     </div>
   </div>
@@ -14,12 +18,20 @@
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/header/MenuItem.vue";
+import LoginArea from "@/components/header/LoginArea.vue";
+import Login from "@/components/header/Login.vue";
 @Component({
   components: {
-    MenuItem
+    MenuItem,
+    LoginArea,
+    Login
   }
 })
 export default class extends Vue {
+  private loginFormShow: boolean = false;
+  private test() {
+    this.loginFormShow = !this.loginFormShow;
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -34,6 +46,7 @@ export default class extends Vue {
   .menu-wrap {
     height: 100%;
     width: 1220px;
+    position: relative;
     .logo {
       img {
         margin-top: 7px;
@@ -44,6 +57,18 @@ export default class extends Vue {
     }
     .menu-item {
       display: inline-block;
+    }
+    .right {
+      position: absolute;
+      width: 200px;
+      height: 47px;
+      right: 0px;
+      top: 0px;
+      .login-area-wrap {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+      }
     }
   }
 }

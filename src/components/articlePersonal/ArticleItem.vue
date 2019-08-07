@@ -1,13 +1,11 @@
 <template>
   <div class="article-wrap">
-     aaaa
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 @Component({
-  components: {
-  }
+  components: {}
 })
 export default class extends Vue {
 }
