@@ -16,8 +16,9 @@ respect for Dariel Noel~~
 2019/7/31  button组件
 2019/8/1   整体布局改造
 2019/8/2   个人信息
-2019/8/6   markdown编辑 input组件
-2019/8/7   login
+2019/8/6   login
+2019/8/7   markdown编辑 input组件
+
 ```
 
 ### 实时进度

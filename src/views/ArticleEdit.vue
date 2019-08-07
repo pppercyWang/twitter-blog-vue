@@ -24,7 +24,7 @@ import BlogInput from "@/components/BlogInput.vue";
   }
 })
 export default class extends Vue {
-  private msg = "aasaa";
+  private msg = "";
   private content = "";
   private toolbars = {
     bold: true, // 粗体
