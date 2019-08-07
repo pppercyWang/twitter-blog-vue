@@ -6,6 +6,7 @@ import About from '@/views/About.vue';
 import IndexLayout from '@/views/indexPage/IndexLayout.vue';
 import ArticleCollection from '@/views/indexPage/ArticleCollection.vue';
 import ArticlePersonal from '@/views/indexPage/ArticlePersonal.vue';
+import ArticleEdit from '@/views/ArticleEdit.vue';
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -42,6 +43,10 @@ export default new Router({
           component: About,
         },
       ]
+    },
+    {
+      path: '/article/edit/:articleID',
+      component: ArticleEdit,
     },
     {
       path: '/*',

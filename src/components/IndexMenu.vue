@@ -16,7 +16,7 @@
       </div>
       <div class="right-btn">
         <div class="right">
-          <blog-button @click="test" info="关注"></blog-button>
+          <blog-button @click="pushArticleEdit" info="写文章"></blog-button>
         </div>
       </div>
     </div>
@@ -35,8 +35,10 @@ import BlogButton from "@/components/BlogButton.vue";
   }
 })
 export default class extends Vue {
-  private test() {
-    console.log("111111111");
+  private pushArticleEdit() {
+    this.$router.push({
+      path: "/article/edit/0"
+    });
   }
 }
 </script>
@@ -78,7 +80,7 @@ export default class extends Vue {
       right: 0px;
       width: 300px;
       top: 10px;
-      .right{
+      .right {
         position: absolute;
         right: 0px;
       }

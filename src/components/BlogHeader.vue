@@ -24,7 +24,7 @@ import Login from "@/components/header/Login.vue";
   components: {
     MenuItem,
     LoginArea,
-    Login
+    Login,
   }
 })
 export default class extends Vue {

@@ -18,7 +18,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 })
 export default class extends Vue {
   private context =
-    "\r\n``` bash\r\n# install dependencies\r\nnpm install\r\n\r\n\r\n# serve with hot reload at localhost:8081\r\nnpm run dev\r\n\r\n# build for production with minification\r\nnpm run build\r\n\r\n```\r\n# Folder structure\r\n* build - webpack config files\r\n* config - webpack config files\r\n* dist - build\r\n* src -your app\r\n    * api\r\n    * assets\r\n    * lib 封装了axios 和 工具类\r\n    * components - \r\n    * styles\r\n    * views - 视图\r\n    * vuex\r\n    * App.vue\r\n    * main.js - main file\r\n    * routes.js\r\n* static - static assets\r\n\r\n# JWT说明：\r\n``` bash\r\n1. 登录成功后获得userId，将userId存在sessionStorage\r\n2. 在http.js设置了拦截器，每次访问接口都会进入拦截器设置头部信息等\r\n3. token在这里的getToken方法生成。每次访问接口因为时间戳的不同，token也不同\r\n```\r\n";
+    "";
   private subfield = false; // 单双栏模式
   private defaultOpen = "preview"; // edit： 默认展示编辑区域 ， preview： 默认展示预览区域
   private editable = false;
