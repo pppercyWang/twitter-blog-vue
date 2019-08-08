@@ -17,8 +17,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
   components: {}
 })
 export default class extends Vue {
-  private context =
-    "";
+  private context = "";
   private subfield = false; // 单双栏模式
   private defaultOpen = "preview"; // edit： 默认展示编辑区域 ， preview： 默认展示预览区域
   private editable = false;

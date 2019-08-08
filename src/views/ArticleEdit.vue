@@ -17,6 +17,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/BlogButton.vue";
 import BlogInput from "@/components/BlogInput.vue";
+import { apiSaveArticle } from "@/api/article";
 @Component({
   components: {
     BlogButton,
@@ -49,8 +50,21 @@ export default class extends Vue {
     /* 1.4.2 */
     navigation: true // 导航目录
   };
-  private saveArticle() {
-    console.log("1111111111111");
+  private async saveArticle() {
+    try {
+      const res = await apiSaveArticle(
+        {
+          Content: this.content,
+          ArticleTypeId: 2,
+          Title: "123456",
+          Personal: 0
+        },
+        null
+      );
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 </script>

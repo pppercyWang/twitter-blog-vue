@@ -5,14 +5,14 @@ class Http {
     constructor() {
         axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         this.service = axios.create({
-            baseURL: '/api/v1/',
+            baseURL: '/api/',
             timeout: 5000000
         });
         this.service.interceptors.request.use((config) => {
             // if(sessionStorage.getItem('token')){   带token
-            //     config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('token');
+                config.headers.Authorization = 'BEARER ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjUyNjg0NjIsImlhdCI6MTU2NTIzMjQ2MiwiaWQiOjEsImlzcyI6IklyaXMiLCJqdGkiOiI5NTI3Iiwibmlja19uYW1lIjoicGVyY3kiLCJzZXNzaW9uIjoiIn0.1QSidzwgfRU-X3v19RNT8Wnw1RMxiMufb5VWlMBCXig';
             // };
-            config.data = qs.stringify(config.data);  // form-data传参
+            // config.data = qs.stringify(config.data);
             return config;
         }, (error) => Promise.reject(error));
         this.service.interceptors.response.use((response) => {
