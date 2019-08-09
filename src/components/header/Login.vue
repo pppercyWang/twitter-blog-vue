@@ -3,15 +3,15 @@
     <div class="arrow"></div>
     <div class="input-area">
       <div class="input-item">
-        <blog-input placeholder="username"></blog-input>
+        <blog-input v-model="username" placeholder="username"></blog-input>
       </div>
       <div class="input-item">
-        <blog-input placeholder="password"></blog-input>
+        <blog-input v-model="password" placeholder="password"></blog-input>
       </div>
     </div>
     <div class="btn-area">
       <div class="btn-item">
-        <blog-button  size="200" info="Log in" type="primary"></blog-button>
+        <blog-button @click="login" size="200" info="Log in" type="primary"></blog-button>
       </div>
     </div>
   </div>
@@ -26,7 +26,13 @@ import BlogInput from "@/components/BlogInput.vue";
     BlogInput
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  private username: string = ""
+  private password: string = ""
+  private login(){
+    
+  }
+}
 </script>
 <style scoped lang="scss">
 .login-form-wrap {
