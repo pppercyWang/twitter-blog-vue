@@ -18,8 +18,9 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/BlogButton.vue";
-import BlogInput from "@/components/BlogInput.vue";
+import BlogButton from "@/components/common/BlogButton.vue";
+import BlogInput from "@/components/common/BlogInput.vue";
+import { apiLogin } from "@/api/auth.ts";
 @Component({
   components: {
     BlogButton,
@@ -27,10 +28,21 @@ import BlogInput from "@/components/BlogInput.vue";
   }
 })
 export default class extends Vue {
-  private username: string = ""
-  private password: string = ""
-  private login(){
-    
+  private username: string = "";
+  private password: string = "";
+  private async login() {
+    try {
+      const res = await apiLogin(
+        {
+          Username: this.username,
+          Password: this.password
+        },
+        null
+      );
+      sessionStorage.setItem("token", res.Data.Token);
+    } catch (e) {
+      this.$message.error("1111111111111111");
+    }
   }
 }
 </script>
@@ -58,14 +70,14 @@ export default class extends Vue {
   .input-area {
     height: 100px;
     margin-top: 20px;
-    .input-item{
+    .input-item {
       margin-left: 15px;
       margin-bottom: 20px;
     }
   }
-  .btn-area{
+  .btn-area {
     height: 60px;
-    .btn-item{
+    .btn-item {
       display: flex;
       justify-content: center;
     }

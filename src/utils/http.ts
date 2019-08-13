@@ -9,10 +9,9 @@ class Http {
             timeout: 5000000
         });
         this.service.interceptors.request.use((config) => {
-            // if(sessionStorage.getItem('token')){   带token
-            config.headers.Authorization = 'BEARER ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjUyNjg0NjIsImlhdCI6MTU2NTIzMjQ2MiwiaWQiOjEsImlzcyI6IklyaXMiLCJqdGkiOiI5NTI3Iiwibmlja19uYW1lIjoicGVyY3kiLCJzZXNzaW9uIjoiIn0.1QSidzwgfRU-X3v19RNT8Wnw1RMxiMufb5VWlMBCXig';
-            // };
-            // config.data = qs.stringify(config.data);
+            if (sessionStorage.getItem('Token')) {
+                config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('Token');
+            }
             return config;
         }, (error) => Promise.reject(error));
         this.service.interceptors.response.use((response) => {

@@ -6,10 +6,16 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "../public/css/icon.css";
+import "@/../public/css/animate.min.css";
 @Component({
   components: {}
 })
-export default class extends Vue {}
+export default class extends Vue {
+  private visible: boolean = true;
+  private close() {
+    this.visible = false;
+  }
+}
 </script>
 <style lang="scss">
 body {

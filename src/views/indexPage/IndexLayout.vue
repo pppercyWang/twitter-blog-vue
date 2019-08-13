@@ -11,7 +11,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import IndexMenu from "@/components/IndexMenu.vue";
+import IndexMenu from "@/components/indexMenu/IndexMenu.vue";
 import { Action, Mutation, State, Getter } from "vuex-class";
 @Component({
   components: {

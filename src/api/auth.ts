@@ -1,4 +1,4 @@
 import http from '@/utils/http';
-export const apiSaveArticle = (data: any, config: any) => {
-    return http.post('article/save', data, config);
+export const apiLogin = (data: any, config: any) => {
+    return http.post('user/login', data, config);
 };

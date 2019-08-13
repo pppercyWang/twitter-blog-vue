@@ -26,7 +26,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/indexMenu/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
-import BlogButton from "@/components/BlogButton.vue";
+import BlogButton from "@/components/common/BlogButton.vue";
 @Component({
   components: {
     MenuItem,

@@ -9,6 +9,7 @@ declare module "*.vue" {
 declare module 'vue/types/vue' {
   interface Vue {
     $router: VueRouter,
-    $route: Route
+    $route: Route,
+    $message: any
   }
 }

@@ -21,7 +21,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogHeader from "@/components/BlogHeader.vue";
+import BlogHeader from "@/components/header/Header.vue";
 @Component({
   components: {
     BlogHeader

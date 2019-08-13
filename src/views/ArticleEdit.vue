@@ -15,8 +15,8 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/BlogButton.vue";
-import BlogInput from "@/components/BlogInput.vue";
+import BlogButton from "@/components/common/BlogButton.vue";
+import BlogInput from "@/components/common/BlogInput.vue";
 import { apiSaveArticle } from "@/api/article";
 @Component({
   components: {
