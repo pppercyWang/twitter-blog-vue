@@ -19,7 +19,7 @@ const Message = {
       data: options
     }).$mount()
     document.body.appendChild(instance.$el) // 添加dom元素
-    Vue.nextTick(() => {  // dom元素渲染完成后执行回调
+    Vue.nextTick(() => { // dom元素渲染完成后执行回调
       instance.visible = true
     })
   }

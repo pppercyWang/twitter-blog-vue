@@ -11,22 +11,33 @@
     <div class="body">
       <mavon-editor v-model="content" :toolbars="toolbars"></mavon-editor>
     </div>
+    <blog-dialog
+      @close="closeDialog"
+      @submit="handleSubmit"
+      v-if="dialogVisible"
+      cancel="关闭窗口"
+      confirm="添加卡密"
+      title="添加卡密"
+    >aaa</blog-dialog>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/common/BlogButton.vue";
+import BlogDialog from "@/components/common/BlogDialog.vue";
 import BlogInput from "@/components/common/BlogInput.vue";
 import { apiSaveArticle } from "@/api/article";
 @Component({
   components: {
     BlogButton,
-    BlogInput
+    BlogInput,
+    BlogDialog,
   }
 })
 export default class extends Vue {
-  private msg = "";
-  private content = "";
+  private msg: string = "";
+  private content: string = "";
+  private dialogVisible: boolean = false;
   private toolbars = {
     bold: true, // 粗体
     italic: true, // 斜体
@@ -50,21 +61,41 @@ export default class extends Vue {
     /* 1.4.2 */
     navigation: true // 导航目录
   };
-  private async saveArticle() {
-    try {
-      const res = await apiSaveArticle(
-        {
-          Content: this.content,
-          ArticleTypeId: 2,
-          Title: "123456",
-          Personal: 0
-        },
-        null
-      );
-      console.log(res);
-    } catch (e) {
-      console.log(e);
+  private handleSubmit() {
+    console.log("1111111111");
+  }
+  private closeDialog() {
+    this.dialogVisible = false;
+  }
+  private checkAuthentication() {
+    console.log(sessionStorage.getItem("token"));
+    if (
+      sessionStorage.getItem("token") === null ||
+      sessionStorage.getItem("token") === ""
+    ) {
+      this.$message.error("未登录，不能发布文章");
+      return false;
     }
+    return true;
+  }
+  private async saveArticle() {
+    this.dialogVisible = true;
+    // if (this.checkAuthentication()) {
+    //   try {
+    //     const res = await apiSaveArticle(
+    //       {
+    //         Content: this.content,
+    //         ArticleTypeId: 2,
+    //         Title: "123456",
+    //         Personal: 0
+    //       },
+    //       null
+    //     );
+    //     this.$message.success(res.Msg);
+    //   } catch (e) {
+    //     this.$message.error(e.Msg);
+    //   }
+    // }
   }
 }
 </script>

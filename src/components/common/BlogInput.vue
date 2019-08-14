@@ -4,6 +4,7 @@
     :value="value"
     ref="blogInput"
     :placeholder="placeholder"
+    @keyup.enter="keyup"
     @input="$emit('input',$event.target.value)"
   />
 </template>
@@ -25,6 +26,9 @@ export default class extends Vue {
   private width!: string;
   @Prop()
   private fontSize!: string;
+  private keyup() {
+    this.$emit("keyupEnter");
+  }
   private mounted() {
     if (this.height) {
       if (!isNaN(Number(this.height))) {

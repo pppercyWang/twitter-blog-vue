@@ -9,8 +9,8 @@ class Http {
             timeout: 5000000
         });
         this.service.interceptors.request.use((config) => {
-            if (sessionStorage.getItem('Token')) {
-                config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('Token');
+            if (sessionStorage.getItem('token')) {
+                config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('token');
             }
             return config;
         }, (error) => Promise.reject(error));
