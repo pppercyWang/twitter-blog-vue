@@ -24,7 +24,7 @@ body {
   /*background: url(assets/bg1.jpg) center !important;
 		background-size: cover;*/
   // background: #1F2D3D;
-  font-family: "Segoe UI",Arial,sans-serif;
+  font-family: Arial,Helvetica,sans-serif;font-size:100%;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 }
