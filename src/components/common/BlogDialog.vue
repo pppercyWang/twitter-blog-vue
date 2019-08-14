@@ -5,18 +5,19 @@
         <div class="dialog-container">
           <div class="dialog-header">
             <div class="left">
-              <div class="title">
-                发布文章
-              </div>
+              <div class="title">发布文章</div>
             </div>
             <div class="right">
-              <blog-button  @click="login" size="100"  info="立即发布" type="primary" ></blog-button>
+              <blog-button @click="login" size="100"  info="立即发布" type="primary"></blog-button>
             </div>
           </div>
           <div class="dialog-body">
             <slot></slot>
           </div>
-          <div class="dialog-footer">
+          <div class="dialog-close">
+            <div class="img-wrap" @click="dialogClose">
+              <img src="@/assets/img/exit.png" />
+            </div>
           </div>
         </div>
       </div>
@@ -73,6 +74,7 @@ export default class extends Vue {
       width: 450px;
       height: 500px;
       border-radius: 20px;
+      position: relative;
       .dialog-header {
         height: 50px;
         border-radius: 20px 20px 0 0;
@@ -83,7 +85,7 @@ export default class extends Vue {
           border-radius: 20px 0 0 0;
           position: absolute;
           left: 0;
-          .title{
+          .title {
             height: 50px;
             margin-left: 20px;
             font-weight: bold;
@@ -107,6 +109,24 @@ export default class extends Vue {
         margin-top: 20px;
         width: 400px;
         background-color: aquamarine;
+      }
+      .dialog-close {
+        position: absolute;
+        height: 40px;
+        width: 450px;
+        bottom: -40px;
+        display: flex;
+        justify-content: center;
+        .img-wrap {
+          width: 40px;
+          img {
+            height: 40px;
+            width: 40px;
+          }
+        }
+        .img-wrap:hover{
+          cursor: pointer;
+        }
       }
     }
   }
