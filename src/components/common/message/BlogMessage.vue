@@ -13,7 +13,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 export default class extends Vue {
   private content: string = "";
   private visible: boolean = false;
-  private type: string = "info"; // 'success','warning','error'
+  private type: string = "info"; // 'success','error'
   private startTimer() {
     window.setTimeout(() => {
       this.visible = false;

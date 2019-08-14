@@ -11,7 +11,9 @@
     </div>
     <div class="btn-area">
       <div class="btn-item">
-        <blog-button @click="login" size="200" info="Log in" type="primary"></blog-button>
+        <blog-button @click="test1" size="200" info="info" type="primary"></blog-button>
+        <blog-button @click="test2" size="200" info="success" type="primary"></blog-button>
+        <blog-button @click="test3" size="200" info="error" type="primary"></blog-button>
       </div>
     </div>
   </div>
@@ -41,8 +43,19 @@ export default class extends Vue {
       );
       sessionStorage.setItem("token", res.Data.Token);
     } catch (e) {
-      this.$message.error("1111111111111111");
+      this.$message(e.Msg);
     }
+  }
+  private test1() {
+    this.$message("这是一条普通消息");
+  }
+  private test2() {
+    this.$message.success("这是一条成功消息");
+    // this.$message("这是一条成功消息", "success");
+  }
+  private test3() {
+    this.$message.error("这是一条失败消息");
+    // this.$message("这是一条失败消息", "error");
   }
 }
 </script>
