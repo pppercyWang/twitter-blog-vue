@@ -18,7 +18,17 @@
       cancel="关闭窗口"
       confirm="添加卡密"
       title="添加卡密"
-    >aaa</blog-dialog>
+    >
+      <check-box info="Javascript"></check-box>
+      <check-box info="Vue"></check-box>
+      <check-box info="React"></check-box>
+      <check-box info="Nodejs"></check-box>
+      <check-box info="Golang"></check-box>
+      <check-box info="Element-ui"></check-box>
+      <check-box info="Vant"></check-box>
+      <check-box info="Express"></check-box>
+      <check-box info="Egg.js"></check-box>
+    </blog-dialog>
   </div>
 </template>
 <script lang='ts'>
@@ -26,12 +36,14 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/common/BlogButton.vue";
 import BlogDialog from "@/components/common/BlogDialog.vue";
 import BlogInput from "@/components/common/BlogInput.vue";
+import CheckBox from "@/components/common/CheckBox.vue";
 import { apiSaveArticle } from "@/api/article";
 @Component({
   components: {
     BlogButton,
     BlogInput,
     BlogDialog,
+    CheckBox
   }
 })
 export default class extends Vue {

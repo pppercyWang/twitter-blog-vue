@@ -8,7 +8,7 @@
               <div class="title">发布文章</div>
             </div>
             <div class="right">
-              <blog-button @click="login" size="100"  info="立即发布" type="primary"></blog-button>
+              <blog-button  size="80" fontSize="12" height="30" info="立即发布" type="primary"></blog-button>
             </div>
           </div>
           <div class="dialog-body">
@@ -97,7 +97,7 @@ export default class extends Vue {
           display: flex;
           align-items: center;
           height: 50px;
-          width: 130px;
+          width: 100px;
           border-radius: 0 20px 0 0;
           position: absolute;
           right: 0;
@@ -108,7 +108,6 @@ export default class extends Vue {
         margin: auto;
         margin-top: 20px;
         width: 400px;
-        background-color: aquamarine;
       }
       .dialog-close {
         position: absolute;

@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import BlogMessage from './BlogMessage.vue'
-const MessageBox = Vue.extend(BlogMessage) // 创建的是一个组件构造器，不是实例
+import MessageTmp from './Message.vue'
+const MessageConstruct = Vue.extend(MessageTmp) // 创建的是一个组件构造器，不是实例
 const Message = {
   install: (options, type, duration) => {
     if (options === undefined || options === null) {
@@ -15,7 +15,7 @@ const Message = {
         options.type = type;
       }
     }
-    let instance = new MessageBox({
+    let instance = new MessageConstruct({
       data: options
     }).$mount()
     document.body.appendChild(instance.$el) // 添加dom元素

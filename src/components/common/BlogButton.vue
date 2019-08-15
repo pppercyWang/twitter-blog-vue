@@ -13,15 +13,29 @@ export default class extends Vue {
   private type!: string;
   @Prop()
   private size!: string;
+  @Prop()
+  private height!: string;
+  @Prop()
+  private fontSize!: string;
   private isPrimary: boolean = false;
   private handleClick(evt) {
     this.$emit("click", evt);
   }
   private mounted() {
+    const elBtn = this.$refs.btn as HTMLElement;
     if (this.size) {
       if (!isNaN(Number(this.size))) {
-        const elBtn = this.$refs.btn as HTMLElement;
         elBtn.style.width = this.size + "px";
+      }
+    }
+    if (this.fontSize) {
+      if (!isNaN(Number(this.fontSize))) {
+        elBtn.style.fontSize = this.fontSize + "px";
+      }
+    }
+    if (this.height) {
+      if (!isNaN(Number(this.height))) {
+        elBtn.style.height = this.height + "px";
       }
     }
     if (this.type === "primary") {
