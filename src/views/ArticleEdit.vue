@@ -19,15 +19,21 @@
       confirm="添加卡密"
       title="添加卡密"
     >
-      <check-box info="Javascript"></check-box>
-      <check-box info="Vue"></check-box>
-      <check-box info="React"></check-box>
-      <check-box info="Nodejs"></check-box>
-      <check-box info="Golang"></check-box>
-      <check-box info="Element-ui"></check-box>
-      <check-box info="Vant"></check-box>
-      <check-box info="Express"></check-box>
-      <check-box info="Egg.js"></check-box>
+      <form-item label="个人分类">
+        <div class="scroller">
+          <checkbox-group v-model="checkList">
+            <checkbox
+              v-for="(item,index) in data"
+              v-bind:key="index"
+              :label="item.name"
+              :value="item.id"
+            ></checkbox>
+          </checkbox-group>
+        </div>
+      </form-item>
+      <form-item label="文章类型">
+        
+      </form-item>
     </blog-dialog>
   </div>
 </template>
@@ -36,17 +42,76 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/common/BlogButton.vue";
 import BlogDialog from "@/components/common/BlogDialog.vue";
 import BlogInput from "@/components/common/BlogInput.vue";
-import CheckBox from "@/components/common/CheckBox.vue";
+import Checkbox from "@/components/common/Checkbox.vue";
+import CheckboxGroup from "@/components/common/CheckboxGroup.vue";
+import FormItem from "@/components/common/FormItem.vue";
 import { apiSaveArticle } from "@/api/article";
 @Component({
   components: {
     BlogButton,
     BlogInput,
     BlogDialog,
-    CheckBox
+    Checkbox,
+    CheckboxGroup,
+    FormItem
   }
 })
 export default class extends Vue {
+  private data = [
+    {
+      id: 1,
+      name: "Nodejs"
+    },
+    {
+      id: 2,
+      name: "Vue"
+    },
+    {
+      id: 3,
+      name: "Golang"
+    },
+    {
+      id: 4,
+      name: "Express"
+    },
+    {
+      id: 5,
+      name: "Egg.js"
+    },
+    {
+      id: 6,
+      name: "Vuex"
+    },
+    {
+      id: 7,
+      name: "Vant"
+    },
+    {
+      id: 8,
+      name: "Element-ui"
+    },
+    {
+      id: 9,
+      name: "Linux"
+    },
+    {
+      id: 10,
+      name: "React"
+    },
+    {
+      id: 11,
+      name: "Redux"
+    },
+    {
+      id: 12,
+      name: "Weex"
+    },
+    {
+      id: 13,
+      name: "Flutter"
+    }
+  ];
+  private checkList = [];
   private msg: string = "";
   private content: string = "";
   private dialogVisible: boolean = false;
@@ -74,7 +139,7 @@ export default class extends Vue {
     navigation: true // 导航目录
   };
   private handleSubmit() {
-    console.log("1111111111");
+    console.log(this.checkList);
   }
   private closeDialog() {
     this.dialogVisible = false;
@@ -115,6 +180,10 @@ export default class extends Vue {
 .container {
   height: 100%;
   width: 100%;
+  .scroller {
+    overflow-y: auto;
+    height: 140px;
+  }
   .header {
     background-color: #ffffff;
     height: 10%;

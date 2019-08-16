@@ -8,7 +8,14 @@
               <div class="title">发布文章</div>
             </div>
             <div class="right">
-              <blog-button  size="80" fontSize="12" height="30" info="立即发布" type="primary"></blog-button>
+              <blog-button
+                size="80"
+                fontSize="12"
+                height="30"
+                info="立即发布"
+                @click="submit"
+                type="primary"
+              ></blog-button>
             </div>
           </div>
           <div class="dialog-body">
@@ -123,7 +130,7 @@ export default class extends Vue {
             width: 40px;
           }
         }
-        .img-wrap:hover{
+        .img-wrap:hover {
           cursor: pointer;
         }
       }
