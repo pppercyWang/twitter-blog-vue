@@ -1,8 +1,8 @@
 <template>
-  <div class="checkbox-wrap">
+  <div class="radio-wrap">
     <div class="left" :class="isChecked?'box-click':''" ref="box" @click="handleClick">
       <transition name="fade">
-        <div class="hook" v-show="isChecked"></div>
+        <div class="circle" v-show="isChecked"></div>
       </transition>
     </div>
     <div class="right">{{label}}</div>
@@ -14,47 +14,55 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
   components: {}
 })
 export default class extends Vue {
-  private isChecked: boolean = true;
+  private isChecked: boolean = false;
   @Prop()
   private label!: string;
   @Prop()
   private value!: string;
   private handleClick() {
-    if (!this.isChecked) {
-      this.$parent.$emit("pushItem", this.value);
-    } else {
-      this.$parent.$emit("removeItem", this.value);
-    }
     this.isChecked = !this.isChecked;
-    this.$emit("input", this.isChecked);
+    if (this.isChecked) {
+      this.$parent.$emit("radioChange", this.value);
+    }
   }
-  private mounted() {
-    this.isChecked = false; // 在dialog中滚动条不生效。必须操作dom之后才生效。暂时未找到更好的解决办法
+  private checkIsActive(value) {
+    if (this.value === value) {
+      this.isChecked = true;
+    } else {
+      this.isChecked = false;
+    }
   }
 }
 </script>
 <style scoped lang="scss">
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-.checkbox-wrap {
+.radio-wrap {
   height: 24px;
-  width: 50%;
   display: inline-block;
   vertical-align: center;
   margin-bottom: 5px;
   .left {
     height: 24px;
     width: 24px;
-    border-radius: 7px;
+    border-radius: 50%;
     background-color: #ffffff;
     display: inline-block;
     border: 1.2px solid #cccccc;
     box-sizing: border-box;
+    .circle {
+      margin-left: 9px;
+      margin-top: 9px;
+      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      background-color: #ffffff;
+    }
   }
   .left:hover {
     cursor: pointer;
@@ -71,15 +79,6 @@ export default class extends Vue {
   .box-click {
     background-color: #1da1f2;
     border: 0.5px solid #cccccc;
-  }
-  .hook {
-    margin-left: 8px;
-    margin-top: 2px;
-    width: 5px;
-    height: 12px;
-    border-right: 1.3px solid #ffffff;
-    border-bottom: 1.3px solid #ffffff;
-    transform: rotate(40deg);
   }
 }
 </style>

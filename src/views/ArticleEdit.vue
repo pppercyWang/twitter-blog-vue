@@ -32,7 +32,10 @@
         </div>
       </form-item>
       <form-item label="文章类型">
-        
+        <radio-group v-model="radioIschecked">
+          <radio label="个人" value="1"></radio>
+          <radio label="收藏" value="2"></radio>
+        </radio-group>
       </form-item>
     </blog-dialog>
   </div>
@@ -42,10 +45,12 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BlogButton from "@/components/common/BlogButton.vue";
 import BlogDialog from "@/components/common/BlogDialog.vue";
 import BlogInput from "@/components/common/BlogInput.vue";
-import Checkbox from "@/components/common/Checkbox.vue";
-import CheckboxGroup from "@/components/common/CheckboxGroup.vue";
+import Checkbox from "@/components/common/checkbox/Checkbox.vue";
+import CheckboxGroup from "@/components/common/checkbox/CheckboxGroup.vue";
 import FormItem from "@/components/common/FormItem.vue";
 import { apiSaveArticle } from "@/api/article";
+import Radio from "@/components/common/radio/Radio.vue";
+import RadioGroup from "@/components/common/radio/RadioGroup.vue";
 @Component({
   components: {
     BlogButton,
@@ -53,10 +58,13 @@ import { apiSaveArticle } from "@/api/article";
     BlogDialog,
     Checkbox,
     CheckboxGroup,
-    FormItem
+    FormItem,
+    Radio,
+    RadioGroup
   }
 })
 export default class extends Vue {
+  private radioIschecked = "1";
   private data = [
     {
       id: 1,
