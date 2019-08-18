@@ -147,7 +147,7 @@ export default class extends Vue {
     navigation: true // 导航目录
   };
   private handleSubmit() {
-    console.log(this.checkList);
+    console.log(this.radioIschecked);
   }
   private closeDialog() {
     this.dialogVisible = false;
@@ -188,6 +188,25 @@ export default class extends Vue {
 .container {
   height: 100%;
   width: 100%;
+  div::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    /**/
+  }
+  div::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+  }
+  div::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+  }
+  div::-webkit-scrollbar-thumb:hover {
+    background: #333;
+  }
+  div::-webkit-scrollbar-corner {
+    background: #179a16;
+  }
   .scroller {
     overflow-y: auto;
     height: 140px;

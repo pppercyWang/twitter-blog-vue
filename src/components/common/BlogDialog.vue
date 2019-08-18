@@ -22,8 +22,8 @@
             <slot></slot>
           </div>
           <div class="dialog-close">
-            <div class="img-wrap" @click="dialogClose">
-              <img src="@/assets/img/exit.png" />
+            <div class="cross-wrap" @click="dialogClose">
+              <div class="cross"></div>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default class extends Vue {
       margin-top: 10%;
       background-color: #ffffff;
       width: 450px;
-      height: 500px;
+      height: 350px;
       border-radius: 20px;
       position: relative;
       .dialog-header {
@@ -111,7 +111,7 @@ export default class extends Vue {
         }
       }
       .dialog-body {
-        height: 380px;
+        height: 230px;
         margin: auto;
         margin-top: 20px;
         width: 400px;
@@ -123,14 +123,36 @@ export default class extends Vue {
         bottom: -40px;
         display: flex;
         justify-content: center;
-        .img-wrap {
-          width: 40px;
-          img {
-            height: 40px;
-            width: 40px;
+        .cross-wrap {
+          width: 30px;
+          height: 30px;
+          border: 2px solid #ffffff;
+          border-radius:50%;
+          .cross {
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            margin-top: 3px;
+            position: relative;
+          }
+          .cross::before,
+          .cross::after {
+            content: "";
+            position: absolute; /*方便进行定位*/
+            height: 20px;
+            width: 2px;
+            top: 2px;
+            right: 9px; /*设置top和right使图像在20*20框中居中*/
+            background: #ffffff;
+          }
+          .cross::before {
+            transform: rotate(45deg); /*进行旋转*/
+          }
+          .cross::after {
+            transform: rotate(-45deg);
           }
         }
-        .img-wrap:hover {
+        .cross-wrap:hover {
           cursor: pointer;
         }
       }

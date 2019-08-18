@@ -39,7 +39,7 @@ export default class extends Vue {
         },
         null
       );
-      this.$message.success(res.Msg);
+      this.$message(res.Msg);
       sessionStorage.setItem("token", res.Data.Token);
       sessionStorage.setItem("username", res.Data.Username);
       this.$emit("loginsuc");
