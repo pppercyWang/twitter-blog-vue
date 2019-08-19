@@ -21,9 +21,6 @@ export default class extends Vue {
 body {
   margin: 0px;
   padding: 0px;
-  /*background: url(assets/bg1.jpg) center !important;
-		background-size: cover;*/
-  // background: #1F2D3D;
   font-family: Arial,Helvetica,sans-serif;font-size:100%;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
@@ -33,31 +30,5 @@ body {
   top: 0px;
   bottom: 0px;
   width: 100%;
-  
-}
-.el-submenu [class^="fa"] {
-  vertical-align: baseline;
-  margin-right: 10px;
-}
-.el-menu-item [class^="fa"] {
-  vertical-align: baseline;
-  margin-right: 10px;
-}
-.toolbar {
-  background: #fffbfb;
-  padding: 10px;
-  // border:1px solid #dfe6ec;
-  margin: 10px 0px;
-  .el-form-item {
-    margin-bottom: 10px;
-  }
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.2s ease;
-}
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
 }
 </style>

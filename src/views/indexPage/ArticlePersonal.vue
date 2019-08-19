@@ -7,6 +7,16 @@
     </div>
     <div class="center">
       <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
+      <article-item></article-item>
     </div>
     <div class="right">Right</div>
   </div>
@@ -21,13 +31,12 @@ import ArticleItem from "@/components/articlePersonal/ArticleItem.vue";
     ArticleItem
   }
 })
-export default class extends Vue {
-}
+export default class extends Vue {}
 </script>
 <style lang="scss" scoped>
 .container {
   width: 1220px;
-  height: $height-excepted-header - $height-welcome - 92px;
+  height: $height-excepted-header - $height-welcome;
   position: relative;
   margin-top: 10px;
   .left {
@@ -37,12 +46,12 @@ export default class extends Vue {
     position: absolute;
     left: 0;
     top: 0;
-    .left-wrap{
+    .left-wrap {
       margin-top: 40px;
     }
   }
   .center {
-    height: 500px;
+    width:  500px;
     height: 100%;
     background-color: #ffffff;
     margin: 0px 310px 0 310px;
