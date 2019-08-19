@@ -127,7 +127,7 @@ export default class extends Vue {
           width: 30px;
           height: 30px;
           border: 2px solid #ffffff;
-          border-radius:50%;
+          border-radius: 50%;
           .cross {
             width: 20px;
             height: 20px;

@@ -14,7 +14,7 @@ export default class extends Vue {
   private dispatch(value) {
     // 调用所有子组件的checkIsActive方法
     this.$children.forEach(item => {
-      const temp: any = item; // ts还是不好用。。。
+      const temp: any = item;
       temp.checkIsActive(value);
     });
   }

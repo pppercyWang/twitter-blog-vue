@@ -68,7 +68,7 @@ export default class extends Vue {
     width: 100%;
     height: $height-fake-area;
     background-color: #f3f6f8;
-     z-index: 998;
+    z-index: 998;
   }
   .header{
     z-index: 999;

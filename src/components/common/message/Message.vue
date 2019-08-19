@@ -33,7 +33,7 @@ export default class extends Vue {
   width: 20%;
   top: 25px;
   height: 40px;
-  z-index: 1001;
+  z-index: 1600;
   border-radius: 4px;
   text-align: center;
   border: 1px solid #ebeef5;

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <div class="title-input">
-        <blog-input placeholder="请输入文章标题" width="100%" height="30" fontSize="18" v-model="msg"></blog-input>
+        <blog-input placeholder="请输入文章标题" width="100%" height="30" fontSize="18" v-model="title"></blog-input>
       </div>
       <div class="push-article">
         <blog-button info="发布文章" @click="saveArticle" type="primary"></blog-button>
@@ -23,18 +23,18 @@
         <div class="scroller">
           <checkbox-group v-model="checkList">
             <checkbox
-              v-for="(item,index) in data"
+              v-for="(item,index) in checkboxData"
               v-bind:key="index"
-              :label="item.name"
-              :value="item.id"
+              :label="item.Name"
+              :value="item.ID"
             ></checkbox>
           </checkbox-group>
         </div>
       </form-item>
       <form-item label="文章类型">
         <radio-group v-model="radioIschecked">
-          <radio label="个人" value="1"></radio>
-          <radio label="收藏" value="2"></radio>
+          <radio label="个人" value="0"></radio>
+          <radio label="收藏" value="1"></radio>
         </radio-group>
       </form-item>
     </blog-dialog>
@@ -49,6 +49,7 @@ import Checkbox from "@/components/common/checkbox/Checkbox.vue";
 import CheckboxGroup from "@/components/common/checkbox/CheckboxGroup.vue";
 import FormItem from "@/components/common/FormItem.vue";
 import { apiSaveArticle } from "@/api/article";
+import { apiGetCategoryList } from "@/api/category";
 import Radio from "@/components/common/radio/Radio.vue";
 import RadioGroup from "@/components/common/radio/RadioGroup.vue";
 @Component({
@@ -64,63 +65,10 @@ import RadioGroup from "@/components/common/radio/RadioGroup.vue";
   }
 })
 export default class extends Vue {
-  private radioIschecked = "1";
-  private data = [
-    {
-      id: 1,
-      name: "Nodejs"
-    },
-    {
-      id: 2,
-      name: "Vue"
-    },
-    {
-      id: 3,
-      name: "Golang"
-    },
-    {
-      id: 4,
-      name: "Express"
-    },
-    {
-      id: 5,
-      name: "Egg.js"
-    },
-    {
-      id: 6,
-      name: "Vuex"
-    },
-    {
-      id: 7,
-      name: "Vant"
-    },
-    {
-      id: 8,
-      name: "Element-ui"
-    },
-    {
-      id: 9,
-      name: "Linux"
-    },
-    {
-      id: 10,
-      name: "React"
-    },
-    {
-      id: 11,
-      name: "Redux"
-    },
-    {
-      id: 12,
-      name: "Weex"
-    },
-    {
-      id: 13,
-      name: "Flutter"
-    }
-  ];
+  private radioIschecked = "0";
+  private checkboxData = [];
   private checkList = [];
-  private msg: string = "";
+  private title: string = "";
   private content: string = "";
   private dialogVisible: boolean = false;
   private toolbars = {
@@ -146,14 +94,40 @@ export default class extends Vue {
     /* 1.4.2 */
     navigation: true // 导航目录
   };
-  private handleSubmit() {
-    console.log(this.radioIschecked);
+  private async handleSubmit() {
+    if (this.title.trim() === "") {
+      this.$message.error("文章标题不能为空");
+      return;
+    }
+    if (this.content.trim() === "") {
+      this.$message.error("文章内容不能为空");
+      return;
+    }
+    if (this.checkList.length === 0) {
+      this.$message.error("请至少选择一个分类");
+      return;
+    }
+    if (this.checkAuthentication()) {
+      try {
+        const res = await apiSaveArticle(
+          {
+            Content: this.content,
+            IDs: this.checkList.join(","),
+            Title: this.title,
+            Personal: this.radioIschecked
+          },
+          null
+        );
+        this.$message.success(res.Msg);
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
+    }
   }
   private closeDialog() {
     this.dialogVisible = false;
   }
   private checkAuthentication() {
-    console.log(sessionStorage.getItem("token"));
     if (
       sessionStorage.getItem("token") === null ||
       sessionStorage.getItem("token") === ""
@@ -163,24 +137,19 @@ export default class extends Vue {
     }
     return true;
   }
-  private async saveArticle() {
+  private async getCategoryList() {
+    try {
+      const res = await apiGetCategoryList({}, null);
+      this.checkboxData = res.Data.List;
+    } catch (e) {
+      this.$message.error(e.Msg);
+    }
+  }
+  private saveArticle() {
     this.dialogVisible = true;
-    // if (this.checkAuthentication()) {
-    //   try {
-    //     const res = await apiSaveArticle(
-    //       {
-    //         Content: this.content,
-    //         ArticleTypeId: 2,
-    //         Title: "123456",
-    //         Personal: 0
-    //       },
-    //       null
-    //     );
-    //     this.$message.success(res.Msg);
-    //   } catch (e) {
-    //     this.$message.error(e.Msg);
-    //   }
-    // }
+  }
+  private mounted() {
+    this.getCategoryList();
   }
 }
 </script>
@@ -191,7 +160,6 @@ export default class extends Vue {
   div::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    /**/
   }
   div::-webkit-scrollbar-track {
     background: rgb(239, 239, 239);

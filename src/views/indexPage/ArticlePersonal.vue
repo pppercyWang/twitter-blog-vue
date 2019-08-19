@@ -50,7 +50,7 @@ export default class extends Vue {
   .right {
     width: 300px;
     height: 100%;
-    background-color: #ffffff;
+    background-color: $backgroud-main;
     position: absolute;
     right: 0;
     top: 0;
