@@ -14,9 +14,6 @@
       <article-item></article-item>
       <article-item></article-item>
       <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
     </div>
     <div class="right">Right</div>
   </div>
