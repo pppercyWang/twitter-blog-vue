@@ -6,14 +6,7 @@
       </div>
     </div>
     <div class="center">
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
-      <article-item></article-item>
+      <article-item v-for="(item,index) in articleList" v-bind:key="index" :title="item.Title" :des="item.Description"></article-item>
     </div>
     <div class="right">Right</div>
   </div>
@@ -22,13 +15,33 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import BloggerInfo from "@/components/articlePersonal/BloggerInfo.vue";
 import ArticleItem from "@/components/articlePersonal/ArticleItem.vue";
+import { apiArticleList } from "@/api/article";
 @Component({
   components: {
     BloggerInfo,
     ArticleItem
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  private articleList = [];
+  private async getArticleList() {
+    try {
+      const res = await apiArticleList(
+        {
+          Page: 1,
+          Size: 10
+        },
+        null
+      );
+      this.articleList = res.Data.List;
+    } catch (e) {
+      this.$message.error(e.Msg);
+    }
+  }
+  private mounted() {
+    this.getArticleList();
+  }
+}
 </script>
 <style lang="scss" scoped>
 .container {
@@ -48,10 +61,11 @@ export default class extends Vue {}
     }
   }
   .center {
-    width:  500px;
+    width: 500px;
     height: 100%;
     background-color: #ffffff;
     margin: 0px 310px 0 310px;
+    border-radius: 3px; 
   }
   .right {
     width: 300px;

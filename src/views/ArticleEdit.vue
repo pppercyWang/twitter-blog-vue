@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="body">
-      <mavon-editor v-model="content" :toolbars="toolbars"></mavon-editor>
+      <mavon-editor v-model="content" @change="updateDoc" :toolbars="toolbars"></mavon-editor>
     </div>
     <blog-dialog
       @close="closeDialog"
@@ -48,7 +48,7 @@ import BlogInput from "@/components/common/BlogInput.vue";
 import Checkbox from "@/components/common/checkbox/Checkbox.vue";
 import CheckboxGroup from "@/components/common/checkbox/CheckboxGroup.vue";
 import FormItem from "@/components/common/FormItem.vue";
-import { apiSaveArticle } from "@/api/article";
+import { apiArticleSave } from "@/api/article";
 import { apiGetCategoryList } from "@/api/category";
 import Radio from "@/components/common/radio/Radio.vue";
 import RadioGroup from "@/components/common/radio/RadioGroup.vue";
@@ -109,7 +109,7 @@ export default class extends Vue {
     }
     if (this.checkAuthentication()) {
       try {
-        const res = await apiSaveArticle(
+        const res = await apiArticleSave(
           {
             Content: this.content,
             IDs: this.checkList.join(","),
@@ -123,6 +123,11 @@ export default class extends Vue {
         this.$message.error(e.Msg);
       }
     }
+  }
+  private updateDoc(markdown, html) {
+    // 此时会自动将 markdown 和 html 传递到这个方法中
+    console.log("markdown内容: " + markdown);
+    console.log("html内容:" + markdown);
   }
   private closeDialog() {
     this.dialogVisible = false;
