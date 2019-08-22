@@ -2,7 +2,7 @@
   <div class="article-item-wrap">
     <div class="title">{{title}}</div>
     <div class="des">{{des+"..."}}</div>
-    <div class="op">
+    <div class="footer-wrap">
       <div class="like-wrap">
         <div class="like">
           <svg
@@ -12,8 +12,8 @@
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             p-id="4912"
-            width="20"
-            height="20"
+            width="18"
+            height="18"
           >
             <path
               class="path"
@@ -26,6 +26,10 @@
         <div class="text">
           <text-underline text="赞" size="13" underlineHeight="1" color="#1da1f2"></text-underline>
         </div>
+      </div>
+      <div class="get-likes">
+        <span class="label">收获喜欢：</span>
+        <span class="num">123</span>
       </div>
     </div>
   </div>
@@ -48,6 +52,7 @@ export default class extends Vue {
 <style scoped lang="scss">
 .article-item-wrap {
   height: 120px;
+  margin: 0px 10px;
   border-bottom: 1px solid #cccccc;
   margin-bottom: 10px;
   .title {
@@ -62,27 +67,29 @@ export default class extends Vue {
     color: $twitter-font;
     font-size: 13px;
   }
-  .op {
+  .footer-wrap {
     height: 30px;
     .like-wrap {
-      height: 30px;
+      height: 24px;
+      width: 55px;
+      display: inline-block;
       .like {
         display: inline-block;
-        height: 30px;
-        width: 30px;
+        height: 24px;
+        width: 24px;
         background-color: rgba(1, 126, 102, 0.08);
         border-radius: 50%;
         .icon {
-          margin-left: 5px;
-          margin-top: 5px;
+          margin-left: 3px;
+          margin-top: 3px;
         }
       }
       .text {
-        margin-left: 8px;
+        margin-left: 5px;
         display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        width: 30px;
+        height: 24px;
+        line-height: 24px;
+        width: 24px;
         vertical-align: top;
       }
     }
@@ -93,6 +100,19 @@ export default class extends Vue {
         .path {
           fill: #ffffff;
         }
+      }
+    }
+    .get-likes {
+      margin-left: 5px;
+      display: inline-block;
+      height: 24px;
+      line-height: 24px;
+      vertical-align: top;
+      .label {
+        color: $twitter-font;
+      }
+      .num {
+        color: $twitter-blue;
       }
     }
   }
