@@ -5,24 +5,7 @@
 
 ### 模仿页面：https://twitter.com/dariel_noel 
 
-respect for Dariel Noel~~
 
-### 日志
-``` bash
-2019/7/25  menu-item组件,hover动画效果
-2019/7/26  实现拉幕效果，字体抖动
-2019/7/27  实现中部导航栏布局
-2019/7/29  中部导航栏
-2019/7/31  button组件
-2019/8/1   整体布局改造
-2019/8/2   个人信息
-2019/8/6   login
-2019/8/7   markdown编辑 input组件
-2019/8/13  message组件 
-2019/8/14  dialog组件
-2019/8/15  checkbox组件 
-2019/8/18  ridio组件 checkbox拉下滚动
-```
 ### 查看详情
 [用vue模仿twitter写一个自己的博客](https://blog.csdn.net/weixin_42565137/article/details/97619525)
 
