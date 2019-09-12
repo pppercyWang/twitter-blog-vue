@@ -77,7 +77,6 @@ export default class extends Vue {
     background-color: $backgroud-main;
     display: flex;
     justify-content: center;
-    height: 100%;
     .fade-enter-active,
     .fade-leave-active {
       transition: all 0.2s ease;

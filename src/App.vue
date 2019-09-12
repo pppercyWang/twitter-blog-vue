@@ -26,7 +26,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 #app {
-  position: absolute;
   top: 0px;
   bottom: 0px;
   width: 100%;

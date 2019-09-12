@@ -37,15 +37,12 @@ export default class extends Vue {}
 }
 .body {
   top: $height-header;
-  height: $height-excepted-header;
   position: relative;
   .welcome {
     height: $height-welcome;
     width: 100%;
-    position: fixed;
     background-color: #f3f6f8;
     .welcome_msg {
-      position: absolute;
       font-weight: bold;
       top: 160px;
       left: 60%;
@@ -78,8 +75,6 @@ export default class extends Vue {}
     animation-play-state: running;
   }
   .router-view-area {
-    position: absolute;
-    height: $height-excepted-header - $height-welcome;
     width: 100%;
     bottom: 0;
   }

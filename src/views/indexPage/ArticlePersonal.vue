@@ -1,14 +1,27 @@
 <template>
   <div class="container">
     <div class="left">
-      <div class="left-wrap">
-        <blogger-info></blogger-info>
-      </div>
+      <!-- <blogger-info></blogger-info> -->
     </div>
     <div class="center">
-      <article-item v-for="(item,index) in articleList" v-bind:key="index" :title="item.Title" :des="item.Description"></article-item>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
+      <div class="test"></div>
     </div>
-    <div class="right">Right</div>
+    <div class="right"></div>
   </div>
 </template>
 <script lang='ts'>
@@ -46,34 +59,21 @@ export default class extends Vue {
 <style lang="scss" scoped>
 .container {
   width: 1220px;
-  height: $height-excepted-header - $height-welcome;
-  position: relative;
-  margin-top: 10px;
-  .left {
-    width: 300px;
-    height: 100%;
-    background-color: $backgroud-main;
-    position: absolute;
-    left: 0;
-    top: 0;
-    .left-wrap {
-      margin-top: 40px;
-    }
-  }
-  .center {
-    width: 500px;
-    height: 100%;
-    background-color: #ffffff;
-    margin: 0px 310px 0 310px;
-    border-radius: 3px; 
-  }
-  .right {
-    width: 300px;
-    height: 100%;
-    background-color: $backgroud-main;
-    position: absolute;
-    right: 0;
-    top: 0;
+  display: flex;
+  margin: 10px;
+}
+.left,
+.right {
+  width: 300px;
+  margin: 10px;
+  background-color: #999;
+}
+.center {
+  flex: 1;
+  margin: 10px; /*左右margin不会叠加*/
+  background-color: #f00;
+  .test {
+    height: 150px;
   }
 }
 </style>

@@ -18,8 +18,7 @@ export default class extends Vue {
 .index-page {
   .body {
     background-color: #ffffff;
-    height: $height-excepted-header - $height-welcome - $height-fake-area -
-      $height-profile-nav-wrap;
+ 
   }
 }
 </style>
