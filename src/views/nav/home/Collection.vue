@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="left">
-      <!-- <blogger-info></blogger-info> -->
+      <div class="info-wrap">
+         <blogger-info></blogger-info>
+      </div>
     </div>
     <div class="center">
       <div class="test"></div>
@@ -62,7 +64,14 @@ export default class extends Vue {
   display: flex;
   margin: 10px;
 }
-.left,
+.left {
+  width: 300px;
+  margin: 10px;
+  background-color: #999;
+  .info-wrap{
+    margin-top: 40px;
+  }
+}
 .right {
   width: 300px;
   margin: 10px;

@@ -1,5 +1,11 @@
 <template>
   <div class="index-page">
+    <div class="welcome">
+        <div class="welcome_msg">
+          Welcome To
+          <span class="shake">Percy</span>'s Blog
+        </div>
+      </div>
     <div class="fake-area" id="fake-area"></div>
     <index-menu class="header"></index-menu>
     <div class="body">
@@ -64,6 +70,44 @@ export default class extends Vue {
 </script>
 <style lang="scss" scoped>
 .index-page {
+  .welcome {
+    height: $height-welcome;
+    width: 100%;
+    background-color: #f3f6f8;
+    position: relative;
+    .welcome_msg {
+      position: absolute;
+      font-weight: bold;
+      top: 160px;
+      left: 60%;
+    }
+  }
+  .welcome:hover > .welcome_msg > .shake {
+    display: inline-block;
+    padding: 1px;
+    font-size: 14px;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-name: shaky-slow;
+    -ms-animation-name: shaky-slow;
+    animation-name: shaky-slow;
+    -webkit-animation-duration: 4s;
+    -ms-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-delay: 0s;
+    -ms-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-play-state: running;
+    -ms-animation-play-state: running;
+    animation-play-state: running;
+  }
   .fake-area {
     width: 100%;
     height: $height-fake-area;

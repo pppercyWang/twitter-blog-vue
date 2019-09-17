@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from '@/views/Layout.vue';
-import NotFound from '@/views/NotFound.vue';
-import About from '@/views/About.vue';
-import IndexLayout from '@/views/indexPage/IndexLayout.vue';
-import ArticleCollection from '@/views/indexPage/ArticleCollection.vue';
-import ArticlePersonal from '@/views/indexPage/ArticlePersonal.vue';
+import Layout from '@/views/nav/Layout.vue';
+import About from '@/views/nav/about/About.vue';
+import HomeLayout from '@/views/nav/home/HomeLayout.vue';
+import Collection from '@/views/nav/home/Collection.vue';
+import Personal from '@/views/nav/home/Personal.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
+import NotFound from '@/views/NotFound.vue';
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -23,17 +23,17 @@ export default new Router({
         {
           path: '/index',
           name: '首页',
-          component: IndexLayout,
+          component: HomeLayout,
           children: [
             {
               path: '/welcome',
               name: '文章',
-              component: ArticlePersonal,
+              component: Personal,
             },
             {
               path: '/collections',
               name: '收藏',
-              component: ArticleCollection,
+              component: Collection,
             },
           ]
         },

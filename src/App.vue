@@ -28,6 +28,7 @@ body {
 #app {
   top: 0px;
   bottom: 0px;
+  height: 100%;
   width: 100%;
 }
 </style>
