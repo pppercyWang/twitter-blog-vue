@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from '@/views/nav/Layout.vue';
-import About from '@/views/nav/about/About.vue';
-import HomeLayout from '@/views/nav/home/HomeLayout.vue';
-import Collection from '@/views/nav/home/Collection.vue';
-import Personal from '@/views/nav/home/Personal.vue';
+import Layout from '@/views/navigation/Layout.vue';
+import About from '@/views/navigation/about/About.vue';
+import HomeLayout from '@/views/navigation/home/HomeLayout.vue';
+import Collection from '@/views/navigation/home/Collection.vue';
+import Personal from '@/views/navigation/home/Personal.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
+
 import NotFound from '@/views/NotFound.vue';
 Vue.use(Router);
 export default new Router({

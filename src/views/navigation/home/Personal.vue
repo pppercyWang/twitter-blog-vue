@@ -1,32 +1,17 @@
 <template>
   <div class="container">
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
-    <div class="test"></div>
+    <ArticleItem
+      v-for="(item,index) in articleList"
+      v-bind:key="index"
+      :title="item.Title"
+      :des="item.Description"
+    ></ArticleItem> 
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 
-import ArticleItem from "@/components/articlePersonal/ArticleItem.vue";
+import ArticleItem from "@/components/personal/ArticleItem.vue";
 import { apiArticleList } from "@/api/article";
 @Component({
   components: {
@@ -45,6 +30,7 @@ export default class extends Vue {
         null
       );
       this.articleList = res.Data.List;
+      console.log(this.articleList);
     } catch (e) {
       this.$message.error(e.Msg);
     }
@@ -56,8 +42,8 @@ export default class extends Vue {
 </script>
 <style lang="scss" scoped>
 .container {
-  width: 900px;
-  margin: 10px;
+  margin-top: 20px;
+  width: 920px;
   .test {
     height: 50px;
   }

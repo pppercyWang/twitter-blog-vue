@@ -2,7 +2,7 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <profile-heading></profile-heading>
+        <!-- <profile-heading></profile-heading> -->
       </div>
       <div class="blogger-about">
         <BloggerInfo></BloggerInfo>
@@ -27,10 +27,10 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import MenuItem from "@/components/indexMenu/MenuItem.vue";
-import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
-import BlogButton from "@/components/common/BlogButton.vue";
-import BloggerInfo from "@/components/articlePersonal/BloggerInfo.vue";
+import MenuItem from "@/components/indexMenu/children/MenuItem.vue";
+import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
+import BlogButton from "@/components/commons/BlogButton.vue";
+import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
 @Component({
   components: {
     MenuItem,

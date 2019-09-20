@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
-import Message from '@/components/common/message';
+import Message from '@/components/commons/message';
 Vue.use(Message);
 Vue.use(mavonEditor);
 Vue.config.productionTip = false;

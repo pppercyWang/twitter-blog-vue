@@ -28,10 +28,10 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import MenuItem from "@/components/header/MenuItem.vue";
-import LoginArea from "@/components/header/LoginArea.vue";
-import Login from "@/components/header/Login.vue";
-import TextUnderline from "@/components/common/TextUnderline.vue";
+import MenuItem from "@/components/header/children/MenuItem.vue";
+import LoginArea from "@/components/header/children/LoginArea.vue";
+import Login from "@/components/header/children/Login.vue";
+import TextUnderline from "@/components/commons/TextUnderline.vue";
 @Component({
   components: {
     MenuItem,

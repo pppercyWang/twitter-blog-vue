@@ -125,9 +125,8 @@ export default class extends Vue {
     display: flex;
     justify-content: center;
     .transition-wrap {
-      margin-left: 320px;
+      margin-left: 300px;
       display: inline-block;
-      background-color: $backgroud-main;
       .fade-enter-active,
       .fade-leave-active {
         transition: all 0.2s ease;
