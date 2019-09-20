@@ -2,7 +2,10 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <!-- <profile-heading></profile-heading> -->
+        <profile-heading></profile-heading>
+      </div>
+      <div class="blogger-about">
+        <BloggerInfo></BloggerInfo>
       </div>
       <div class="profile-nav-list">
         <menu-item
@@ -27,9 +30,11 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/indexMenu/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/ProfileHeading.vue";
 import BlogButton from "@/components/common/BlogButton.vue";
+import BloggerInfo from "@/components/articlePersonal/BloggerInfo.vue";
 @Component({
   components: {
     MenuItem,
+    BloggerInfo,
     ProfileHeading,
     BlogButton
   }
@@ -60,6 +65,10 @@ export default class extends Vue {
   .profile-nav-wrap {
     width: 1220px;
     position: relative;
+    .blogger-about {
+      position: absolute;
+      top: 100px;
+    }
     .profile-heading {
       position: absolute;
       height: 62px;

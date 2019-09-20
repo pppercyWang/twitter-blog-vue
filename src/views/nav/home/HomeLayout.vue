@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrap">
+  <div class="home-layout-container">
     <div class="welcome">
       <div class="welcome_msg">
         Welcome To
@@ -8,10 +8,13 @@
     </div>
     <div class="fake-area" id="fake-area"></div>
     <index-menu class="index-menu"></index-menu>
-    <div class="transition-wrap">
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
+    <div class="content-wrap">
+ 
+      <div class="transition-wrap">
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +22,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import IndexMenu from "@/components/indexMenu/IndexMenu.vue";
 import { Action, Mutation, State, Getter } from "vuex-class";
+
 @Component({
   components: {
     IndexMenu
@@ -69,7 +73,7 @@ export default class extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.content-wrap {
+.home-layout-container {
   .welcome {
     height: $height-welcome;
     width: 100%;
@@ -117,17 +121,21 @@ export default class extends Vue {
   .index-menu {
     z-index: 999;
   }
-  .transition-wrap {
-    background-color: $backgroud-main;
+  .content-wrap {
     display: flex;
     justify-content: center;
-    .fade-enter-active,
-    .fade-leave-active {
-      transition: all 0.2s ease;
-    }
-    .fade-enter,
-    .fade-leave-active {
-      opacity: 0;
+    .transition-wrap {
+      margin-left: 320px;
+      display: inline-block;
+      background-color: $backgroud-main;
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: all 0.2s ease;
+      }
+      .fade-enter,
+      .fade-leave-active {
+        opacity: 0;
+      }
     }
   }
 }

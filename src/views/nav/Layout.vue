@@ -30,6 +30,7 @@ export default class extends Vue {}
   }
   .body {
     margin-top: 48px;
+    
     .shake-control {
       display: inline;
     }
