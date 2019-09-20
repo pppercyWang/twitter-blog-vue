@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div class="header">
+  <div class="home-container">
+    <div class="header-wrap">
       <blog-header></blog-header>
     </div>
     <div class="body">
@@ -20,15 +20,16 @@ import BlogHeader from "@/components/header/Header.vue";
 export default class extends Vue {}
 </script>
 <style scoped lang="scss">
-.home {
-  .header {
+.home-container {
+  .header-wrap {
+    top: 0;
+    left: 0;
     z-index: 1000;
     position: fixed;
     width: 100%;
   }
   .body {
-    padding-top: $height-header;
-
+    margin-top: 48px;
     .shake-control {
       display: inline;
     }

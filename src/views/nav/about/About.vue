@@ -1,5 +1,7 @@
 <template>
-    <div class="about-wrap"></div>
+    <div class="index-page">
+      aaa
+    </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";

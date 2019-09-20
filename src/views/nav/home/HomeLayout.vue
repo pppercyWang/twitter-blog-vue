@@ -1,14 +1,14 @@
 <template>
-  <div class="index-page">
+  <div class="content-wrap">
     <div class="welcome">
-        <div class="welcome_msg">
-          Welcome To
-          <span class="shake">Percy</span>'s Blog
-        </div>
+      <div class="welcome_msg">
+        Welcome To
+        <span class="shake">Percy</span>'s Blog
       </div>
+    </div>
     <div class="fake-area" id="fake-area"></div>
-    <index-menu class="header"></index-menu>
-    <div class="body">
+    <index-menu class="index-menu"></index-menu>
+    <div class="transition-wrap">
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
@@ -69,7 +69,7 @@ export default class extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.index-page {
+.content-wrap {
   .welcome {
     height: $height-welcome;
     width: 100%;
@@ -114,10 +114,10 @@ export default class extends Vue {
     background-color: #f3f6f8;
     z-index: 998;
   }
-  .header {
+  .index-menu {
     z-index: 999;
   }
-  .body {
+  .transition-wrap {
     background-color: $backgroud-main;
     display: flex;
     justify-content: center;
