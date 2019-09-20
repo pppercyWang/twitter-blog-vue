@@ -16,7 +16,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import TextUnderline from "@/components/commons/TextUnderline.vue";
+import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
 @Component({
   components: {
     TextUnderline

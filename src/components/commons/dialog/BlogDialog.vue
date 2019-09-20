@@ -33,7 +33,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/commons/BlogButton.vue";
+import BlogButton from "@/components/commons/button/BlogButton.vue";
 @Component({
   components: {
     BlogButton

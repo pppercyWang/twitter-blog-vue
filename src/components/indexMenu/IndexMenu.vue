@@ -29,7 +29,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/indexMenu/children/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
-import BlogButton from "@/components/commons/BlogButton.vue";
+import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
 @Component({
   components: {

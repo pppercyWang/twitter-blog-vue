@@ -18,8 +18,8 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/commons/BlogButton.vue";
-import BlogInput from "@/components/commons/BlogInput.vue";
+import BlogButton from "@/components/commons/button/BlogButton.vue";
+import BlogInput from "@/components/commons/input/BlogInput.vue";
 import { apiLogin } from "@/api/auth.ts";
 @Component({
   components: {

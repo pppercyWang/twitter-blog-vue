@@ -42,12 +42,12 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import BlogButton from "@/components/commons/BlogButton.vue";
-import BlogDialog from "@/components/commons/BlogDialog.vue";
-import BlogInput from "@/components/commons/BlogInput.vue";
+import BlogButton from "@/components/commons/button/BlogButton.vue";
+import BlogDialog from "@/components/commons/dialog/BlogDialog.vue";
+import BlogInput from "@/components/commons/input/BlogInput.vue";
 import Checkbox from "@/components/commons/checkbox/Checkbox.vue";
 import CheckboxGroup from "@/components/commons/checkbox/CheckboxGroup.vue";
-import FormItem from "@/components/commons/FormItem.vue";
+import FormItem from "@/components/commons/formItem/FormItem.vue";
 import { apiArticleSave } from "@/api/article";
 import { apiGetCategoryList } from "@/api/category";
 import Radio from "@/components/commons/radio/Radio.vue";

@@ -31,7 +31,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import MenuItem from "@/components/header/children/MenuItem.vue";
 import LoginArea from "@/components/header/children/LoginArea.vue";
 import Login from "@/components/header/children/Login.vue";
-import TextUnderline from "@/components/commons/TextUnderline.vue";
+import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
 @Component({
   components: {
     MenuItem,
