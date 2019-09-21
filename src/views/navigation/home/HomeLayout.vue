@@ -9,7 +9,6 @@
     <div class="fake-area" id="fake-area"></div>
     <index-menu class="index-menu"></index-menu>
     <div class="content-wrap">
- 
       <div class="transition-wrap">
         <transition name="fade" mode="out-in">
           <router-view></router-view>
@@ -41,6 +40,8 @@ export default class extends Vue {
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
+    const scrollHeight = document.body.scrollHeight;
+    const clientHeight = document.body.clientHeight;
     if (scrollTop > 300) {
       if (!this.fixedFlag) {
         this.actionBigHeadingShowFalse();
@@ -65,6 +66,11 @@ export default class extends Vue {
         this.unFixedFlag = true;
         this.fixedFlag = false;
       }
+    }
+    if (clientHeight + scrollTop === scrollHeight + 48) {
+      console.log(`clientHeight: ${clientHeight}`);
+      console.log(`scrollTop: ${scrollTop}`);
+      console.log(`scrollHeight: ${scrollHeight}`);
     }
   }
   private beforeDestroy() {

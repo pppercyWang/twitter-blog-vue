@@ -1,7 +1,7 @@
 <template>
   <div class="blogger-info-wrap">
     <div class="name">
-      <text-underline text="percy Wang" size="20" underlineHeight="2" color="#000000" isBold="true"></text-underline>
+      <text-underline text="percy" size="20" underlineHeight="2" color="#000000" isBold="true"></text-underline>
     </div>
     <div class="at">
       <text-underline
@@ -18,7 +18,13 @@
     </div>
     <div class="about">Everything will be ok!</div>
     <div class="area">
-      <text-underline @click="openChangsha" text="Changsha" size="12" underlineHeight="1" color="#1da1f2">
+      <text-underline
+        @click="openChangsha"
+        text="Changsha"
+        size="12"
+        underlineHeight="1"
+        color="#1da1f2"
+      >
         <template slot="icon">
           <i class="iconfont percy-icon-Positioning"></i>
         </template>
@@ -39,7 +45,9 @@ export default class extends Vue {
     window.open("https://github.com/pppercyWang");
   }
   private openChangsha() {
-    window.open("https://baike.baidu.com/item/%E9%95%BF%E6%B2%99/204237?fr=aladdin");
+    window.open(
+      "https://baike.baidu.com/item/%E9%95%BF%E6%B2%99/204237?fr=aladdin"
+    );
   }
 }
 </script>
