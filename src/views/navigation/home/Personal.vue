@@ -1,24 +1,33 @@
 <template>
   <div class="container">
-    <ArticleItem
-      v-for="(item,index) in articleList"
-      v-bind:key="index"
-      :title="item.Title"
-      :des="item.Description"
-    ></ArticleItem> 
+    <blog-list @toBottom="fetchNewData()" :loading="loading">
+      <ArticleItem
+        v-for="(item,index) in articleList"
+        v-bind:key="index"
+        :title="item.Title"
+        :des="item.Description"
+      ></ArticleItem>
+    </blog-list>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import ArticleItem from "@/components/personal/articleItem/ArticleItem.vue";
+import BlogList from "@/components/commons/list/BlogList.vue";
 import { apiArticleList } from "@/api/article";
 @Component({
   components: {
-    ArticleItem
+    ArticleItem,
+    BlogList
   }
 })
 export default class extends Vue {
   private articleList = [];
+  private dataList: any[] = [1, 2, 3, 4, 5, 6, 7, 8];
+  private loading: boolean = false;
+  private fetchNewData() {
+    console.log("1111111111111");
+  }
   private async getArticleList() {
     try {
       const res = await apiArticleList(
@@ -29,7 +38,6 @@ export default class extends Vue {
         null
       );
       this.articleList = res.Data.List;
-      console.log(this.articleList);
     } catch (e) {
       this.$message.error(e.Msg);
     }

@@ -12,7 +12,7 @@
             <img src="@/assets/heading.jpg" />
           </div>
           <div class="right">
-            <div class="top">Percy Wang</div>
+            <div class="top">Percy</div>
             <div class="bottom" @click="pushGithub()">@pppercy_wang</div>
           </div>
         </div>

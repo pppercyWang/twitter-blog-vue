@@ -60,6 +60,7 @@ export default class extends Vue {
 :hover {
   cursor: pointer;
 }
+
 .btn-msg:hover {
   background-color: $button-hover;
 }
