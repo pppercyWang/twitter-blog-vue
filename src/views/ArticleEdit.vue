@@ -31,6 +31,9 @@
           </checkbox-group>
         </div>
       </form-item>
+      <form-item label="标签">
+        <tag-inputer :max="3" @change="handleOnchange"></tag-inputer>
+      </form-item>
       <form-item label="文章类型">
         <radio-group v-model="radioIschecked">
           <radio label="个人" value="0"></radio>
@@ -52,6 +55,7 @@ import { apiArticleSave } from "@/api/article";
 import { apiGetCategoryList } from "@/api/category";
 import Radio from "@/components/commons/radio/Radio.vue";
 import RadioGroup from "@/components/commons/radio/RadioGroup.vue";
+import TagInputer from "@/components/commons/tagInputer/TagInputer.vue";
 @Component({
   components: {
     BlogButton,
@@ -61,7 +65,8 @@ import RadioGroup from "@/components/commons/radio/RadioGroup.vue";
     CheckboxGroup,
     FormItem,
     Radio,
-    RadioGroup
+    RadioGroup,
+    TagInputer
   }
 })
 export default class extends Vue {
@@ -94,6 +99,9 @@ export default class extends Vue {
     /* 1.4.2 */
     navigation: true // 导航目录
   };
+  private handleOnchange(tags) {
+    console.log(tags);
+  }
   private async handleSubmit() {
     if (this.title.trim() === "") {
       this.$message.error("文章标题不能为空");
@@ -182,7 +190,7 @@ export default class extends Vue {
   }
   .scroller {
     overflow-y: auto;
-    height: 140px;
+    height: 120px;
   }
   .header {
     background-color: #ffffff;

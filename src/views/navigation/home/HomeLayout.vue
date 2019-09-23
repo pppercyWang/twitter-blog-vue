@@ -11,7 +11,7 @@
     <div class="content-wrap">
       <div class="transition-wrap">
         <transition name="fade" mode="out-in">
-          <router-view></router-view>
+          <router-view ref="rv"></router-view>
         </transition>
       </div>
     </div>
@@ -21,7 +21,6 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import IndexMenu from "@/components/indexMenu/IndexMenu.vue";
 import { Action, Mutation, State, Getter } from "vuex-class";
-
 @Component({
   components: {
     IndexMenu
@@ -68,9 +67,10 @@ export default class extends Vue {
       }
     }
     if (clientHeight + scrollTop === scrollHeight + 48) {
-      console.log(`clientHeight: ${clientHeight}`);
-      console.log(`scrollTop: ${scrollTop}`);
-      console.log(`scrollHeight: ${scrollHeight}`);
+      const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
+      if (ref.fetchNewData) {
+        ref.fetchNewData(); // 下拉加载
+      }
     }
   }
   private beforeDestroy() {
