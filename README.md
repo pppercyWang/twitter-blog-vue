@@ -11,4 +11,4 @@
 
 
 ### 实时进度 gif可能有些卡 大家可以clone一下 喜欢的给个star哦~
-![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo.gif)
+![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo2.gif)

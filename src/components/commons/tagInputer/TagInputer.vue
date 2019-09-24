@@ -87,7 +87,7 @@ export default {
       position: absolute;
       height: 16px;
       width: 1.5px;
-      right: 9px;
+      right: 9px; 
       background: #cccccc;
     }
     .cross::before {
