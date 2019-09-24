@@ -3,7 +3,7 @@
     <div class="container">
       <div class="menu-wrap">
         <div class="logo">
-          <img src="@/../public/img/home.png" />
+          <!-- <img src="@/../public/img/home.png" /> -->
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="About" to="/about"></menu-item>

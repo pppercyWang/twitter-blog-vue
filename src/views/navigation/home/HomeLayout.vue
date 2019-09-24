@@ -35,12 +35,9 @@ export default class extends Vue {
     window.addEventListener("scroll", this.handleScroll);
   }
   private handleScroll() {
-    const scrollTop =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
-    const scrollHeight = document.body.scrollHeight;
-    const clientHeight = document.body.clientHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
     if (scrollTop > 300) {
       if (!this.fixedFlag) {
         this.actionBigHeadingShowFalse();
@@ -66,7 +63,7 @@ export default class extends Vue {
         this.fixedFlag = false;
       }
     }
-    if (clientHeight + scrollTop === scrollHeight + 48) {
+    if (clientHeight + Math.floor(scrollTop) === scrollHeight) {
       const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
       if (ref.fetchNewData) {
         ref.fetchNewData(); // 下拉加载
