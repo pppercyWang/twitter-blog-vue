@@ -10,7 +10,27 @@
 tagInput组件
 
 ### 后端地址: https://github.com/pppercyWang/twitter-blog-api
-
+```
+menu-item组件 hover动画效果
+实现拉幕效果，字体抖动
+实现中部导航栏布局
+中部导航栏
+button组件
+整体布局改造
+个人信息
+login
+markdown编辑 
+input组件
+全局message组件 
+dialog组件
+checkbox组件 
+ridio组件 
+checkbox拉下滚动
+articleItem组件
+tagInpter组件
+下拉加载文章
+```
 
 ### 实时进度 gif可能有些卡 大家可以clone一下 喜欢的给个star哦~
 ![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/public/img/demo.gif)
+
