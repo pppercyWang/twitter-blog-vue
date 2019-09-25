@@ -76,6 +76,7 @@ export default class extends Vue {
   private title: string = "";
   private content: string = "";
   private dialogVisible: boolean = false;
+  private tags = [];
   private toolbars = {
     bold: true, // 粗体
     italic: true, // 斜体
@@ -100,7 +101,7 @@ export default class extends Vue {
     navigation: true // 导航目录
   };
   private handleOnchange(tags) {
-    console.log(tags);
+    this.tags = tags;
   }
   private async handleSubmit() {
     if (this.title.trim() === "") {
@@ -111,8 +112,13 @@ export default class extends Vue {
       this.$message.error("文章内容不能为空");
       return;
     }
+
     if (this.checkList.length === 0) {
-      this.$message.error("请至少选择一个分类");
+      this.$message.error("请至少选择一个文章分类");
+      return;
+    }
+    if (this.checkList.length > 3) {
+      this.$message.error("最多选择三个文章分类");
       return;
     }
     if (this.checkAuthentication()) {
@@ -120,9 +126,10 @@ export default class extends Vue {
         const res = await apiArticleSave(
           {
             Content: this.content,
-            IDs: this.checkList.join(","),
+            CategoryIDs: this.checkList.join(","),
             Title: this.title,
-            Personal: this.radioIschecked
+            Personal: this.radioIschecked,
+            Tags: this.tags.join(",")
           },
           null
         );
