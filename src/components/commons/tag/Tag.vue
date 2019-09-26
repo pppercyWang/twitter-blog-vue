@@ -65,24 +65,24 @@ export default class extends Vue {
 }
 .orange {
   .arrow {
-    border-color: transparent rgb(248, 154, 103) transparent transparent;
+    border-color: transparent rgb(255, 151, 106) transparent transparent;
   }
   .text-wrap {
-    background-color: rgb(248, 154, 103);
+    background-color: rgb(255, 151, 106);
   }
   .dot-wrap {
-    background-color: rgb(248, 154, 103);
+    background-color: rgb(255, 151, 106);
   }
 }
-.brown {
+.green {
   .arrow {
-    border-color: transparent rgb(123, 93, 95) transparent transparent;
+    border-color: transparent rgb(7, 193, 69) transparent transparent;
   }
   .text-wrap {
-    background-color: rgb(123, 93, 95);
+    background-color: rgb(7, 193, 69);
   }
   .dot-wrap {
-    background-color: rgb(123, 93, 95);
+    background-color: rgb(7, 193, 69);
   }
 }
 .blue {

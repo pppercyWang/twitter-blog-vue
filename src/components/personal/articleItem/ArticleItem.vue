@@ -2,40 +2,127 @@
   <div class="article-item-wrap">
     <div class="row">
       <div class="left">
-        <div class="title">{{title}}</div>
+        <div class="title" @click="pushArticle">{{title}}</div>
       </div>
       <div class="right">
         <div class="date">
-          <div class="icon calandar"></div>2019-12-16
+          <div class="icon calandar"></div>
+          {{date}}
         </div>
       </div>
     </div>
     <div class="row footer">
       <div class="left"></div>
       <div class="right">
-        <div class="icon tag"></div>
-        <tag>vue</tag>
-        <tag type="brown">javascript</tag>
-        <div class="icon book"></div>
-        <tag type="orange">react</tag>
+        <div class="inline-block">
+          <div class="icon tag"></div>
+          <tag v-for="(item,index1) in tags" :type="item.color" v-bind:key="index1">{{item.text}}</tag>
+        </div>
+        <div class="inline-block">
+          <div class="icon book"></div>
+          <tag
+            v-for="(item,index2) in categories"
+            :type="item.color"
+            v-bind:key="index2"
+          >{{item.text}}</tag>
+        </div>
       </div>
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
+<script>
 import Tag from "@/components/commons/tag/Tag.vue";
-@Component({
+export default {
+  data() {
+    return {
+      tags: [],
+      categories: [],
+      title: "",
+      date: ""
+    };
+  },
+  props: ["row"],
   components: {
-    TextUnderline,
     Tag
+  },
+  methods: {
+    pushArticle() {
+      console.log(`article : ${this.row.ID}`);
+    },
+    dateToStr(a) {
+      const date = a;
+      const seperator1 = "-";
+      const year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+        month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+      }
+      const currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
+    getRandomColor() {
+      const num = Math.floor(Math.random() * 10);
+      switch (num) {
+        case 0:
+          return "orange";
+          break;
+        case 1:
+          return "orange";
+          break;
+        case 2:
+          return "orange";
+          break;
+        case 3:
+          return "green";
+          break;
+        case 4:
+          return "green";
+          break;
+        case 5:
+          return "green";
+          break;
+        case 6:
+          return "blue";
+          break;
+        case 7:
+          return "blue";
+          break;
+        case 8:
+          return "blue";
+          break;
+        case 9:
+          return "blue";
+          break;
+      }
+    }
+  },
+  created() {
+    this.title = this.row.Title;
+    const tep1 = this.row.Categories.split(",");
+    const arr = [];
+    tep1.forEach((item, index, array) => {
+      arr.push({
+        color: this.getRandomColor(),
+        text: item
+      });
+    });
+    this.categories = arr;
+    const tep2 = this.row.Tags.split(",");
+    const arr2 = [];
+    tep2.forEach((item, index, array) => {
+      arr2.push({
+        color: this.getRandomColor(),
+        text: item
+      });
+    });
+    this.tags = arr2;
+    this.date = this.dateToStr(new Date(this.row.CreatedAt));
   }
-})
-export default class extends Vue {
-  @Prop()
-  private title!: string;
-}
+};
 </script>
 <style scoped lang="scss">
 .article-item-wrap {
@@ -62,6 +149,9 @@ export default class extends Vue {
     }
     .right {
       display: inline-block;
+      .inline-block {
+        display: inline-block;
+      }
       .date {
         color: $twitter-font-shallow;
       }

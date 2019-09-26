@@ -63,7 +63,15 @@ export default class extends Vue {
         this.fixedFlag = false;
       }
     }
-    if (clientHeight + Math.floor(scrollTop) === scrollHeight) {
+    // console.log(`clientHeight: ${clientHeight}`);
+    // console.log(`scrollTop: ${scrollTop}`);
+    // console.log(`scrollHeight: ${scrollHeight}`);
+    const temp = clientHeight + Math.floor(scrollTop);
+    if (
+      temp === scrollHeight ||
+      temp === scrollHeight + 1 ||
+      temp === scrollHeight - 1
+    ) {
       const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
       if (ref.fetchNewData) {
         ref.fetchNewData(); // 下拉加载

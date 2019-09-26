@@ -70,7 +70,7 @@ export default {
       box-sizing: border-box;
       border-radius: 2px;
     }
-    .cross {  
+    .cross {
       // 画叉
       width: 16px;
       height: 16px;
@@ -87,7 +87,7 @@ export default {
       position: absolute;
       height: 16px;
       width: 1.5px;
-      right: 9px; 
+      right: 9px;
       background: #cccccc;
     }
     .cross::before {

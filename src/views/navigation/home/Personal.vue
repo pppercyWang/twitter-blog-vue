@@ -3,8 +3,7 @@
     <ArticleItem
       v-for="(item,index) in articleList"
       v-bind:key="index"
-      :title="item.Title"
-      :des="item.Description"
+      :row="item"
     ></ArticleItem>
     <div class="footer">
       <div class="alert">{{this.hasMore?"正在加载...":"暂无更多文章..."}}</div>
@@ -56,7 +55,6 @@ export default class extends Vue {
         null
       );
       this.articleList = res.Data.List;
-      console.log(this.articleList);
     } catch (e) {
       this.$message.error(e.Msg);
     }
