@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <ArticleItem
-      v-for="(item,index) in articleList"
-      v-bind:key="index"
-      :row="item"
-    ></ArticleItem>
+    <ArticleItem v-for="(item,index) in articleList" v-bind:key="index" :row="item"></ArticleItem>
     <div class="footer">
       <div class="alert">{{this.hasMore?"正在加载...":"暂无更多文章..."}}</div>
     </div>
@@ -38,12 +34,15 @@ export default class extends Vue {
       if (res.Data.List.length === 0) {
         this.hasMore = false;
         this.page--;
+        return false;
       } else {
         this.articleList = this.articleList.concat(res.Data.List);
+        return true;
       }
     } catch (e) {
       this.$message.error(e.Msg);
     }
+    return true;
   }
   private async getArticleList() {
     try {

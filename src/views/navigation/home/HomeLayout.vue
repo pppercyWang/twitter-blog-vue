@@ -34,7 +34,7 @@ export default class extends Vue {
   private mounted() {
     window.addEventListener("scroll", this.handleScroll);
   }
-  private handleScroll() {
+  private async handleScroll() {
     const scrollTop = document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
@@ -63,9 +63,9 @@ export default class extends Vue {
         this.fixedFlag = false;
       }
     }
-    // console.log(`clientHeight: ${clientHeight}`);
-    // console.log(`scrollTop: ${scrollTop}`);
-    // console.log(`scrollHeight: ${scrollHeight}`);
+    console.log(`clientHeight: ${clientHeight}`);
+    console.log(`scrollTop: ${scrollTop}`);
+    console.log(`scrollHeight: ${scrollHeight}`);
     const temp = clientHeight + Math.floor(scrollTop);
     if (
       temp === scrollHeight ||
@@ -74,7 +74,10 @@ export default class extends Vue {
     ) {
       const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
       if (ref.fetchNewData) {
-        ref.fetchNewData(); // 下拉加载
+        const res = await ref.fetchNewData(); // 下拉加载
+        if (!res) {
+          window.removeEventListener("scroll", this.handleScroll);
+        }
       }
     }
   }

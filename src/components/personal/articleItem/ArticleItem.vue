@@ -65,36 +65,15 @@ export default {
       return currentdate;
     },
     getRandomColor() {
-      const num = Math.floor(Math.random() * 10);
+      const num = Math.floor(Math.random() * 3);
       switch (num) {
         case 0:
           return "orange";
           break;
         case 1:
-          return "orange";
+          return "green";
           break;
         case 2:
-          return "orange";
-          break;
-        case 3:
-          return "green";
-          break;
-        case 4:
-          return "green";
-          break;
-        case 5:
-          return "green";
-          break;
-        case 6:
-          return "blue";
-          break;
-        case 7:
-          return "blue";
-          break;
-        case 8:
-          return "blue";
-          break;
-        case 9:
           return "blue";
           break;
       }

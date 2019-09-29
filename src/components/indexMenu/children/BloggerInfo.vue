@@ -16,7 +16,7 @@
         </template>
       </text-underline>
     </div>
-    <div class="about">一个爱折腾的前端攻城狮</div>
+    <div class="about">Everything will be OK</div>
     <div class="area">
       <text-underline
         @click="openChangsha"
