@@ -31,6 +31,7 @@ export default class extends Vue {
   @Action("bigHeadingShowFalse") private actionBigHeadingShowFalse;
   private fixedFlag: boolean = false;
   private unFixedFlag: boolean = true;
+  private fetchFlag: boolean = true;
   private mounted() {
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -38,7 +39,7 @@ export default class extends Vue {
     const scrollTop = document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop > 300) {
+    if (scrollTop > 296) {
       if (!this.fixedFlag) {
         this.actionBigHeadingShowFalse();
         const obj = document!.getElementById("profile-nav");
@@ -67,16 +68,19 @@ export default class extends Vue {
     console.log(`scrollTop: ${scrollTop}`);
     console.log(`scrollHeight: ${scrollHeight}`);
     const temp = clientHeight + Math.floor(scrollTop);
-    if (
-      temp === scrollHeight ||
-      temp === scrollHeight + 1 ||
-      temp === scrollHeight - 1
-    ) {
-      const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
-      if (ref.fetchNewData) {
-        const res = await ref.fetchNewData(); // 下拉加载
-        if (!res) {
-          window.removeEventListener("scroll", this.handleScroll);
+    if (this.fetchFlag) {
+      if (
+        temp === scrollHeight ||
+        temp === scrollHeight + 1 ||
+        temp === scrollHeight - 1
+      ) {
+        const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
+        if (ref.fetchNewData) {
+          const $this = this;
+          const res = await ref.fetchNewData(); // 下拉加载
+          if (!res) {
+            $this.fetchFlag = false;
+          }
         }
       }
     }
