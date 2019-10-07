@@ -64,9 +64,9 @@ export default class extends Vue {
         this.fixedFlag = false;
       }
     }
-    console.log(`clientHeight: ${clientHeight}`);
-    console.log(`scrollTop: ${scrollTop}`);
-    console.log(`scrollHeight: ${scrollHeight}`);
+    // console.log(`clientHeight: ${clientHeight}`);
+    // console.log(`scrollTop: ${scrollTop}`);
+    // console.log(`scrollHeight: ${scrollHeight}`);
     const temp = clientHeight + Math.floor(scrollTop);
     if (this.fetchFlag) {
       if (

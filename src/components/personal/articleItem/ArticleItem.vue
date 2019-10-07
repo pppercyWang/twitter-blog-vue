@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     pushArticle() {
-      console.log(`article : ${this.row.ID}`);
+      this.$router.push(`/article/${this.row.ID}`);
     },
     dateToStr(a) {
       const date = a;
