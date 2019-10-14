@@ -6,7 +6,9 @@
     <div class="body">
       <router-view></router-view>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+      <div class="copyright">© 2019 wangwensheng</div>
+    </div>
   </div>
 </template>
 <script lang='ts'>
@@ -24,15 +26,23 @@ export default class extends Vue {}
   .header-wrap {
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 9999;
     position: fixed;
     width: 100%;
   }
   .body {
     margin-top: 48px;
-    
+    min-height: 100%;
     .shake-control {
       display: inline;
+    }
+  }
+  .footer{
+    .copyright{
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color:#888888;
     }
   }
 }

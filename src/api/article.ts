@@ -5,3 +5,8 @@ export const apiArticleSave = (data: any, config: any) => {
 export const apiArticleList = (data: any, config: any) => {
     return http.post('article/list', data, config);
 };
+
+export const apiArticleGet = (data: any, config: any) => {
+    return http.post('article/fetch', data, config);
+};
+

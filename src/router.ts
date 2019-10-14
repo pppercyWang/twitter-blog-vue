@@ -7,7 +7,7 @@ import Collection from '@/views/navigation/home/Collection.vue';
 import Personal from '@/views/navigation/home/Personal.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
 import NotFound from '@/views/NotFound.vue';
-import ArticleBrowser from '@/views/navigation/home/ArticleBrowser.vue';
+import ArticleBrowser from '@/views/ArticleBrowser.vue';
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -36,17 +36,17 @@ export default new Router({
               name: '收藏',
               component: Collection,
             },
-            {
-              path: '/article/:id',
-              name: '文章浏览',
-              component: ArticleBrowser,
-            },
           ]
         },
         {
           path: '/about',
           name: '关于',
           component: About,
+        },
+        {
+          path: '/article/:id',
+          name: '文章浏览',
+          component: ArticleBrowser,
         },
       ]
     },
