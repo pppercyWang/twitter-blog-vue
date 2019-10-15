@@ -137,7 +137,7 @@ export default class extends Vue {
     z-index: 998;
   }
   .index-menu {
-    z-index: 999;
+    z-index: 998;
   }
   .content-wrap {
     display: flex;
