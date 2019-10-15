@@ -36,5 +36,8 @@ export default {
   width: 1220px;
   margin:auto;
   margin-top: 68px;
+  .v-note-wrapper{
+    z-index: 200 !important;
+  }
 }
 </style>

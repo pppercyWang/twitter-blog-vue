@@ -2,7 +2,7 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <!-- <profile-heading></profile-heading> -->
+        <profile-heading></profile-heading>
       </div>
       <div class="blogger-about">
         <BloggerInfo></BloggerInfo>
