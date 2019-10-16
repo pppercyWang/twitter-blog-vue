@@ -7,9 +7,6 @@
 
 ### 模仿页面：https://twitter.com/dariel_noel 
 
-下拉加载
-tagInput组件
-
 ### 后端地址: https://github.com/pppercyWang/twitter-blog-api
 ```
 menu-item组件 hover动画效果
@@ -23,6 +20,8 @@ login
 markdown编辑 
 input组件
 全局message组件 
+下拉加载
+tagInput组件
 dialog组件
 checkbox组件 
 ridio组件 
