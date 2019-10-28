@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <ArticleItem v-for="(item,index) in articleList" v-bind:key="index" :row="item"></ArticleItem>
+    <ArticleItem
+      v-for="(item,index) in articleList"
+      @tagclick="handleTagClick"
+      v-bind:key="index"
+      :row="item"
+    ></ArticleItem>
     <div class="footer">
       <div class="alert">{{this.hasMore?"正在加载...":"暂无更多文章..."}}</div>
     </div>
@@ -22,7 +27,10 @@ export default class extends Vue {
   private page: number = 1;
   private size: number = 10;
   private hasMore: boolean = true;
-  public async fetchNewData() {
+  private handleTagClick(text) {
+    (this.$parent as any).showSearchBarFlag(text);
+  }
+  private async fetchNewData() {
     try {
       const res = await apiArticleList(
         {

@@ -2,10 +2,11 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <profile-heading></profile-heading>
+        <!-- <profile-heading></profile-heading> -->
       </div>
       <div class="blogger-about">
-        <BloggerInfo></BloggerInfo>
+        <BloggerInfo v-if="!isShowSearchBar" ref="bloggerInfo"></BloggerInfo>
+        <SearchBar v-else :placeholder="searchBarText" @onClose="closeSearchBar" ref="searchBar"></SearchBar>
       </div>
       <div class="profile-nav-list">
         <menu-item
@@ -31,15 +32,24 @@ import MenuItem from "@/components/indexMenu/children/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
+import SearchBar from "@/components/indexMenu/children/SearchBar.vue";
 @Component({
   components: {
     MenuItem,
     BloggerInfo,
     ProfileHeading,
-    BlogButton
+    BlogButton,
+    SearchBar
   }
 })
 export default class extends Vue {
+  @Prop()
+  private isShowSearchBar!: boolean;
+  @Prop()
+  private searchBarText!: string;
+  private closeSearchBar() {
+    this.$emit('closeSearchBar');
+  }
   private pushArticleEdit() {
     this.$router.push({
       path: "/article/edit/0"

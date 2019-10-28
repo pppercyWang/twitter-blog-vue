@@ -1,10 +1,10 @@
 @font-face {font-family: "iconfont";
-  src: url('//at.alicdn.com/t/font_1330295_470vssniygy.eot?t=1565768482775'); /* IE9 */
-  src: url('//at.alicdn.com/t/font_1330295_470vssniygy.eot?t=1565768482775#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAANIAAsAAAAAByQAAAL6AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqCBIINATYCJAMMCwgABCAFhG0HPhtbBsgusG3Yk3XHQLFY+FBSKaGHgIsgGvv97N0iokk00k0aSTSSiDSvJIjtayk/FJPQ3p9r+W+hiDpt3QHJAoI7yu5xbrLZMqlOHZI7YQokgSXbTtWf76i/Cri0J+kojdmui3AUUMIFjTykwAIroO1f0i7sj3unTQ9wPstymWvgpy7AOKCAxl5kBRKQ9xCvdmk4qM0E2k3T4bbLa1shUqK9AnHjlm0QWXBLqcZaheaGiSneIK3lhb8G8Bp9P36BJSIpmio68PC6zAmFX+vLwuj/UViAAs5yRqjTqFgBkrhqNJ8QkvAKQbstFJ1S0CyFspTv/38itiNtPugfrxDNaHYnWEBReSiOoBF8y1MUUEEzRA+AZ5QPTj0iczw2urPtLlrsOG998TazVqCd7NCkpd82vg6AJM1XldUlVJlZ/1hr1I3MHVYsz9i05nE6djJ/NHqcdWXx7H6WxnJj1wqoi1cXi75AUBi4CDhfqta2t3cUea+Cmpdh4mcgiOGpBLXSOGUuw5z+C/DDh4cjKOAlBjaE3WzROT3t5DGPibwTRv7/s4REU2mpIAipKXJnL0hkO7ACNELCg9AEQF3hv///b3TelvyRkPs7MibBl36EuBshEYZLW+/OEvxtzsCydHhUU9NiC7ZnqZZzTgVkajYNoPZ+b9OlQ4ODhNYCR4WixRRUrWbQiV+BJh1WoVmrNWi3rGJ6hwGUILINS6YAQq8QFN3eQdXrBp34V2gy7Aea9YYA7Y4iZcEOc+GOLqHYxrAT2fuQ20ECEtex6Di3Gcuqz0bzvIjYjqni9iGzwVSOVeAApksMUbplC2MSkijxo3LYDvt8BAUp8WAHM7gYC2YbjVLTmwwO4odoWyjMhsGcELs+iJsDESAF1ZnoyuebYTKVjw3tQLTp22GUwl0/YmZgGoCuEAcGIR7lGkU3mQXDSBAJRfgh5WDEfCxMIMHmdh6YA2PgmhAMymYklaShYsP2Uv//rYF2dLkaJWqk5hsiE5XFNBLFzV4i5A7IAAAA') format('woff2'),
-  url('//at.alicdn.com/t/font_1330295_470vssniygy.woff?t=1565768482775') format('woff'),
-  url('//at.alicdn.com/t/font_1330295_470vssniygy.ttf?t=1565768482775') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('//at.alicdn.com/t/font_1330295_470vssniygy.svg?t=1565768482775#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('//at.alicdn.com/t/font_1330295_cw4a67f5srn.eot?t=1572235587068'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1330295_cw4a67f5srn.eot?t=1572235587068#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQ0AAsAAAAACNQAAAPlAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDSAqERIQaATYCJAMYCw4ABCAFhG0HWxvTBxEVnJfJfiTGMSnrzPIq2qMxEzzPf2ee++6bWdVAMhU0W1DZkl+CsxW/EwCbcz2BMRFqJGef7LNvt5QG2aXZwz33qmZ6AjbPvsXlX9ZelE15oXA4QAFau3uCFLgFKVdQqyCezWQcV0OAWLJRBKlTr0mAaCzGKgFkYL8+3YhOmbE1bCFa55YctMhiHKLNHHMDWOT/vHyllESDwVGMa7XoXbcnNcJVE8upH/HpqD7+eE6AOwYKFAEsyMRS92g0TBdBiVX+gqURkIRoDDZcNVwz3DJ8MrFcJJKSG34hifkvDwTFYnBAXFCdBIAmtMo5QYlNQCBck4BCuCUBC+GTBAwkljPjQO+O2JgU2AySEswiExRBMdikxrmTZFdjMyWJTRLT49Ej7/HjNg8fBh88CDg2hpjGknuMm1vI2x1/el7B4C7/xIRAr57BPr3a9O7j9ZxQcd65eYLL08xNJ73j5kp8+j6siluRNrAjb8eFfn8RKxNibVyHwIiS0VXeuJSP1MTYkAKF3s2o9KpQfpcHwcfepUe5Qo/rX3yYc/ODVjtOx5+ae8I/ea5KSJ8+0ZBuffrUUSiLUIRyiIIJJhQy401FKPTpeOVJemaW3NkypLhyRYrlLp7Sm5YLp7UfCOzavWsXgxABY0Uw/DJULpGj0OT76+fb3G/Z5nS1qVia0URF2VLLMkpq29Vh88E3B90vv/VQ2WcLIAC5Qy1HJht553iLFvWKt1tHF1164dxSR6E0ibPQpcOaRoU9r03NARcYZc879gJhWdcaGZWbnDpfzpLp/pJgJu/cOQUKQ5OYSEKlBNNz5syeppdBoenJlF/PfpoFKUrUqaNqa0v44UqLc5WhpjMRgMhZPa018DxfI+oD6FnzFiIH9K62BNAi5uvf5HeIyd3xfZfkVf5Hx1kAnr6YWxvhiG/pn4nGQGvJn0LSsseqMsPiWrm7XYcALoUTRRgg1hyAv4I/Fa/G0qZtnQQhOiXhwBBFVlCiyUO1zCLgEEcZcImmOsRSmPrH40jNcBSxMUAhZhAQUnAADMk4DUoKblIt8yU4pOM7uKQQhVg8SX3GOPKJxO8OjEqwBv0HX1FvLJvsgto72rFVnJT5nDdy9DHIkyybu2CPPMaW+LGFiAHD1MGZXA/blmBgClhJ4kSGMk1N2SclFXWTHQdGJViD/oOvqDfucNnlvv+OdmwV13RVhN/I0Y8PeZK1oF7Ufauua5keP7YQMfQyw9TBGU5szTTBUD4vYCWJ65EcypTqZ9qqk/m13VMeAWIxzuqKERUrjrgSxa636m2tgneLFqefl1V6qxv9qiVLo+yvFL3cElaZJhMAAAA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1330295_cw4a67f5srn.woff?t=1572235587068') format('woff'),
+  url('//at.alicdn.com/t/font_1330295_cw4a67f5srn.ttf?t=1572235587068') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1330295_cw4a67f5srn.svg?t=1572235587068#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -13,6 +13,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.percy-icon-fangdajing:before {
+  content: "\e63d";
+}
+
+.percy-icon-Exit:before {
+  content: "\e6bd";
+}
+
+.percy-icon-fanhui:before {
+  content: "\e641";
 }
 
 .percy-icon-logout:before {

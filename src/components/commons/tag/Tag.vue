@@ -1,5 +1,5 @@
 <template>
-  <div :class="['tag-wrap', type?type:'']">
+  <div :class="['tag-wrap', type?type:'']" @click="handleTagClick">
     <div class="arrow"></div>
     <div class="dot-wrap">
       <div class="dot"></div>
@@ -9,15 +9,19 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Prop()
-  private type!: string;
-}
+<script>
+import Tag from "@/components/commons/tag/Tag.vue";
+export default {
+  data() {
+    return {};
+  },
+  props: ["type"],
+  methods: {
+    handleTagClick(e) {
+      this.$emit("tagclick");
+    }
+  }
+};
 </script>
 <style scoped lang="scss">
 .tag-wrap {

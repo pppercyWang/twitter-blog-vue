@@ -89,26 +89,26 @@ export default {
     }
   },
   created() {
-    this.title = this.row.Title;
-    const tep1 = this.row.Categories.split(",");
-    const arr = [];
-    tep1.forEach((item, index, array) => {
-      arr.push({
-        color: this.getRandomColor(),
-        text: item
-      });
-    });
-    this.categories = arr;
-    const tep2 = this.row.Tags.split(",");
-    const arr2 = [];
-    tep2.forEach((item, index, array) => {
-      arr2.push({
-        color: this.getRandomColor(),
-        text: item
-      });
-    });
-    this.tags = arr2;
-    this.date = this.dateToStr(new Date(this.row.CreatedAt));
+    // this.title = this.row.Title;
+    // const tep1 = this.row.Categories.split(",");
+    // const arr = [];
+    // tep1.forEach((item, index, array) => {
+    //   arr.push({
+    //     color: this.getRandomColor(),
+    //     text: item
+    //   });
+    // });
+    // this.categories = arr;
+    // const tep2 = this.row.Tags.split(",");
+    // const arr2 = [];
+    // tep2.forEach((item, index, array) => {
+    //   arr2.push({
+    //     color: this.getRandomColor(),
+    //     text: item
+    //   });
+    // });
+    // this.tags = arr2;
+    // this.date = this.dateToStr(new Date(this.row.CreatedAt));
   }
 };
 </script>

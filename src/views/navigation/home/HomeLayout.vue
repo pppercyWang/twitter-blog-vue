@@ -7,7 +7,12 @@
       </div>
     </div>
     <div class="fake-area" id="fake-area"></div>
-    <index-menu class="index-menu"></index-menu>
+    <index-menu
+      class="index-menu"
+      :isShowSearchBar="searchBarFlag"
+      @closeSearchBar="closeSearchBar"
+      :searchBarText="searchBarText"
+    ></index-menu>
     <div class="content-wrap">
       <div class="transition-wrap">
         <transition name="fade" mode="out-in">
@@ -32,8 +37,19 @@ export default class extends Vue {
   private fixedFlag: boolean = false;
   private unFixedFlag: boolean = true;
   private fetchFlag: boolean = true;
+  private searchBarFlag: boolean = false;
+  private searchBarText: string = "find someting...";
   private mounted() {
     window.addEventListener("scroll", this.handleScroll);
+  }
+  private closeSearchBar() {
+    console.log("11111111111");
+    this.searchBarFlag = false;
+    this.searchBarText = "find something...";
+  }
+  private showSearchBarFlag(text) {
+    this.searchBarFlag = true;
+    this.searchBarText = text;
   }
   private async handleScroll() {
     const scrollTop = document.documentElement.scrollTop;
