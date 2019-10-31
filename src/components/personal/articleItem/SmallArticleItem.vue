@@ -2,37 +2,17 @@
   <div class="article-item-wrap">
     <div class="row">
       <div class="left">
-        <div class="title" @click="pushArticle">{{title}}</div>
-      </div>
-      <div class="right">
-        <div class="date">
-          <div class="icon calandar"></div>
-          {{date}}
-        </div>
+        <div
+          class="title"
+          @click="pushArticle"
+        >{{title.length>20?(title.substring(0,20)+"..."):title}}</div>
       </div>
     </div>
-    <div class="row footer">
-      <div class="left"></div>
-      <div class="right">
-        <div class="inline-block">
-          <div class="icon tag"></div>
-          <tag
-            v-for="(item,index1) in tags"
-            v-on:tagclick="handleTagClick(item.text)"
-            :type="item.color"
-            v-bind:key="index1"
-          >{{item.text}}</tag>
-        </div>
-        <div class="inline-block">
-          <div class="icon book"></div>
-          <tag
-            v-on:tagclick="handleTagClick(item.text)"
-            v-for="(item,index2) in categories"
-            :type="item.color"
-            v-bind:key="index2"
-          >{{item.text}}</tag>
-        </div>
-      </div>
+    <div class="row date">
+      <div class="icon calandar"></div>2019-09-20
+    </div>
+    <div class="row tags">
+      <div class="icon tag"></div>#react #es6 #javascript
     </div>
   </div>
 </template>
@@ -43,7 +23,7 @@ export default {
     return {
       tags: [],
       categories: [],
-      title: "",
+      title: "vue写一个全局Message组件",
       date: ""
     };
   },
@@ -52,9 +32,6 @@ export default {
     Tag
   },
   methods: {
-    handleTagClick(text) {
-      this.$emit("tagclick", text);
-    },
     pushArticle() {
       this.$router.push(`/article/${this.row.ID}`);
     },
@@ -72,20 +49,6 @@ export default {
       }
       const currentdate = year + seperator1 + month + seperator1 + strDate;
       return currentdate;
-    },
-    getRandomColor() {
-      const num = Math.floor(Math.random() * 3);
-      switch (num) {
-        case 0:
-          return "orange";
-          break;
-        case 1:
-          return "green";
-          break;
-        case 2:
-          return "blue";
-          break;
-      }
     }
   },
   created() {
@@ -126,7 +89,7 @@ export default {
         height: 40px;
         line-height: 40px;
         font-weight: 520;
-        font-size: 16px;
+        font-size: 14px;
         color: #333;
         transition: color 0.3s;
         &:hover {
@@ -135,32 +98,26 @@ export default {
         }
       }
     }
-    .right {
-      display: inline-block;
-      .inline-block {
-        display: inline-block;
-      }
-      .date {
-        color: $twitter-font-shallow;
-      }
-    }
   }
-  .footer {
-    margin-top: 20px;
+  .date {
+    font-size: 12px;
+    color: $twitter-font-shallow;
+    justify-content: flex-start;
+  }
+  .tags {
+    margin-top: 10px;
+    justify-content: flex-start;
+    font-size: 13px;
+    color: $twitter-font-shallow;
+    .tag {
+      width: 18px;
+      height: 18px;
+      background-position: -16px -0px;
+    }
   }
   .icon {
     display: inline-block;
     background-image: url("../../../assets/img/article_item_sprite.png");
-  }
-  .tag {
-    width: 18px;
-    height: 18px;
-    background-position: -16px -0px;
-  }
-  .book {
-    width: 16px;
-    height: 18px;
-    background-position: -0px -0px;
   }
   .calandar {
     width: 18px;

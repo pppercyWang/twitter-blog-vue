@@ -1,12 +1,12 @@
 import http from '@/utils/http';
-export const apiArticleSave = (data: any, config: any) => {
+export const apiArticleSave = (data, config) => {
     return http.post('article/save', data, config);
 };
-export const apiArticleList = (data: any, config: any) => {
+export const apiArticleList = (data, config) => {
     return http.post('article/list', data, config);
 };
 
-export const apiArticleGet = (data: any, config: any) => {
+export const apiArticleGet = (data, config) => {
     return http.post('article/fetch', data, config);
 };
 

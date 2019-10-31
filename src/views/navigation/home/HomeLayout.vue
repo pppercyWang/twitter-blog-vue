@@ -43,7 +43,6 @@ export default class extends Vue {
     window.addEventListener("scroll", this.handleScroll);
   }
   private closeSearchBar() {
-    console.log("11111111111");
     this.searchBarFlag = false;
     this.searchBarText = "find something...";
   }

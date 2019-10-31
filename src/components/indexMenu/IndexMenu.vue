@@ -5,8 +5,13 @@
         <!-- <profile-heading></profile-heading> -->
       </div>
       <div class="blogger-about">
-        <BloggerInfo v-if="!isShowSearchBar" ref="bloggerInfo"></BloggerInfo>
-        <SearchBar v-else :placeholder="searchBarText" @onClose="closeSearchBar" ref="searchBar"></SearchBar>
+        <BloggerInfo v-if="!isShowSearchBar" class="animated fadeInUp"></BloggerInfo>
+        <SearchBar
+          v-else
+          :placeholder="searchBarText"
+          @onClose="closeSearchBar"
+          class="animated bounceInLeft"
+        ></SearchBar>
       </div>
       <div class="profile-nav-list">
         <menu-item
@@ -48,7 +53,7 @@ export default class extends Vue {
   @Prop()
   private searchBarText!: string;
   private closeSearchBar() {
-    this.$emit('closeSearchBar');
+    this.$emit("closeSearchBar");
   }
   private pushArticleEdit() {
     this.$router.push({

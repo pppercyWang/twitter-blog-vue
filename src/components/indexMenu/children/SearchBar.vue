@@ -1,8 +1,5 @@
 <template>
-  <div class="search-bar-wrap">
-    <div class="back">
-      <i class="iconfont percy-icon-fanhui" @click="closeSearchBar"></i>
-    </div>
+  <div class="search-bar-wrap" v-click-outside="closeSearchBar">
     <div class="search-wrap">
       <input :placeholder="placeholder" />
       <div class="search">
@@ -23,37 +20,39 @@
 </template>
 <script>
 import SmallArticleItem from "@/components/personal/articleItem/SmallArticleItem.vue";
+import clickOutside from "@/directives/vueClickOutSize";
 export default {
   data() {
-    return {};
+    return {
+      flag: false
+    };
   },
   components: {
     SmallArticleItem
   },
+  directives: { clickOutside },
   props: ["placeholder"],
   methods: {
     closeSearchBar() {
-      this.$emit("onClose");
+      if (this.flag === false) {
+        this.flag = true;
+      } else {
+        this.$emit("onClose");
+      }
+    },
+    async getArticleList() {
+      console.log("111111111");
     }
+  },
+  mounted() {
+    this.getArticleList();
   }
 };
 </script>
 <style scoped lang="scss">
 .search-bar-wrap {
   background-color: #ffffff;
-  .back {
-    height: 28px;
-    display: flex;
-    align-items: center;
-    i {
-      font-size: 20px;
-      transition: font-size 0.1s;
-      &:hover {
-        font-size: 22px;
-        cursor: pointer;
-      }
-    }
-  }
+  width: 280px;
   .search-wrap {
     input {
       height: 28px;
@@ -94,6 +93,24 @@ export default {
   .article-list {
     height: 600px;
     overflow-y: scroll;
+  }
+  div::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  div::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+  }
+  div::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+  }
+  div::-webkit-scrollbar-thumb:hover {
+    background: #333;
+  }
+  div::-webkit-scrollbar-corner {
+    background: #179a16;
   }
 }
 </style>
