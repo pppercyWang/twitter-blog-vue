@@ -29,7 +29,12 @@ checkbox拉下滚动
 articleItem组件
 tagInpter组件
 下拉加载文章
+搜素文章归档
+接入github授权登录
 ```
+
+### 待完成 
+评论功能
 
 
 
