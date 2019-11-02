@@ -2,14 +2,14 @@
   <div class="heading-wrap">
     <div class="big-heading">
       <transition name="slide-fade">
-        <img src="@/assets/heading.jpg" v-if="getterBigHeadingShow" />
+        <img src="../../../assets/img/heading.jpg" v-if="getterBigHeadingShow" />
       </transition>
     </div>
     <div class="small-heading">
       <transition name="slide-fade">
         <div v-if="!getterBigHeadingShow">
           <div class="left">
-            <img src="@/assets/heading.jpg" />
+            <img src="../../../assets/img/heading.jpg" />
           </div>
           <div class="right">
             <div class="top">Percy</div>

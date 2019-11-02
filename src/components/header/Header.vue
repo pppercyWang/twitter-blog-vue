@@ -3,12 +3,15 @@
     <div class="container">
       <div class="menu-wrap">
         <div class="logo">
-          <!-- <img src="@/../public/img/home.png" /> -->
+          <!-- <img src="../../assets/img/home.png" /> -->
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="About" to="/about"></menu-item>
         <div class="right">
-          <login-area @click="showLogin" v-if="loginAreaShow" ref="loginArea"></login-area>
+          <div class="login-area-wrap" @click="showLogin" v-if="loginAreaShow">
+            <div class="login">登录</div>
+            <div class="arrow"></div>
+          </div>
           <div class="logout-wrap" @click="logout" v-if="!loginAreaShow">
             <div class="username">{{username}}</div>
             <text-underline
@@ -21,71 +24,59 @@
             ></text-underline>
           </div>
         </div>
-        <login v-show="loginFormShow" @loginsuc="handleLoginSuccessfully" ref="loginForm"></login>
+        <login v-if="loginFormShow" @loginsuc="handleLoginSuccessfully" @close="closeLoginForm"></login>
       </div>
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import MenuItem from "@/components/header/children/MenuItem.vue";
-import LoginArea from "@/components/header/children/LoginArea.vue";
 import Login from "@/components/header/children/Login.vue";
 import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
-@Component({
+export default {
+  data() {
+    return {
+      loginFormShow: false,
+      loginAreaShow: true,
+      username: ""
+    };
+  },
   components: {
     MenuItem,
-    LoginArea,
     Login,
     TextUnderline
-  }
-})
-export default class extends Vue {
-  private loginFormShow: boolean = false;
-  private loginAreaShow: boolean = true;
-  private username: string | null = "";
-  private logout() {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("username");
-    this.loginAreaShow = true;
-    this.loginFormShow = false;
-    this.$message.success("注销成功");
-  }
-  private showLogin() {
-    this.loginFormShow = !this.loginFormShow;
-  }
-  private handleLoginSuccessfully() {
-    this.username = sessionStorage.getItem("username");
-    this.loginFormShow = false;
-    this.loginAreaShow = false;
-  }
-  private addListennerClickExceptedArea() {
-    const vm = this;
-    document.addEventListener("click", e => {
-      const loginForm = vm.$refs.loginForm as Vue;
-      const loginArea = vm.$refs.loginArea as Vue;
-      if (loginForm) {
-        const obj = loginForm.$el;
-        const obj2 = loginArea.$el;
-        const a = e.target as Node;
-        if (!obj.contains(a) && !obj2.contains(a)) {
-          vm.loginFormShow = false;
-        }
-      }
-    });
-  }
-  private checkAuthentication() {
-    const token = sessionStorage.getItem("token");
-    if (token !== null && token !== "") {
-      this.username = sessionStorage.getItem("username");
+  },
+  methods: {
+    closeLoginForm() {
+      this.loginFormShow = false;
+    },
+    logout() {
+      sessionStorage.removeItem("user");
+      this.loginAreaShow = true;
+      this.loginFormShow = false;
+      this.$message.success("注销成功");
+    },
+    showLogin() {
+      this.loginFormShow = !this.loginFormShow;
+    },
+    handleLoginSuccessfully() {
+      const user = sessionStorage.getItem("user");
+      this.username = JSON.parse(user).login;
+      this.loginFormShow = false;
       this.loginAreaShow = false;
+    },
+    checkAuthentication() {
+      const user = sessionStorage.getItem("user");
+      if (user) {
+        this.username = JSON.parse(user).login;
+        this.loginAreaShow = false;
+      }
     }
-  }
-  private mounted() {
+  },
+  mounted() {
     this.checkAuthentication();
-    this.addListennerClickExceptedArea();
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .container {
@@ -113,20 +104,33 @@ export default class extends Vue {
     }
     .right {
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       width: 200px;
       height: 47px;
       right: 0px;
       top: 0px;
       .login-area-wrap {
-        position: absolute;
-        right: 15px;
-        top: 15px;
+        width: 40px;
+        .login {
+          display: inline-block;
+          color: $twitter-font;
+          font-weight: bold;
+        }
+        .arrow {
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-width: 4px;
+          border-style: solid;
+          border-color: $twitter-font transparent transparent transparent;
+        }
+        &:hover {
+          cursor: pointer;
+        }
       }
       .logout-wrap {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
         .username {
           display: inline-block;
           font-weight: bold;

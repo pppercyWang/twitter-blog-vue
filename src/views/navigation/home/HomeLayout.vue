@@ -10,6 +10,7 @@
     <index-menu
       class="index-menu"
       :isShowSearchBar="searchBarFlag"
+      @showSearchBar="showSearchBar"
       @closeSearchBar="closeSearchBar"
       :searchBarText="searchBarText"
     ></index-menu>
@@ -42,13 +43,13 @@ export default class extends Vue {
   private mounted() {
     window.addEventListener("scroll", this.handleScroll);
   }
+  private showSearchBar() {
+    this.searchBarFlag = true;
+    this.searchBarText = "";
+  }
   private closeSearchBar() {
     this.searchBarFlag = false;
-    this.searchBarText = "find something...";
-  }
-  private showSearchBarFlag(text) {
-    this.searchBarFlag = true;
-    this.searchBarText = text;
+    this.searchBarText = "";
   }
   private async handleScroll() {
     const scrollTop = document.documentElement.scrollTop;

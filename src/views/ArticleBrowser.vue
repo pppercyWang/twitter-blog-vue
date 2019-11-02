@@ -1,6 +1,14 @@
 <template>
   <div class="browser-wrap">
-    <mavon-editor :boxShadow="false" defaultOpen="preview" v-model="content" :toolbarsFlag="false" :subfield="false" :editable="false"></mavon-editor>
+    <h2>{{this.title}}</h2>
+    <mavon-editor
+      :boxShadow="false"
+      defaultOpen="preview"
+      v-model="content"
+      :toolbarsFlag="false"
+      :subfield="false"
+      :editable="false"
+    ></mavon-editor>
   </div>
 </template>
 <script>
@@ -8,7 +16,8 @@ import { apiArticleGet } from "@/api/article";
 export default {
   data() {
     return {
-      content: ""
+      content: "",
+      title: ""
     };
   },
   props: [],
@@ -20,6 +29,7 @@ export default {
           ID: this.$route.params.id
         });
         this.content = res.Data.Content;
+        this.title = res.Data.Title;
       } catch (e) {
         console.log(e);
       }
@@ -34,9 +44,9 @@ export default {
 <style lang="scss" scoped>
 .browser-wrap {
   width: 1220px;
-  margin:auto;
+  margin: auto;
   margin-top: 68px;
-  .v-note-wrapper{
+  .v-note-wrapper {
     z-index: 200 !important;
   }
 }

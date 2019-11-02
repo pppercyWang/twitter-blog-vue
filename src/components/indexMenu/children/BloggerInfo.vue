@@ -30,26 +30,47 @@
         </template>
       </text-underline>
     </div>
+     <div class="area">
+      <text-underline
+        @click="showSearchBar"
+        text=" 归档"
+        size="12"
+        underlineHeight="1"
+      >
+        <template slot="icon">
+          <i class="iconfont percy-icon-guidangxiangmu"></i>
+        </template>
+      </text-underline>
+    </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
-@Component({
+export default {
+  data() {
+    return {
+      content: "",
+      title: ""
+    };
+  },
+  props: [],
   components: {
     TextUnderline
-  }
-})
-export default class extends Vue {
-  private openGithub() {
+  },
+  methods: {
+     openGithub() {
     window.open("https://github.com/pppercyWang");
-  }
-  private openChangsha() {
+  },
+  openChangsha() {
     window.open(
       "https://baike.baidu.com/item/%E9%95%BF%E6%B2%99/204237?fr=aladdin"
     );
+  },
+  showSearchBar() {
+    this.$emit("fileclick");
   }
-}
+  }
+};
 </script>
 <style scoped lang="scss">
 .blogger-info-wrap {

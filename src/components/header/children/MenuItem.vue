@@ -6,20 +6,18 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Prop()
-  private title!: string;
-  @Prop()
-  private to!: string;
-  private push() {
-    this.$router.push(this.to);
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: ["title", "to"],
+  methods: {
+    push() {
+      this.$router.push(this.to);
+    }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .menu-item-wrap {

@@ -26,7 +26,7 @@
         <div class="inline-block">
           <div class="icon book"></div>
           <tag
-            v-on:tagclick="handleTagClick(item.text)"
+            v-on:tagclick="handleCateClick(item.text)"
             v-for="(item,index2) in categories"
             :type="item.color"
             v-bind:key="index2"
@@ -52,6 +52,9 @@ export default {
     Tag
   },
   methods: {
+    handleCateClick(text) {
+      console.log(text);
+    },
     handleTagClick(text) {
       this.$emit("tagclick", text);
     },

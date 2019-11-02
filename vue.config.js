@@ -15,10 +15,11 @@ module.exports = {
     proxy: {
       '/api': {
         ws: false, //禁用websocket
-        target: 'http://106.12.221.34:8848/',
+        target: 'http://localhost:8848/',
         changeOrigin: true,
       }
     },
-    port: 12322
+    port: 12322,
+    disableHostCheck: true,
   },
 }

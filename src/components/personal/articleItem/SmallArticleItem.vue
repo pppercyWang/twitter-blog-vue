@@ -9,10 +9,17 @@
       </div>
     </div>
     <div class="row date">
-      <div class="icon calandar"></div>2019-09-20
+      <div class="icon calandar"></div>
+      {{date}}
     </div>
     <div class="row tags">
-      <div class="icon tag"></div>#react #es6 #javascript
+      <div class="icon tag"></div>
+      <span
+        class="text"
+        v-for="(item,index) in tags"
+        v-bind:key="index"
+        @click="changeText(item)"
+      >{{"#" +item}}</span>
     </div>
   </div>
 </template>
@@ -22,8 +29,7 @@ export default {
   data() {
     return {
       tags: [],
-      categories: [],
-      title: "vue写一个全局Message组件",
+      title: "",
       date: ""
     };
   },
@@ -49,29 +55,15 @@ export default {
       }
       const currentdate = year + seperator1 + month + seperator1 + strDate;
       return currentdate;
+    },
+    changeText(text) {
+      this.$emit("onTagClick", text);
     }
   },
   created() {
-    // this.title = this.row.Title;
-    // const tep1 = this.row.Categories.split(",");
-    // const arr = [];
-    // tep1.forEach((item, index, array) => {
-    //   arr.push({
-    //     color: this.getRandomColor(),
-    //     text: item
-    //   });
-    // });
-    // this.categories = arr;
-    // const tep2 = this.row.Tags.split(",");
-    // const arr2 = [];
-    // tep2.forEach((item, index, array) => {
-    //   arr2.push({
-    //     color: this.getRandomColor(),
-    //     text: item
-    //   });
-    // });
-    // this.tags = arr2;
-    // this.date = this.dateToStr(new Date(this.row.CreatedAt));
+    this.title = this.row.Title;
+    this.tags = this.row.Tags.split(",");
+    this.date = this.dateToStr(new Date(this.row.CreatedAt));
   }
 };
 </script>
@@ -113,6 +105,14 @@ export default {
       width: 18px;
       height: 18px;
       background-position: -16px -0px;
+      margin-right: 4px;
+    }
+    .text {
+      margin-right: 4px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
     }
   }
   .icon {

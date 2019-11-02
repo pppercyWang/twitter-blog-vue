@@ -1,88 +1,110 @@
 <template>
-  <div class="login-form-wrap">
-    <div class="arrow"></div>
-    <div class="input-area">
-      <div class="input-item">
-        <blog-input @keyupEnter="login" v-model="username" placeholder="username"></blog-input>
+  <div class="login-form-wrap" v-click-outside="closeLoginForm">
+    <div class="all">
+      <div class="logo-wrap" @click="login">
+        <img src="../../../assets/img/github.png" />
       </div>
-      <div class="input-item">
-        <blog-input @keyupEnter="login" v-model="password" placeholder="password"></blog-input>
-      </div>
-    </div>
-    <div class="btn-area">
-      <div class="btn-item">
-        <blog-button  @click="login" size="200" info="Log in" type="primary"></blog-button>
-      </div>
+      <div class="text">Github</div>
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BlogInput from "@/components/commons/input/BlogInput.vue";
-import { apiLogin } from "@/api/auth";
-@Component({
+import { apiLogin, apiGetUserInfo } from "@/api/auth";
+import { apiArticleList } from "@/api/article";
+import clickOutside from "@/directives/vueClickOutSize";
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      flag: false
+    };
+  },
   components: {
     BlogButton,
     BlogInput
-  }
-})
-export default class extends Vue {
-  private username: string = "";
-  private password: string = "";
-  private async login() {
-    try {
-      const res = await apiLogin(
-        {
-          Username: this.username,
-          Password: this.password
-        },
-        null
-      );
-      this.$message(res.Msg);
-      sessionStorage.setItem("token", res.Data.Token);
-      sessionStorage.setItem("username", res.Data.Username);
-      this.$emit("loginsuc");
-    } catch (e) {
-      this.$message.error(e.Msg);
+  },
+  directives: { clickOutside },
+  methods: {
+    closeLoginForm() {
+      if (this.flag === false) {
+        this.flag = true;
+      } else {
+        this.$emit("close");
+      }
+    },
+    login() {
+      window.location.href =
+        "https://github.com/login/oauth/authorize?client_id=63ef2362d2082fac3874";
+    },
+    getQueryVariable(variable) {
+      const query = window.location.search.substring(1);
+      const vars = query.split("&");
+      for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split("=");
+        if (pair[0] === variable) {
+          return pair[1];
+        }
+      }
+      return false;
+    },
+    async getUserInfo(code) {
+      try {
+        const res = await apiGetUserInfo({
+          client_id: "63ef2362d2082fac3874",
+          client_secret: "8b0f9b590564697fd1cfa24258a9daaf5c1ea8ec",
+          code
+        });
+        sessionStorage.setItem("user", res.Data);
+        this.$emit("loginsuc");
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
+    }
+  },
+  mounted() {
+    const code = this.getQueryVariable("code");
+    if (code !== false) {
+      // if (!sessionStorage.getItem("user")) {
+      this.getUserInfo(code);
+      // }
     }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .login-form-wrap {
   position: absolute;
   top: 50px;
   right: 0px;
-  height: 180px;
-  width: 260px;
+  height: 120px;
+  width: 240px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 3px;
   box-shadow: 0 0 5px #cbcbcb;
-  .arrow {
-    position: absolute;
-    right: 20px;
-    top: -20px;
-    width: 0;
-    height: 0;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #ffffff transparent;
-  }
-  .input-area {
-    height: 100px;
-    margin-top: 20px;
-    .input-item {
-      margin-left: 15px;
-      margin-bottom: 20px;
-    }
-  }
-  .btn-area {
-    height: 60px;
-    .btn-item {
+  .all {
+    margin-top: 10px;
+    .logo-wrap {
       display: flex;
       justify-content: center;
+      img {
+        opacity: 0.6;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
+      }
+    }
+    .text {
+      text-align: center;
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
     }
   }
 }

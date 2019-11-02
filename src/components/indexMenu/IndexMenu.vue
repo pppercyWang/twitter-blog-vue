@@ -5,10 +5,14 @@
         <!-- <profile-heading></profile-heading> -->
       </div>
       <div class="blogger-about">
-        <BloggerInfo v-if="!isShowSearchBar" class="animated fadeInUp"></BloggerInfo>
+        <BloggerInfo
+          v-if="!isShowSearchBar"
+          @fileclick="showSearchBar"
+          class="animated fadeInUp"
+        ></BloggerInfo>
         <SearchBar
           v-else
-          :placeholder="searchBarText"
+          :propText="searchBarText"
           @onClose="closeSearchBar"
           class="animated bounceInLeft"
         ></SearchBar>
@@ -31,36 +35,38 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import MenuItem from "@/components/indexMenu/children/MenuItem.vue";
 import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
 import SearchBar from "@/components/indexMenu/children/SearchBar.vue";
-@Component({
+export default {
+  data() {
+    return {};
+  },
+  props: ["isShowSearchBar", "searchBarText"],
   components: {
     MenuItem,
     BloggerInfo,
     ProfileHeading,
     BlogButton,
     SearchBar
+  },
+  methods: {
+    closeSearchBar() {
+      this.$emit("closeSearchBar");
+    },
+    pushArticleEdit() {
+      this.$router.push({
+        path: "/article/edit/0"
+      });
+    },
+    showSearchBar() {
+      this.$emit("showSearchBar");
+    }
   }
-})
-export default class extends Vue {
-  @Prop()
-  private isShowSearchBar!: boolean;
-  @Prop()
-  private searchBarText!: string;
-  private closeSearchBar() {
-    this.$emit("closeSearchBar");
-  }
-  private pushArticleEdit() {
-    this.$router.push({
-      path: "/article/edit/0"
-    });
-  }
-}
+};
 </script>
 <style scoped lang="scss">
 .fake-area {

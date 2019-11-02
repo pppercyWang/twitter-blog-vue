@@ -1,38 +1,60 @@
 <template>
   <div class="search-bar-wrap" v-click-outside="closeSearchBar">
     <div class="search-wrap">
-      <input :placeholder="placeholder" />
-      <div class="search">
-        <i class="iconfont percy-icon-fangdajing"></i>
+      <input :placeholder="placeholder" v-model="searchText"/>
+      <div class="search" @click="clear()">
+        <i
+          :class="errorFlag==true?'iconfont percy-icon-cross-fill':'iconfont percy-icon-fangdajing'"
+        ></i>
       </div>
       <div class="underline"></div>
     </div>
     <div class="article-list">
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
-      <SmallArticleItem></SmallArticleItem>
+      <SmallArticleItem
+        v-for="(item) in matchArticles"
+        v-bind:key="item.ID"
+        :row="item"
+        @onTagClick="changeText"
+      ></SmallArticleItem>
     </div>
   </div>
-</template>
+</template> 
 <script>
 import SmallArticleItem from "@/components/personal/articleItem/SmallArticleItem.vue";
 import clickOutside from "@/directives/vueClickOutSize";
+import { apiArticleList } from "@/api/article";
 export default {
   data() {
     return {
-      flag: false
+      flag: false,
+      searchText: "",
+      articleList: [],
+      matchArticles: [],
+      placeholder: "find something...",
+      errorFlag: true
     };
   },
   components: {
     SmallArticleItem
   },
   directives: { clickOutside },
-  props: ["placeholder"],
+  props: ["propText"],
+  watch: {
+    searchText(val) {
+      if (val === "") {
+        this.errorFlag = false;
+      } else {
+        this.errorFlag = true;
+      }
+      this.getMatchArticle();
+    }
+  },
   methods: {
+    clear() {
+      if (this.errorFlag === true) {
+        this.searchText = "";
+      }
+    },
     closeSearchBar() {
       if (this.flag === false) {
         this.flag = true;
@@ -40,11 +62,45 @@ export default {
         this.$emit("onClose");
       }
     },
+    changeText(text) {
+      this.searchText = text;
+    },
+    getMatchArticle() {
+      if (this.articleList.length !== 0) {
+        const newArr = this.articleList.filter(item => {
+          return (
+            item.Tags.indexOf(this.searchText) !== -1 ||
+            item.Title.indexOf(this.searchText) !== -1
+          );
+        });
+        this.matchArticles = newArr;
+        console.log(this.matchArticles);
+      }
+    },
     async getArticleList() {
-      console.log("111111111");
+      try {
+        const res = await apiArticleList(
+          {
+            Page: 1,
+            Size: 200
+          },
+          null
+        );
+        this.articleList = res.Data.List;
+        if (this.searchText === "") {
+          this.matchArticles = this.articleList;
+        } else {
+          this.getMatchArticle();
+        }
+      } catch (e) {
+        console.log(e);
+      }
     }
   },
   mounted() {
+    if (this.propText) {
+      this.searchText = this.propText;
+    }
     this.getArticleList();
   }
 };
