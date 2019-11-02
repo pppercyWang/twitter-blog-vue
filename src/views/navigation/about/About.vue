@@ -1,18 +1,13 @@
 <template>
-    <div class="index-page">
-      aaa
-    </div>
+  <div class="index-page">aaa</div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {
-  }
-})
-export default class extends Vue {
-}
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+};
 </script>
 <style lang="scss" scoped>
-.about-wrap {
-}
 </style>

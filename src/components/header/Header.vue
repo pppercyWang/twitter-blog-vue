@@ -3,7 +3,7 @@
     <div class="container">
       <div class="menu-wrap">
         <div class="logo">
-          <!-- <img src="../../assets/img/home.png" /> -->
+          <img src="../../assets/img/home.png" />
         </div>
         <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="About" to="/about"></menu-item>
@@ -32,6 +32,7 @@
 <script>
 import MenuItem from "@/components/header/children/MenuItem.vue";
 import Login from "@/components/header/children/Login.vue";
+import { apiGetUserInfo } from "@/api/auth";
 import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
 export default {
   data() {
@@ -71,10 +72,40 @@ export default {
         this.username = JSON.parse(user).login;
         this.loginAreaShow = false;
       }
+    },
+    getQueryVariable(variable) {
+      const query = window.location.search.substring(1);
+      const vars = query.split("&");
+      for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split("=");
+        if (pair[0] === variable) {
+          return pair[1];
+        }
+      }
+      return false;
+    },
+    async getUserInfo(code) {
+      try {
+        const res = await apiGetUserInfo({
+          client_id: "63ef2362d2082fac3874",
+          client_secret: "8b0f9b590564697fd1cfa24258a9daaf5c1ea8ec",
+          code
+        });
+        sessionStorage.setItem("user", res.Data);
+        this.handleLoginSuccessfully();
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
     }
   },
   mounted() {
     this.checkAuthentication();
+    const code = this.getQueryVariable("code");
+    if (code !== false) {
+      if (!sessionStorage.getItem("user")) {
+        this.getUserInfo(code);
+      }
+    }
   }
 };
 </script>

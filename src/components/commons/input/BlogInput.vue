@@ -8,37 +8,29 @@
     @input="$emit('input',$event.target.value)"
   />
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Prop()
-  private value!: string;
-  @Prop()
-  private placeholder!: string;
-  @Prop()
-  private type!: string;
-  @Prop()
-  private height!: string;
-  @Prop()
-  private width!: string;
-  @Prop()
-  private fontSize!: string;
-  private keyup() {
-    this.$emit("keyupEnter");
-  }
-  private mounted() {
+<script>
+export default {
+  data() {
+    return {
+      isChecked: true
+    };
+  },
+  props: ["value", "placeholder", "type", "height", "width", "fontSize"],
+  methods: {
+    keyup() {
+      this.$emit("keyupEnter");
+    }
+  },
+  mounted() {
     if (this.height) {
       if (!isNaN(Number(this.height))) {
-        const obj = this.$refs.blogInput as HTMLElement;
+        const obj = this.$refs.blogInput;
         obj.style.height = this.height + "px";
       }
     }
     if (this.fontSize) {
       if (!isNaN(Number(this.fontSize))) {
-        const obj = this.$refs.blogInput as HTMLElement;
+        const obj = this.$refs.blogInput;
         obj.style.fontSize = this.fontSize + "px";
       }
     }
@@ -46,18 +38,19 @@ export default class extends Vue {
       if (this.width.endsWith("%")) {
         const temp = this.width.substring(0, this.width.length - 1);
         if (!isNaN(Number(temp))) {
-          const obj = this.$refs.blogInput as HTMLElement;
+          const obj = this.$refs.blogInput;
           obj.style.width = temp + "%";
         }
       }
       if (!isNaN(Number(this.width))) {
-        const obj = this.$refs.blogInput as HTMLElement;
+        const obj = this.$refs.blogInput;
         obj.style.width = this.width + "px";
       }
     }
   }
-}
+};
 </script>
+
 <style scoped lang="scss">
 input {
   height: 27px;

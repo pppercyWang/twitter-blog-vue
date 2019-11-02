@@ -1,28 +1,21 @@
 <template>
   <div :class="['btn-msg','bounce',isPrimary?'primary':'']" ref="btn" @click="handleClick">{{info}}</div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Prop()
-  private info!: string;
-  @Prop()
-  private type!: string;
-  @Prop()
-  private size!: string;
-  @Prop()
-  private height!: string;
-  @Prop()
-  private fontSize!: string;
-  private isPrimary: boolean = false;
-  private handleClick(evt) {
-    this.$emit("click", evt);
-  }
-  private mounted() {
-    const elBtn = this.$refs.btn as HTMLElement;
+<script>
+export default {
+  data() {
+    return {
+      isPrimary: false
+    };
+  },
+  props: ["info", "type", "size", "height", "fontSize"],
+  methods: {
+    handleClick(evt) {
+      this.$emit("click", evt);
+    }
+  },
+  mounted() {
+    const elBtn = this.$refs.btn;
     if (this.size) {
       if (!isNaN(Number(this.size))) {
         elBtn.style.width = this.size + "px";
@@ -42,7 +35,7 @@ export default class extends Vue {
       this.isPrimary = true;
     }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .btn-msg {

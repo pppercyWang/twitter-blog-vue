@@ -6,15 +6,14 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Prop()
-  private label!: string;
-}
+<script>
+import BlogButton from "@/components/commons/button/BlogButton.vue";
+export default {
+  data() {
+    return {};
+  },
+  props: ["label"]
+};
 </script>
 <style scoped lang="scss">
 .form-item-wrap {

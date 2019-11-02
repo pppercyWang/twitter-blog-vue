@@ -13,38 +13,26 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  private blue: boolean = true;
-  private active: boolean = false;
-  @Prop()
-  private defaultActive!: boolean;
-  @Prop()
-  private title!: string;
-  @Prop()
-  private number!: string;
-  @Prop()
-  private index!: string;
-  private push() {
-    this.$router.push(this.index);
-  }
-  @Watch("$route")
-  private onPathChanged(to, from) {
-    this.active = false;
-    if (to.path === this.index) {
-      this.active = true;
+<script>
+export default {
+  data() {
+    return {
+      blue: true,
+      active: false
+    };
+  },
+  props: ["defaultActive", "title", "number", "index"],
+  methods: {
+    push() {
+      this.$router.push(this.index);
     }
-  }
-  private mounted() {
+  },
+  mounted() {
     if (this.defaultActive) {
       this.active = true;
     }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .menu-item-wrap {

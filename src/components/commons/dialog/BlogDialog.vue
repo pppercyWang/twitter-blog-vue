@@ -31,28 +31,27 @@
     </div>
   </transition>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import BlogButton from "@/components/commons/button/BlogButton.vue";
-@Component({
+export default {
+  data() {
+    return {
+      isPrimary: false
+    };
+  },
   components: {
     BlogButton
+  },
+  props: ["title", "cancel", "confirm"],
+  methods: {
+    dialogClose() {
+      this.$emit("close");
+    },
+    submit() {
+      this.$emit("submit");
+    }
   }
-})
-export default class extends Vue {
-  @Prop()
-  private title!: string;
-  @Prop()
-  private cancel!: string;
-  @Prop()
-  private confirm!: string;
-  private dialogClose() {
-    this.$emit("close");
-  }
-  private submit() {
-    this.$emit("submit");
-  }
-}
+};
 </script>
 <style scoped lang="scss">
 .fade-enter-active,

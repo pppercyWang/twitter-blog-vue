@@ -1,25 +1,25 @@
 import { Commit } from 'vuex';
-const state: any = {
+const state = {
     bigHeadingShow: true,
 };
 
-const getters: any = {
+const getters = {
     bigHeadingShow: () => state.bigHeadingShow,
 };
 
-const mutations: any = {
-    saveBigHeadingShowTrue(states: any) {
+const mutations = {
+    saveBigHeadingShowTrue(states) {
         states.bigHeadingShow = true;
     },
-    saveBigHeadingShowFalse(states: any) {
+    saveBigHeadingShowFalse(states) {
         states.bigHeadingShow = false;
     }
 };
-const actions: any = {
-    async bigHeadingShowTrue(context: { commit: Commit }, data: any) {
+const actions = {
+    async bigHeadingShowTrue(context, data) {
         context.commit('saveBigHeadingShowTrue');
     },
-    async bigHeadingShowFalse(context: { commit: Commit }, data: any) {
+    async bigHeadingShowFalse(context, data) {
         context.commit('saveBigHeadingShowFalse');
     },
 };

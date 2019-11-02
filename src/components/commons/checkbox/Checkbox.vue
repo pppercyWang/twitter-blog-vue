@@ -8,18 +8,17 @@
     <div class="right">{{label}}</div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  private isChecked: boolean = true;
-  @Prop()
-  private label!: string;
-  @Prop()
-  private value!: string;
-  private handleClick() {
+
+<script>
+export default {
+  data() {
+    return {
+      isChecked: true
+    };
+  },
+  props: ["label", "value"],
+  methods: {
+    handleClick() {
     this.isChecked = !this.isChecked;
     if (this.isChecked) {
       this.$parent.$emit("pushItem", this.value);
@@ -28,10 +27,11 @@ export default class extends Vue {
     }
     this.$emit("input", this.isChecked);
   }
-  private mounted() {
+  },
+  mounted() {
     this.isChecked = false; // 在dialog中滚动条不生效。必须操作dom之后才生效。暂时未找到更好的解决办法
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .fade-enter-active,

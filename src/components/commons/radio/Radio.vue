@@ -8,31 +8,30 @@
     <div class="right">{{label}}</div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  private isChecked: boolean = false;
-  @Prop()
-  private label!: string;
-  @Prop()
-  private value!: string;
-  private handleClick() {
-    this.isChecked = !this.isChecked;
-    if (this.isChecked) {
-      this.$parent.$emit("radioChange", this.value);
+<script>
+export default {
+  data() {
+    return {
+      isChecked: false
+    };
+  },
+  props: ["label", "value"],
+  methods: {
+    handleClick() {
+      this.isChecked = !this.isChecked;
+      if (this.isChecked) {
+        this.$parent.$emit("radioChange", this.value);
+      }
+    },
+    checkIsActive(value) {
+      if (this.value === value) {
+        this.isChecked = true;
+      } else {
+        this.isChecked = false;
+      }
     }
   }
-  private checkIsActive(value) {
-    if (this.value === value) {
-      this.isChecked = true;
-    } else {
-      this.isChecked = false;
-    }
-  }
-}
+};
 </script>
 <style scoped lang="scss">
 .fade-enter-active,
@@ -56,8 +55,8 @@ export default class extends Vue {
     border: 1.2px solid #cccccc;
     box-sizing: border-box;
     .circle {
-      margin-left: 9px;
-      margin-top: 9px;
+      margin-left: 8px;
+      margin-top: 8px;
       border-radius: 50%;
       width: 6px;
       height: 6px;

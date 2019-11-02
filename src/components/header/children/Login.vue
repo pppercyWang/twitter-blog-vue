@@ -11,8 +11,6 @@
 <script>
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BlogInput from "@/components/commons/input/BlogInput.vue";
-import { apiLogin, apiGetUserInfo } from "@/api/auth";
-import { apiArticleList } from "@/api/article";
 import clickOutside from "@/directives/vueClickOutSize";
 export default {
   data() {
@@ -38,38 +36,6 @@ export default {
     login() {
       window.location.href =
         "https://github.com/login/oauth/authorize?client_id=63ef2362d2082fac3874";
-    },
-    getQueryVariable(variable) {
-      const query = window.location.search.substring(1);
-      const vars = query.split("&");
-      for (let i = 0; i < vars.length; i++) {
-        const pair = vars[i].split("=");
-        if (pair[0] === variable) {
-          return pair[1];
-        }
-      }
-      return false;
-    },
-    async getUserInfo(code) {
-      try {
-        const res = await apiGetUserInfo({
-          client_id: "63ef2362d2082fac3874",
-          client_secret: "8b0f9b590564697fd1cfa24258a9daaf5c1ea8ec",
-          code
-        });
-        sessionStorage.setItem("user", res.Data);
-        this.$emit("loginsuc");
-      } catch (e) {
-        this.$message.error(e.Msg);
-      }
-    }
-  },
-  mounted() {
-    const code = this.getQueryVariable("code");
-    if (code !== false) {
-      // if (!sessionStorage.getItem("user")) {
-      this.getUserInfo(code);
-      // }
     }
   }
 };

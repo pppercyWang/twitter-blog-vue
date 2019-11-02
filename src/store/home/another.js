@@ -1,6 +1,6 @@
 import { Commit } from 'vuex';
 
-const state: any = {
+const state = {
     // state...
 };
 const getters = {
