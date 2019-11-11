@@ -9,19 +9,26 @@
       :subfield="false"
       :editable="false"
     ></mavon-editor>
+    <div>
+      <Comment></Comment>
+    </div>
   </div>
 </template>
 <script>
 import { apiArticleGet } from "@/api/article";
+import Comment from "@/components/commons/comment/Comment.vue";
 export default {
   data() {
     return {
       content: "",
-      title: ""
+      title: "",
+      emojis: []
     };
   },
   props: [],
-  components: {},
+  components: {
+    Comment
+  },
   methods: {
     async getArticle() {
       try {

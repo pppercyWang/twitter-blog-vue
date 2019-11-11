@@ -1,0 +1,312 @@
+.angry {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -0px !important;
+}
+
+.anguished {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -0px !important;
+}
+
+.astonished {
+    width: 64px;
+    height: 64px;
+    background-position: -128px -0px !important;
+}
+
+.blush {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -0px !important;
+}
+
+.cold_sweat {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -0px !important;
+}
+
+.confounded {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -0px !important;
+}
+
+.confused {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -0px !important;
+}
+
+.cry {
+    width: 64px;
+    height: 64px;
+    background-position: -448px -0px !important;
+}
+
+.disappointed {
+    width: 64px;
+    height: 64px;
+    background-position: -512px -0px !important;
+}
+
+.disappointed_relieved {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -64px !important;
+}
+
+.dizzy_face {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -64px !important;
+}
+
+.expressionless {
+    width: 64px;
+    height: 64px;
+    background-position: -128px -64px !important;
+}
+
+.fearful {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -64px !important;
+}
+
+.flushed {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -64px !important;
+}
+
+.frowning {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -64px !important;
+}
+
+.grimacing {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -64px !important;
+}
+
+.grin {
+    width: 64px;
+    height: 64px;
+    background-position: -448px -64px !important;
+}
+
+.grinning {
+    width: 64px;
+    height: 64px;
+    background-position: -512px -64px !important;
+}
+
+.heart_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -128px !important;
+}
+
+.hushed {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -128px !important;
+}
+
+.innocent {
+    width: 64px;
+    height: 64px;
+    background-position: -128px -128px !important;
+}
+
+.joy {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -128px !important;
+}
+
+.kissing_closed_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -128px !important;
+}
+
+.kissing_heart {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -128px !important;
+}
+
+.laughing {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -128px !important;
+}
+
+.neutral_face {
+    width: 64px;
+    height: 64px;
+    background-position: -448px -128px !important;
+}
+
+.no_mouth {
+    width: 64px;
+    height: 64px;
+    background-position: -512px -128px !important;
+}
+
+.open_mouth {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -192px !important;
+}
+
+.pensive {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -192px !important;
+}
+
+.persevere {
+    width: 64px;
+    height: 64px;
+    background-position: -128px -192px !important;
+}
+
+.relaxed {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -192px !important;
+}
+
+.relieved {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -192px !important;
+}
+
+.sleepy {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -192px !important;
+}
+
+.smile {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -192px !important;
+}
+
+.smiley {
+    width: 64px;
+    height: 64px;
+    background-position: -448px -192px !important;
+}
+
+.smirk {
+    width: 64px;
+    height: 64px;
+    background-position: -512px -192px !important;
+}
+
+.sob {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -256px !important;
+}
+
+.stuck_out_tongue {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -256px !important;
+}
+
+.sunglasses {
+    width: 64px;
+    height: 64px;
+    background-position: -128px -256px !important;
+}
+
+.sweat {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -256px !important;
+}
+
+.sweat_smile {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -256px !important;
+}
+
+.scream {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -256px !important;
+}
+
+.wink {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -256px !important;
+}
+
+.unamused {
+    width: 64px;
+    height: 64px;
+    background-position: -448px -256px !important;
+}
+
+.satisfied {
+    width: 64px;
+    height: 64px;
+    background-position: -512px -256px !important;
+}
+
+.worried {
+    width: 64px;
+    height: 64px;
+    background-position: -0px -320px !important;
+}
+
+.stuck_out_tongue_closed_eyes {
+    width: 64px;
+    height: 64px;
+    background-position: -64px -320px !important;
+}
+
+.weary {
+    width: 64px;
+    height: 64px;
+    background-size: cover;
+    background-position: -128px -320px !important;
+}
+
+.yum {
+    width: 64px;
+    height: 64px;
+    background-position: -192px -320px !important;
+}
+
+.tired_face {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -320px !important;
+}
+
+.triumph {
+    width: 64px;
+    height: 64px;
+    background-position: -320px -320px !important;
+}
+
+.stuck_out_tongue_winking_eye {
+    width: 64px;
+    height: 64px;
+    background-position: -384px -320px !important;
+}
