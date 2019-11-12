@@ -1,5 +1,5 @@
 <template>
-  <div class="emoji-item" :class="[text,isInput?'small':'large']" @click="emojiClick"></div>
+  <span class="emoji-item-common" :class="['emoji-'+text,isInput?'emoji-size-small':'emoji-size-large']" @click="emojiClick"></span>
 </template>
 <script>
 export default {
@@ -15,20 +15,3 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.emoji-item {
-  background: url("../../../assets/img/emoji_sprite.png");
-  display: inline-block;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-.large {
-  zoom: 0.5;
-}
-.small {
-  zoom: 0.3;
-}
-@import "../../../assets/css/emoji.css";
-</style>

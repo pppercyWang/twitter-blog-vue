@@ -1,11 +1,11 @@
 <template>
   <div class="emoji-panel-wrap">
-    <Emoji
+    <emoji
       v-for="(item,index) in emojis"
       :text="item"
       v-bind:key="index"
       @onClick="handleEmojiClick"
-    ></Emoji>
+    ></emoji>
   </div>
 </template>
 <script>
@@ -81,8 +81,14 @@ export default {
 </script>
 <style scoped>
 .emoji-panel-wrap {
-  background-color: aquamarine;
-  width: 416px;
-  height: 148px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 508px;
+  height: 164px;
+  position: absolute;
+  left: 0px;
+  top: 32px;
 }
 </style>
