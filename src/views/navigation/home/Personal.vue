@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <ArticleItem
-      v-for="(item,index) in articleList"
+      v-for="item in articleList"
       @tagclick="handleTagClick"
-      v-bind:key="index"
+      v-bind:key="item.ID"
       :row="item"
     ></ArticleItem>
     <div class="footer">

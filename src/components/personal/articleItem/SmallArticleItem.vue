@@ -5,7 +5,7 @@
         <div
           class="title"
           @click="pushArticle"
-        >{{title.length>20?(title.substring(0,20)+"..."):title}}</div>
+        >{{title.length>18?(title.substring(0,18)+"..."):title}}</div>
       </div>
     </div>
     <div class="row date">
