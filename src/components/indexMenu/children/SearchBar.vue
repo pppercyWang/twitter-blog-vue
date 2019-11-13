@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar-wrap" v-click-outside="closeSearchBar">
     <div class="search-wrap">
-      <input :placeholder="placeholder" v-model="searchText"/>
+      <input :placeholder="placeholder" v-model="searchText" />
       <div class="search" @click="clear()">
         <i
           :class="errorFlag==true?'iconfont percy-icon-cross-fill':'iconfont percy-icon-fangdajing'"
@@ -31,7 +31,7 @@ export default {
       articleList: [],
       matchArticles: [],
       placeholder: "find something...",
-      errorFlag: true
+      errorFlag: false
     };
   },
   components: {
@@ -100,6 +100,8 @@ export default {
   mounted() {
     if (this.propText) {
       this.searchText = this.propText;
+    } else {
+      this.searchText = "";
     }
     this.getArticleList();
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="emoji-panel-wrap">
+  <div class="emoji-panel-wrap" v-click-outside="closeEmojiPanel">
     <emoji
       v-for="(item,index) in emojis"
       :text="item"
@@ -10,9 +10,11 @@
 </template>
 <script>
 import Emoji from "./Emoji";
+import clickOutside from "@/directives/vueClickOutSize";
 export default {
   data() {
     return {
+      flag: false,
       emojis: [
         "angry",
         "anguished",
@@ -69,10 +71,18 @@ export default {
       ]
     };
   },
+  directives: { clickOutside },
   components: {
     Emoji
   },
   methods: {
+    closeEmojiPanel() {
+      if (this.flag === false) {
+        this.flag = true;
+      } else {
+        this.$emit("onClose");
+      }
+    },
     handleEmojiClick(a) {
       this.$emit("emojiClick", a);
     }

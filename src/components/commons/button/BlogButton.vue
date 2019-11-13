@@ -53,7 +53,6 @@ export default {
 :hover {
   cursor: pointer;
 }
-
 .btn-msg:hover {
   background-color: $button-hover;
 }

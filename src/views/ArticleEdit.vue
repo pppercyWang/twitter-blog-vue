@@ -40,6 +40,9 @@
           <radio label="收藏" value="1"></radio>
         </radio-group>
       </form-item>
+      <form-item label="isHostKey">
+        <blog-input height="20" v-model="hostKey"></blog-input>
+      </form-item>
     </blog-dialog>
   </div>
 </template>
@@ -77,6 +80,7 @@ export default class extends Vue {
   private content: string = "";
   private dialogVisible: boolean = false;
   private tags = [];
+  private hostKey = "";
   private toolbars = {
     bold: true, // 粗体
     italic: true, // 斜体
@@ -86,9 +90,6 @@ export default class extends Vue {
     superscript: true, // 上角标
     quote: true, // 引用
     ol: true, // 有序列表
-    link: true, // 链接
-    imagelink: true, // 图片链接
-    help: true, // 帮助
     code: true, // code
     subfield: true, // 是否需要分栏
     fullscreen: true, // 全屏编辑
@@ -96,9 +97,8 @@ export default class extends Vue {
     /* 1.3.5 */
     undo: true, // 上一步
     trash: true, // 清空
-    save: true, // 保存（触发events中的save事件）
+    save: true // 保存（触发events中的save事件）
     /* 1.4.2 */
-    navigation: true // 导航目录
   };
   private handleOnchange(tags) {
     this.tags = tags;
@@ -121,22 +121,26 @@ export default class extends Vue {
       this.$message.error("最多选择三个文章分类");
       return;
     }
-    if (this.checkAuthentication()) {
-      try {
-        const res = await apiArticleSave(
-          {
-            Content: this.content,
-            CategoryIDs: this.checkList.join(","),
-            Title: this.title,
-            Personal: this.radioIschecked,
-            Tags: this.tags.join(",")
-          },
-          null
-        );
-        this.$message.success(res.Msg);
-      } catch (e) {
-        this.$message.error(e.Msg);
-      }
+    if (this.hostKey === "") {
+      this.$message.error("请输入hostKey");
+      return;
+    }
+    try {
+      const res = await apiArticleSave(
+        {
+          Content: this.content,
+          CategoryIDs: this.checkList.join(","),
+          Title: this.title,
+          Personal: this.radioIschecked,
+          Tags: this.tags.join(","),
+          HostKey: this.hostKey
+        },
+        null
+      );
+      this.$message.success(res.Msg);
+      this.dialogVisible = false;
+    } catch (e) {
+      this.$message.error(e.Msg);
     }
   }
   private updateDoc(markdown, html) {
@@ -146,16 +150,6 @@ export default class extends Vue {
   }
   private closeDialog() {
     this.dialogVisible = false;
-  }
-  private checkAuthentication() {
-    if (
-      sessionStorage.getItem("token") === null ||
-      sessionStorage.getItem("token") === ""
-    ) {
-      this.$message.error("未登录，不能发布文章");
-      return false;
-    }
-    return true;
   }
   private async getCategoryList() {
     try {

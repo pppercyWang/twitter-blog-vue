@@ -1,12 +1,16 @@
 <template>
   <div class="comment-wrap">
     <div class="comments-list">
-      <div class="comments-list-item" v-for="(item,index) in comments" v-bind:key="index">
+      <div
+        class="comments-list-item animated slideInRight"
+        v-for="(item,index) in comments"
+        v-bind:key="index"
+      >
         <div class="comments-list-item-heading">
-          <img src="../../../assets/img/heading.jpg" />
-          <span class="comments-list-item-username">pppercywang</span>
+          <img :src="item.AvatarUrl" />
+          <span class="comments-list-item-username">{{item.Username}}</span>
         </div>
-        <div class="comments-list-item-content" v-html="item"></div>
+        <div class="comments-list-item-content" v-html="item.Content"></div>
       </div>
     </div>
     <textarea class="comment-input" placeholder="请输入内容" id="textpanel" v-model="content"></textarea>
@@ -22,7 +26,7 @@
         info="发表评论"
         type="primary"
       ></blog-button>
-      <emoji-panel @emojiClick="appendEmoji" v-if="isShowEmojiPanel"></emoji-panel>
+      <emoji-panel class="animated fadeIn" @onClose="closeEmojiPanel" @emojiClick="appendEmoji" v-if="isShowEmojiPanel"></emoji-panel>
     </div>
   </div>
 </template>
@@ -30,11 +34,12 @@
 import EmojiPanel from "./EmojiPanel.vue";
 import Emoji from "./Emoji.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
+import { apiCommentSave, apiCommentList } from "@/api/comment";
+import clickOutside from "@/directives/vueClickOutSize";
 export default {
   data() {
     return {
       content: "",
-      flag: false,
       isShowEmojiPanel: false,
       comments: []
     };
@@ -45,11 +50,61 @@ export default {
     BlogButton
   },
   methods: {
-    saveComment() {
-      this.comments.push(this.content.replace(/:.*?:/g, this.emoji)); // 替换":"符号包含的字符串,通过emoji方法生成表情<span></span>
-      this.content = "";
+    closeEmojiPanel() {
       this.isShowEmojiPanel = false;
-      console.log(this.comments);
+    },
+    async saveComment() {
+      if (this.content === "") {
+        this.$message.error("评论内容不能为空");
+        return;
+      }
+      if (!sessionStorage.getItem("user")) {
+        this.$message.error("登录后才可进行评论");
+        return;
+      }
+      const userInfo = JSON.parse(sessionStorage.getItem("user"));
+      try {
+        const res = await apiCommentSave(
+          {
+            Content: this.content,
+            ArticleID: this.$route.params.id,
+            GitUserID: userInfo.id,
+            Username: userInfo.login,
+            AvatarUrl: userInfo.avatar_url,
+            GithubUrl: userInfo.html_url
+          },
+          null
+        );
+        this.comments.push({
+          Content: this.content.replace(/:.*?:/g, this.emoji),
+          GithubUrl: userInfo.html_url,
+          ArticleID: this.$route.params.id,
+          Username: userInfo.login,
+          AvatarUrl: userInfo.avatar_url,
+          GitUserID: userInfo.id
+        }); // 替换":"符号包含的字符串,通过emoji方法生成表情<span></span>
+        this.content = "";
+        this.isShowEmojiPanel = false;
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
+    },
+    async getCommentList() {
+      try {
+        const res = await apiCommentList(
+          {
+            ArticleID: this.$route.params.id
+          },
+          null
+        );
+        const newArr = res.Data.List.map(item => {
+          item.Content = item.Content.replace(/:.*?:/g, this.emoji);
+          return item;
+        });
+        this.comments = newArr;
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
     },
     showEmojiPanel() {
       this.isShowEmojiPanel = !this.isShowEmojiPanel;
@@ -62,10 +117,14 @@ export default {
       const el = document.getElementById("textpanel");
       this.content = el.value + ":" + text + ":";
     }
+  },
+  created() {
+    this.getCommentList();
   }
 };
 </script>
-<style  lang="scss">  // 注意 这里因为v-html的原因 不能使用scoped 不然样式不能失效
+<style  lang="scss">
+// 注意 这里因为v-html的原因 不能使用scoped 不然样式不能失效
 .comment-wrap {
   width: 522px;
   margin-bottom: 180px;
@@ -87,7 +146,11 @@ export default {
   .comments-list {
     margin-top: 20px;
     .comments-list-item {
-       margin-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #cccccc;
+      &:last-child {
+        border-bottom: 0;
+      }
       .comments-list-item-heading {
         display: inline-block;
         img {
@@ -103,10 +166,6 @@ export default {
       }
       .comments-list-item-content {
         margin: 10px 0px;
-        border-bottom: 1px solid #cccccc;
-        &:last-child {
-          border-bottom: 0;
-        }
         span {
           vertical-align: top;
         }
@@ -141,5 +200,5 @@ export default {
     }
   }
 }
-@import "../../../assets/css/emoji.css";   // 导入精灵图样式
+@import "../../../assets/css/emoji.css"; // 导入精灵图样式
 </style>
