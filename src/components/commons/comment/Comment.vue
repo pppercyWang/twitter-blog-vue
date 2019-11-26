@@ -18,15 +18,23 @@
       <div class="emoji-panel-btn" @click="showEmojiPanel">
         <img src="../../../assets/img/face_logo.png" />
       </div>
+      <div class="link-github" @click="login">
+        <i class="iconfont">&#xe600;</i>
+      </div>
       <blog-button
         size="80"
         fontSize="12"
         @click="saveComment"
         height="30"
-        info="发表评论"
+        info="留个言儿"
         type="primary"
       ></blog-button>
-      <emoji-panel class="animated fadeIn" @onClose="closeEmojiPanel" @emojiClick="appendEmoji" v-if="isShowEmojiPanel"></emoji-panel>
+      <emoji-panel
+        class="animated fadeIn"
+        @onClose="closeEmojiPanel"
+        @emojiClick="appendEmoji"
+        v-if="isShowEmojiPanel"
+      ></emoji-panel>
     </div>
   </div>
 </template>
@@ -67,7 +75,7 @@ export default {
         const res = await apiCommentSave(
           {
             Content: this.content,
-            ArticleID: this.$route.params.id,
+            ArticleID: this.$route.params.id ? this.$route.params.id : 120008,
             GitUserID: userInfo.id,
             Username: userInfo.login,
             AvatarUrl: userInfo.avatar_url,
@@ -78,7 +86,7 @@ export default {
         this.comments.push({
           Content: this.content.replace(/:.*?:/g, this.emoji),
           GithubUrl: userInfo.html_url,
-          ArticleID: this.$route.params.id,
+          ArticleID: this.$route.params.id ? this.$route.params.id : 120008,
           Username: userInfo.login,
           AvatarUrl: userInfo.avatar_url,
           GitUserID: userInfo.id
@@ -93,7 +101,7 @@ export default {
       try {
         const res = await apiCommentList(
           {
-            ArticleID: this.$route.params.id
+            ArticleID: this.$route.params.id ? this.$route.params.id : 120008
           },
           null
         );
@@ -116,6 +124,10 @@ export default {
     appendEmoji(text) {
       const el = document.getElementById("textpanel");
       this.content = el.value + ":" + text + ":";
+    },
+    login() {
+      window.location.href =
+        "https://github.com/login/oauth/authorize?client_id=63ef2362d2082fac3874";
     }
   },
   created() {
@@ -197,6 +209,16 @@ export default {
         height: 24px;
         width: 24px;
       }
+    }
+    .link-github {
+      position: absolute;
+      right: 100px;
+      top: 5px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+      }
+      color: rgb(70, 185, 128);
     }
   }
 }

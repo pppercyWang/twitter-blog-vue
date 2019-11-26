@@ -15,11 +15,20 @@ module.exports = {
     proxy: {
       '/api': {
         ws: false, //禁用websocket
-        target: 'http://localhost:8848/',
+        target: 'http://127.0.0.1:8848/',
         changeOrigin: true,
       }
     },
     port: 12322,
     disableHostCheck: true,
   },
+  pwa: {
+    iconPaths: {
+      favicon32: 'favicon.ico',
+      favicon16: 'favicon.ico',
+      appleTouchIcon: 'favicon.ico',
+      maskIcon: 'favicon.ico',
+      msTileImage: 'favicon.ico'
+    }
+  }
 }

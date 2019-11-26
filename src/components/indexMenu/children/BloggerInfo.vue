@@ -23,7 +23,6 @@
         text="Changsha"
         size="12"
         underlineHeight="1"
-        color="#1da1f2"
       >
         <template slot="icon">
           <i class="iconfont percy-icon-Positioning"></i>
@@ -33,7 +32,7 @@
      <div class="area">
       <text-underline
         @click="showSearchBar"
-        text=" 归档"
+        text=" 归档~"
         size="12"
         underlineHeight="1"
       >

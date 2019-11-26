@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item-wrap" @click="push">
+  <div class="menu-item-wrap" :class="active === title?'active':''" @click="push">
     <div class="top">{{title}}</div>
     <div class="bottom">
       <div class="blue"></div>
@@ -11,9 +11,10 @@ export default {
   data() {
     return {};
   },
-  props: ["title", "to"],
+  props: ["title", "to", "active"],
   methods: {
     push() {
+      this.$emit("itemclick", this.title);
       this.$router.push(this.to);
     }
   }
@@ -40,6 +41,13 @@ export default {
       transition: height 0.1s;
       bottom: 0px;
       position: absolute;
+    }
+  }
+}
+.active {
+  .bottom {
+    .blue {
+      height: 2px;
     }
   }
 }

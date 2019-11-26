@@ -4,7 +4,9 @@
       <blog-header></blog-header>
     </div>
     <div class="body">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
     <div class="footer">
       <div class="copyright">© 2019 wangwensheng</div>
@@ -32,17 +34,17 @@ export default class extends Vue {}
   }
   .body {
     margin-top: 48px;
-    min-height: 100%;
+    min-height: 800px;
     .shake-control {
       display: inline;
     }
   }
-  .footer{
-    .copyright{
+  .footer {
+    .copyright {
       height: 60px;
       line-height: 60px;
       text-align: center;
-      color:#888888;
+      color: #888888;
     }
   }
 }

@@ -76,6 +76,8 @@ export default {
         this.matchArticles = newArr;
         console.log(this.matchArticles);
       }
+
+
     },
     async getArticleList() {
       try {
@@ -145,7 +147,7 @@ export default {
     }
     .underline {
       width: 100%;
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid #888888;
     }
   }
   .article-list {

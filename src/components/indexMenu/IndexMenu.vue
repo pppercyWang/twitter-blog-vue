@@ -5,11 +5,7 @@
         <profile-heading></profile-heading>
       </div>
       <div class="blogger-about">
-        <BloggerInfo
-          v-if="!isShowSearchBar"
-          @fileclick="showSearchBar"
-          class="animated fadeInUp"
-        ></BloggerInfo>
+        <BloggerInfo v-if="!isShowSearchBar" @fileclick="showSearchBar" class="animated fadeInUp"></BloggerInfo>
         <SearchBar
           v-else
           :propText="searchBarText"
