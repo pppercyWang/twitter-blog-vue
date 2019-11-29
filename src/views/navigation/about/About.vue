@@ -10,9 +10,9 @@
           </div>
           <div class="right">
             <p>
-              95后小青年 爱好摩托车 吉他 篮球 旅行 美剧
+              95后小青年 爱好摩托车 吉他 篮球 旅行 美剧 狼人杀
               <br />工作主要是使用 vue.js 和 react
-              <br />究极无敌爱折腾 nodejs golang java咱也搞过
+              <br />究极无敌爱折腾 nodejs golang咱也搞过
               <br />嗜好太多 能力太小
               <br />路还很长 好好学习 好好生活
               <br />未完待续......

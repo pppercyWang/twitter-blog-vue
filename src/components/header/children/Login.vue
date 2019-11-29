@@ -41,7 +41,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.login-form-wrap {
+.login-form-wrap { 
   position: absolute;
   top: 50px;
   right: 0px;

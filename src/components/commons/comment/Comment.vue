@@ -18,7 +18,7 @@
       <div class="emoji-panel-btn" @click="showEmojiPanel">
         <img src="../../../assets/img/face_logo.png" />
       </div>
-      <div class="link-github" @click="login">
+      <div class="link-github" @click="login" title="github登录">
         <i class="iconfont">&#xe600;</i>
       </div>
       <blog-button
