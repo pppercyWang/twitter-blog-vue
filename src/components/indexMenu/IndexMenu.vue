@@ -17,7 +17,7 @@
         <menu-item
           class="menu-item"
           title="文章"
-          number="1,276"
+          number="46"
           index="/welcome"
           :default-active="true"
         ></menu-item>
