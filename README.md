@@ -12,7 +12,7 @@
 
 
 ```
-menu-item组件 hover动画效果
+menu-item组件
 实现拉幕效果，字体抖动
 实现中部导航栏布局
 中部导航栏
@@ -30,6 +30,7 @@ ridio组件
 checkbox拉下滚动
 articleItem组件
 tagInpter组件
+发布文章
 下拉加载文章
 文章搜素归档
 接入github授权登录
