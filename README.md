@@ -2,7 +2,7 @@
 
 一直想着写一个博客,打算在工作之余模仿twitter的一个页面。手写所有用到的组件,后端使用golang进行开发，完成一个自己的博客。
 
-![image](https://github.com/pppercyWang/shop/blob/master/static/shop.gif)
+![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/src/assets/img/desc.gif)
 
 ### 模仿页面：https://twitter.com/dariel_noel 
 
@@ -31,7 +31,7 @@ checkbox拉下滚动
 articleItem组件
 tagInpter组件
 下拉加载文章
-搜素文章归档
+文章搜素归档
 接入github授权登录
 评论功能
 ```
