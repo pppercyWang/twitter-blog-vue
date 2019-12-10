@@ -53,7 +53,6 @@ export default {
       } catch (e) {
         this.$message.error(e.Msg);
       }
-      return true;
     },
     async getArticleList() {
       try {
