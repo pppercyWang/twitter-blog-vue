@@ -55,11 +55,15 @@ export default {
         this.searchText = "";
       }
     },
-    closeSearchBar() {
+    closeSearchBar(e) {
+      let flag = 0;
+      if (e.target.className.indexOf("isNotCateFlag") !== -1) {
+        flag = e.target.innerHTML;
+      }
       if (this.flag === false) {
         this.flag = true;
       } else {
-        this.$emit("onClose");
+        this.$emit("onClose", flag);
       }
     },
     changeText(text) {
@@ -74,10 +78,7 @@ export default {
           );
         });
         this.matchArticles = newArr;
-        console.log(this.matchArticles);
       }
-
-
     },
     async getArticleList() {
       try {

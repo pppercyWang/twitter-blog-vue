@@ -20,6 +20,7 @@
             v-for="(item,index1) in tags"
             v-on:tagclick="handleTagClick(item.text)"
             :type="item.color"
+            :isCate="false"
             v-bind:key="index1"
           >{{item.text}}</tag>
         </div>
@@ -29,6 +30,7 @@
             v-on:tagclick="handleCateClick(item.text)"
             v-for="(item,index2) in categories"
             :type="item.color"
+            :isCate="true"
             v-bind:key="index2"
           >{{item.text}}</tag>
         </div>

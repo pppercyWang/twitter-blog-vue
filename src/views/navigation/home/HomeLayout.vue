@@ -13,6 +13,7 @@
       @showSearchBar="showSearchBarFlag"
       @closeSearchBar="closeSearchBar"
       :searchBarText="searchBarText"
+      ref="indexMenu"
     ></index-menu>
     <div class="content-wrap">
       <div class="transition-wrap">
@@ -38,16 +39,12 @@ export default {
     };
   },
   methods: {
-    closeSearchBar() {
-      this.searchBarFlag = false;
-      this.searchBarText = "find something...";
-    },
-    showSearchBarFlag(text) {
-      this.searchBarFlag = true;
-      if (text) {
-        this.searchBarText = text;
+    closeSearchBar(flag) {
+      if (flag !== 0) {
+        this.$refs.indexMenu.$refs.searchBar.searchText = flag;
       } else {
-        this.searchBarText = "";
+        this.searchBarFlag = false;
+        this.searchBarText = "find something...";
       }
     },
     showSearchBarFlag(text) {
@@ -69,10 +66,10 @@ export default {
           temp === scrollHeight + 1 ||
           temp === scrollHeight - 1
         ) {
-          const ref = this.$refs.rv; 
+          const ref = this.$refs.rv;
           if (ref.fetchNewData) {
             const $this = this;
-            const res = ref.fetchNewData(); 
+            const res = ref.fetchNewData();
             if (!res) {
               $this.fetchFlag = false;
             }

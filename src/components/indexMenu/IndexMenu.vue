@@ -11,6 +11,7 @@
           :propText="searchBarText"
           @onClose="closeSearchBar"
           class="animated bounceInLeft"
+          ref="searchBar"
         ></SearchBar>
       </div>
       <div class="profile-nav-list">
@@ -49,8 +50,8 @@ export default {
   },
 
   methods: {
-    closeSearchBar() {
-      this.$emit("closeSearchBar");
+    closeSearchBar(flag) {
+      this.$emit("closeSearchBar",flag);
     },
     pushArticleEdit() {
       this.$router.push({

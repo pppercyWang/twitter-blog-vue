@@ -1,21 +1,20 @@
 <template>
-  <div :class="['tag-wrap', type?type:'']" @click="handleTagClick">
+  <div :class="['tag-wrap', type?type:'']">
     <div class="arrow"></div>
     <div class="dot-wrap">
       <div class="dot"></div>
     </div>
-    <div class="text-wrap">
+    <div :class="{'tag-text-wrap':true,'isNotCateFlag': !isCate}"  @click="handleTagClick">
       <slot></slot>
     </div>
   </div>
 </template>
 <script>
-import Tag from "@/components/commons/tag/Tag.vue";
 export default {
   data() {
     return {};
   },
-  props: ["type"],
+  props: ["type","isCate"],
   methods: {
     handleTagClick(e) {
       this.$emit("tagclick");
@@ -25,12 +24,11 @@ export default {
 </script>
 <style scoped lang="scss">
 .tag-wrap {
-  &:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
   display: inline-block;
   margin-right: 5px;
+  &:hover {
+      opacity: 0.8;
+    }
   .arrow {
     display: inline-block;
     width: 0;
@@ -39,7 +37,7 @@ export default {
     border-style: solid;
     border-color: transparent #1da1f2 transparent transparent;
   }
-  .text-wrap {
+  .tag-text-wrap {
     display: inline-block;
     vertical-align: top;
     color: #ffffff;
@@ -49,6 +47,9 @@ export default {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     background-color: #1da1f2;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .dot-wrap {
     display: inline-block;
@@ -71,7 +72,7 @@ export default {
   .arrow {
     border-color: transparent rgb(255, 151, 106) transparent transparent;
   }
-  .text-wrap {
+  .tag-text-wrap {
     background-color: rgb(255, 151, 106);
   }
   .dot-wrap {
@@ -82,7 +83,7 @@ export default {
   .arrow {
     border-color: transparent rgb(7, 193, 69) transparent transparent;
   }
-  .text-wrap {
+  .tag-text-wrap {
     background-color: rgb(7, 193, 69);
   }
   .dot-wrap {
@@ -93,7 +94,7 @@ export default {
   .arrow {
     border-color: transparent #1da1f2 transparent transparent;
   }
-  .text-wrap {
+  .tag-text-wrap {
     background-color: #1da1f2;
   }
   .dot-wrap {
