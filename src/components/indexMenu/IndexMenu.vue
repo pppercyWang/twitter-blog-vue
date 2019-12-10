@@ -2,7 +2,7 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <!-- <profile-heading :bigHeadShow="bigHeadShow"></profile-heading> -->
+        <profile-heading :bigHeadShow="bigHeadShow"></profile-heading>
       </div>
       <div class="blogger-about">
         <BloggerInfo v-if="!isShowSearchBar" @fileclick="showSearchBar" class="animated fadeInUp"></BloggerInfo>
