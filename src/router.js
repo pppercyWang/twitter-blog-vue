@@ -8,9 +8,6 @@ import Personal from '@/views/navigation/home/Personal.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
 import NotFound from '@/views/NotFound.vue';
 import ArticleBrowser from '@/views/ArticleBrowser.vue';
-import {
-  format
-} from 'path';
 Vue.use(Router);
 export default new Router({
   routes: [{

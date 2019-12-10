@@ -148,7 +148,8 @@ export default {
     }
     .underline {
       width: 100%;
-      border-bottom: 2px solid #888888;
+      border-bottom: 1px solid #888888;
+      margin-bottom: 4px;
     }
   }
   .article-list {

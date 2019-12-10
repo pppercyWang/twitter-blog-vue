@@ -6,7 +6,7 @@
         v-for="(item,index) in comments"
         v-bind:key="index"
       >
-        <div class="comments-list-item-heading">
+        <div class="comments-list-item-heading" @click="openGithub(item.GithubUrl)">
           <img :src="item.AvatarUrl" />
           <span class="comments-list-item-username">{{item.Username}}</span>
         </div>
@@ -58,6 +58,9 @@ export default {
     BlogButton
   },
   methods: {
+    openGithub(url) {
+      window.open(url);
+    },
     closeEmojiPanel() {
       this.isShowEmojiPanel = false;
     },
@@ -110,6 +113,7 @@ export default {
           return item;
         });
         this.comments = newArr;
+        console.log(this.comments);
       } catch (e) {
         this.$message.error(e.Msg);
       }
@@ -165,6 +169,9 @@ export default {
       }
       .comments-list-item-heading {
         display: inline-block;
+        &:hover {
+          cursor: pointer;
+        }
         img {
           height: 32px;
           width: 32px;

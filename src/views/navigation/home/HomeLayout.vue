@@ -18,7 +18,7 @@
     <div class="content-wrap">
       <div class="transition-wrap">
         <transition name="fade" mode="out-in">
-          <router-view ref="rv"></router-view>
+          <router-view></router-view>
         </transition>
       </div>
     </div>
@@ -32,7 +32,6 @@ export default {
   },
   data() {
     return {
-      fetchFlag: true,
       searchBarFlag: false,
       searchBarText: "find someting...",
       bigHeadShow: true
@@ -54,35 +53,7 @@ export default {
       } else {
         this.searchBarText = "";
       }
-    },
-    handleScroll() {
-      const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const temp = clientHeight + Math.floor(scrollTop);
-      if (this.fetchFlag) {
-        if (
-          temp === scrollHeight ||
-          temp === scrollHeight + 1 ||
-          temp === scrollHeight - 1
-        ) {
-          const ref = this.$refs.rv;
-          if (ref.fetchNewData) {
-            const $this = this;
-            const res = ref.fetchNewData();
-            if (!res) {
-              $this.fetchFlag = false;
-            }
-          }
-        }
-      }
     }
-  },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>

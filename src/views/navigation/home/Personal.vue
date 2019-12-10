@@ -7,7 +7,8 @@
       :row="item"
     ></ArticleItem>
     <div class="footer">
-      <div class="alert">{{this.hasMore?"正在加载...":"暂无更多文章..."}}</div>
+      <div class="alert" v-show="loading">加载中......</div>
+      <div class="alert" v-show="!hasMore">没有更多文章......</div>
     </div>
   </div>
 </template>
@@ -33,6 +34,7 @@ export default {
       this.$parent.showSearchBarFlag(text);
     },
     async fetchNewData() {
+      this.loading = true;
       try {
         const res = await apiArticleList(
           {
@@ -44,11 +46,10 @@ export default {
         if (res.Data.List.length === 0) {
           this.hasMore = false;
           this.page--;
-          return false;
         } else {
           this.articleList = this.articleList.concat(res.Data.List);
-          return true;
         }
+        this.loading = false;
       } catch (e) {
         this.$message.error(e.Msg);
       }
@@ -67,10 +68,31 @@ export default {
       } catch (e) {
         this.$message.error(e.Msg);
       }
+    },
+    handleScroll() {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const temp = clientHeight + Math.floor(scrollTop);
+      if (this.hasMore) {
+        if (
+          temp === scrollHeight ||
+          temp === scrollHeight + 1 ||
+          temp === scrollHeight - 1
+        ) {
+          if (!this.loading) {
+            this.fetchNewData();
+          }
+        }
+      }
     }
   },
   created() {
     this.getArticleList();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -87,6 +109,8 @@ export default {
       height: 80px;
       line-height: 80px;
       text-align: center;
+      font-size: 16px;
+      font-weight: bold;
     }
   }
 }

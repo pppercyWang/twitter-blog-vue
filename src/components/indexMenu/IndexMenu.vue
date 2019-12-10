@@ -36,7 +36,6 @@ export default {
   data() {
     return {
       fixedFlag: false,
-      unFixedFlag: true,
       bigHeadShow: true
     };
   },
@@ -65,28 +64,24 @@ export default {
       const scrollTop = document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
+      const profileObj = document.getElementById("profile-nav");
+      const fakeAreaObj = document.getElementById("fake-area");
       if (scrollTop > 296) {
         if (!this.fixedFlag) {
           this.bigHeadShow = false;
-          const obj = document.getElementById("profile-nav");
-          const obj2 = document.getElementById("fake-area");
-          obj.style.position = "fixed";
-          obj.style.top = "77px";
-          obj2.style.position = "fixed";
-          obj2.style.top = "47px";
+          profileObj.style.position = "fixed";
+          profileObj.style.top = "77px";
+          fakeAreaObj.style.position = "fixed";
+          fakeAreaObj.style.top = "47px";
           this.fixedFlag = true;
-          this.unFixedFlag = false;
         }
       } else {
-        if (!this.unFixedFlag) {
+        if (this.fixedFlag) {
           this.bigHeadShow = true;
-          const obj = document.getElementById("profile-nav");
-          const obj2 = document.getElementById("fake-area");
-          obj.style.position = "";
-          obj.style.top = "";
-          obj2.style.position = "";
-          obj2.style.top = "";
-          this.unFixedFlag = true;
+          profileObj.style.position = "";
+          profileObj.style.top = "";
+          fakeAreaObj.style.position = "";
+          fakeAreaObj.style.top = "";
           this.fixedFlag = false;
         }
       }
