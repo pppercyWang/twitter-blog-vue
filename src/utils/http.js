@@ -1,7 +1,6 @@
 import axios from 'axios';
-import qs from 'qs';
 class Http {
-    private service: any = null;
+    service = null;
     constructor() {
         axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         this.service = axios.create({
@@ -29,10 +28,12 @@ class Http {
             return Promise.reject(error);
         });
     }
-    public get(url, params = {}) {
-        return this.service.get(`${url}`, { params });
+     get(url, params = {}) {
+        return this.service.get(`${url}`, {
+            params
+        });
     }
-    public post(url, data = {}, config = {}) {
+     post(url, data = {}, config = {}) {
         return this.service.post(`${url}`, data, config);
     }
 }

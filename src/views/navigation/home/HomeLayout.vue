@@ -23,94 +23,73 @@
     </div>
   </div>
 </template>
-
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import IndexMenu from "@/components/indexMenu/IndexMenu.vue";
-import { Action, Mutation, State, Getter } from "vuex-class";
-@Component({
+export default {
   components: {
     IndexMenu
-  }
-})
-export default class extends Vue {
-  @Action("bigHeadingShowTrue") private actionBigHeadingShowTrue;
-  @Action("bigHeadingShowFalse") private actionBigHeadingShowFalse;
-  private fixedFlag: boolean = false;
-  private unFixedFlag: boolean = true;
-  private fetchFlag: boolean = true;
-  private searchBarFlag: boolean = false;
-  private searchBarText: string = "find someting...";
-  private mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-  private closeSearchBar() {
-    this.searchBarFlag = false;
-    this.searchBarText = "find something...";
-  }
-  private showSearchBarFlag(text) {
-    this.searchBarFlag = true;
-    if (text) {
-      this.searchBarText = text;
-    } else {
-      this.searchBarText = "";
-    }
-  }
-  private async handleScroll() {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop > 296) {
-      if (!this.fixedFlag) {
-        this.actionBigHeadingShowFalse();
-        const obj = document!.getElementById("profile-nav");
-        const obj2 = document!.getElementById("fake-area");
-        obj!.style.position = "fixed";
-        obj!.style.top = "77px";
-        obj2!.style.position = "fixed";
-        obj2!.style.top = "47px";
-        this.fixedFlag = true;
-        this.unFixedFlag = false;
+  },
+  data() {
+    return {
+      fetchFlag: true,
+      searchBarFlag: false,
+      searchBarText: "find someting...",
+      bigHeadShow: true
+    };
+  },
+  methods: {
+    closeSearchBar() {
+      this.searchBarFlag = false;
+      this.searchBarText = "find something...";
+    },
+    showSearchBarFlag(text) {
+      this.searchBarFlag = true;
+      if (text) {
+        this.searchBarText = text;
+      } else {
+        this.searchBarText = "";
       }
-    } else {
-      if (!this.unFixedFlag) {
-        this.actionBigHeadingShowTrue();
-        const obj = document!.getElementById("profile-nav");
-        const obj2 = document!.getElementById("fake-area");
-        obj!.style.position = "";
-        obj!.style.top = "";
-        obj2!.style.position = "";
-        obj2!.style.top = "";
-        this.unFixedFlag = true;
-        this.fixedFlag = false;
+    },
+    showSearchBarFlag(text) {
+      this.searchBarFlag = true;
+      if (text) {
+        this.searchBarText = text;
+      } else {
+        this.searchBarText = "";
       }
-    }
-    // console.log(`clientHeight: ${clientHeight}`);
-    // console.log(`scrollTop: ${scrollTop}`);
-    // console.log(`scrollHeight: ${scrollHeight}`);
-    const temp = clientHeight + Math.floor(scrollTop);
-    if (this.fetchFlag) {
-      if (
-        temp === scrollHeight ||
-        temp === scrollHeight + 1 ||
-        temp === scrollHeight - 1
-      ) {
-        const ref: any = this.$refs.rv; // ts对vue的支持不是很友好
-        if (ref.fetchNewData) {
-          const $this = this;
-          const res = await ref.fetchNewData(); // 下拉加载
-          if (!res) {
-            $this.fetchFlag = false;
+    },
+    handleScroll() {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const temp = clientHeight + Math.floor(scrollTop);
+      if (this.fetchFlag) {
+        if (
+          temp === scrollHeight ||
+          temp === scrollHeight + 1 ||
+          temp === scrollHeight - 1
+        ) {
+          const ref = this.$refs.rv; 
+          if (ref.fetchNewData) {
+            const $this = this;
+            const res = ref.fetchNewData(); 
+            if (!res) {
+              $this.fetchFlag = false;
+            }
           }
         }
       }
     }
-  }
-  private beforeDestroy() {
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
   }
-}
+};
 </script>
+
 <style lang="scss" scoped>
 .home-layout-container {
   .welcome {

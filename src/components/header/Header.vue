@@ -9,15 +9,11 @@
           class="menu-item"
           title="Home"
           to="/welcome"
-          @itemclick="handleItemOnclick"
-          :active="navActive"
         ></menu-item>
         <menu-item
           class="menu-item"
           title="About"
           to="/about"
-          @itemclick="handleItemOnclick"
-          :active="navActive"
         ></menu-item>
         <div class="right">
           <div class="login-area-wrap" @click="showLogin" v-if="loginAreaShow">
@@ -52,7 +48,6 @@ export default {
       loginFormShow: false,
       loginAreaShow: true,
       username: "",
-      navActive: ""
     };
   },
   components: {
@@ -61,9 +56,6 @@ export default {
     TextUnderline
   },
   methods: {
-    handleItemOnclick(active) {
-      this.navActive = active;
-    },
     closeLoginForm() {
       this.loginFormShow = false;
     },
@@ -115,11 +107,6 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.path === "/welcome") {
-      this.navActive = "Home";
-    } else {
-      this.navActive = "About";
-    }
     this.checkAuthentication();
     const code = this.getQueryVariable("code");
     if (code !== false) {

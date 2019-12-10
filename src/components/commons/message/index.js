@@ -2,7 +2,10 @@ import Vue from 'vue'
 import MessageTmp from './Message.vue'
 const MessageConstruct = Vue.extend(MessageTmp) // 创建的是一个组件构造器，不是实例
 const Message = {
-  install: (options, type, duration) => {
+  install: (options, type) => {
+    if (typeof (options) === 'function') {
+      return;
+    }
     if (options === undefined || options === null) {
       options = {
         content: ''

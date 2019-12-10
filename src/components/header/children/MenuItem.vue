@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-item-wrap" :class="active === title?'active':''" @click="push">
+  <div class="menu-item-wrap" :class="{'active':active}" @click="push">
     <div class="top">{{title}}</div>
     <div class="bottom">
       <div class="blue"></div>
@@ -9,13 +9,51 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      active: false
+    };
   },
-  props: ["title", "to", "active"],
+  props: ["title", "to"],
+  watch: {
+    $route(to, from) {
+      if (this.to === "/welcome") {
+        if (to.path === "/welcome" || to.path === "/collections") {
+          this.active = true;
+        } else {
+          this.active = false;
+        }
+      }
+      if (this.to === "/about") {
+        if (to.path === "/about") {
+          this.active = true;
+        } else {
+          this.active = false;
+        }
+      }
+    }
+  },
   methods: {
     push() {
-      this.$emit("itemclick", this.title);
       this.$router.push(this.to);
+    }
+  },
+  created() {
+    if (this.to === "/welcome") {
+      if (
+        this.$route.path === "/welcome" ||
+        this.$route.path === "/collections"
+      ) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    }
+    if (this.to === "/about") {
+      if (this.$route.path === "/about") {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
     }
   }
 };

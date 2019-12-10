@@ -11,66 +11,70 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import ArticleItem from "@/components/personal/articleItem/ArticleItem.vue";
 import { apiArticleList } from "@/api/article";
-@Component({
+export default {
+  data() {
+    return {
+      articleList: [],
+      dataList: [1, 2, 3, 4, 5, 6, 7, 8],
+      loading: false,
+      page: 1,
+      size: 10,
+      hasMore: true
+    };
+  },
   components: {
     ArticleItem
-  }
-})
-export default class extends Vue {
-  private articleList = [];
-  private dataList: any[] = [1, 2, 3, 4, 5, 6, 7, 8];
-  private loading: boolean = false;
-  private page: number = 1;
-  private size: number = 10;
-  private hasMore: boolean = true;
-  private handleTagClick(text) {
-    (this.$parent as any).showSearchBarFlag(text);
-  }
-  private async fetchNewData() {
-    try {
-      const res = await apiArticleList(
-        {
-          Page: ++this.page,
-          Size: this.size
-        },
-        null
-      );
-      if (res.Data.List.length === 0) {
-        this.hasMore = false;
-        this.page--;
-        return false;
-      } else {
-        this.articleList = this.articleList.concat(res.Data.List);
-        return true;
+  },
+  methods: {
+    handleTagClick(text) {
+      this.$parent.showSearchBarFlag(text);
+    },
+    async fetchNewData() {
+      try {
+        const res = await apiArticleList(
+          {
+            Page: ++this.page,
+            Size: this.size
+          },
+          null
+        );
+        if (res.Data.List.length === 0) {
+          this.hasMore = false;
+          this.page--;
+          return false;
+        } else {
+          this.articleList = this.articleList.concat(res.Data.List);
+          return true;
+        }
+      } catch (e) {
+        this.$message.error(e.Msg);
       }
-    } catch (e) {
-      this.$message.error(e.Msg);
+      return true;
+    },
+    async getArticleList() {
+      try {
+        const res = await apiArticleList(
+          {
+            Page: this.page,
+            Size: this.size
+          },
+          null
+        );
+        this.articleList = res.Data.List;
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
     }
-    return true;
-  }
-  private async getArticleList() {
-    try {
-      const res = await apiArticleList(
-        {
-          Page: this.page,
-          Size: this.size
-        },
-        null
-      );
-      this.articleList = res.Data.List;
-    } catch (e) {
-      this.$message.error(e.Msg);
-    }
-  }
-  private mounted() {
+  },
+  created() {
     this.getArticleList();
   }
-}
+};
 </script>
+
 <style lang="scss" scoped>
 .container {
   margin-top: 20px;

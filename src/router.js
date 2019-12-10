@@ -8,10 +8,12 @@ import Personal from '@/views/navigation/home/Personal.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
 import NotFound from '@/views/NotFound.vue';
 import ArticleBrowser from '@/views/ArticleBrowser.vue';
+import {
+  format
+} from 'path';
 Vue.use(Router);
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/404',
       name: '找不到页面',
       component: NotFound,
@@ -19,22 +21,24 @@ export default new Router({
     {
       path: '/',
       component: Layout,
-      redirect: { path: "/about" },
-      children: [
-        {
-          path: '/index',
+      redirect: {
+        path: "/welcome"
+      },
+      children: [{
+          path: '/home',
           name: '首页',
           component: HomeLayout,
-          children: [
-            {
+          children: [{
               path: '/welcome',
               name: '文章',
               component: Personal,
+              p:'home'
             },
             {
               path: '/collections',
               name: '收藏',
               component: Collection,
+              p: 'home'
             },
           ]
         },
@@ -56,7 +60,23 @@ export default new Router({
     },
     {
       path: '/*',
-      redirect: { path: '/404' }
+      redirect: {
+        path: '/404'
+      }
     }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (from.name === '关于' && to.name == '文章') {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+    if (to.name === '关于') {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+  }
 });

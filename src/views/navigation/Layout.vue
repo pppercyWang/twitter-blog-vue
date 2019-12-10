@@ -13,15 +13,17 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import BlogHeader from "@/components/header/Header.vue";
-@Component({
+export default {
+  data() {
+    return {};
+  },
   components: {
     BlogHeader
-  }
-})
-export default class extends Vue {}
+  },
+  methods: {}
+};
 </script>
 <style scoped lang="scss">
 .home-container {

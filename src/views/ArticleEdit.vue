@@ -46,126 +46,131 @@
     </blog-dialog>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+<script>
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BlogDialog from "@/components/commons/dialog/BlogDialog.vue";
 import BlogInput from "@/components/commons/input/BlogInput.vue";
 import Checkbox from "@/components/commons/checkbox/Checkbox.vue";
 import CheckboxGroup from "@/components/commons/checkbox/CheckboxGroup.vue";
 import FormItem from "@/components/commons/formItem/FormItem.vue";
-import { apiArticleSave } from "@/api/article";
-import { apiGetCategoryList } from "@/api/category";
 import Radio from "@/components/commons/radio/Radio.vue";
 import RadioGroup from "@/components/commons/radio/RadioGroup.vue";
 import TagInputer from "@/components/commons/tagInputer/TagInputer.vue";
-@Component({
+import { apiArticleSave } from "@/api/article";
+import { apiGetCategoryList } from "@/api/category";
+
+export default {
+  data() {
+    return {
+      radioIschecked: "0",
+      checkboxData: [],
+      checkList: [],
+      title: "",
+      content: "",
+      dialogVisible: false,
+      tags: [],
+      hostKey: "",
+      toolbars: {
+        bold: true, // 粗体
+        italic: true, // 斜体
+        header: true, // 标题
+        underline: true, // 下划线
+        mark: true, // 标记
+        superscript: true, // 上角标
+        quote: true, // 引用
+        ol: true, // 有序列表
+        code: true, // code
+        subfield: true, // 是否需要分栏
+        fullscreen: true, // 全屏编辑
+        readmodel: true, // 沉浸式阅读
+        /* 1.3.5 */
+        undo: true, // 上一步
+        trash: true, // 清空
+        save: true // 保存（触发events中的save事件）
+        /* 1.4.2 */
+      }
+    };
+  },
   components: {
+    BlogDialog,
     BlogButton,
     BlogInput,
-    BlogDialog,
     Checkbox,
     CheckboxGroup,
     FormItem,
     Radio,
     RadioGroup,
     TagInputer
-  }
-})
-export default class extends Vue {
-  private radioIschecked = "0";
-  private checkboxData = [];
-  private checkList = [];
-  private title: string = "";
-  private content: string = "";
-  private dialogVisible: boolean = false;
-  private tags = [];
-  private hostKey = "";
-  private toolbars = {
-    bold: true, // 粗体
-    italic: true, // 斜体
-    header: true, // 标题
-    underline: true, // 下划线
-    mark: true, // 标记
-    superscript: true, // 上角标
-    quote: true, // 引用
-    ol: true, // 有序列表
-    code: true, // code
-    subfield: true, // 是否需要分栏
-    fullscreen: true, // 全屏编辑
-    readmodel: true, // 沉浸式阅读
-    /* 1.3.5 */
-    undo: true, // 上一步
-    trash: true, // 清空
-    save: true // 保存（触发events中的save事件）
-    /* 1.4.2 */
-  };
-  private handleOnchange(tags) {
-    this.tags = tags;
-  }
-  private async handleSubmit() {
-    if (this.title.trim() === "") {
-      this.$message.error("文章标题不能为空");
-      return;
-    }
-    if (this.content.trim() === "") {
-      this.$message.error("文章内容不能为空");
-      return;
-    }
+  },
+  props: ["label", "value"],
+  methods: {
+    handleOnchange(tags) {
+      this.tags = tags;
+    },
+    async handleSubmit() {
+      if (this.title.trim() === "") {
+        this.$message.error("文章标题不能为空");
+        return;
+      }
+      if (this.content.trim() === "") {
+        this.$message.error("文章内容不能为空");
+        return;
+      }
 
-    if (this.checkList.length === 0) {
-      this.$message.error("请至少选择一个文章分类");
-      return;
-    }
-    if (this.checkList.length > 3) {
-      this.$message.error("最多选择三个文章分类");
-      return;
-    }
-    if (this.hostKey === "") {
-      this.$message.error("请输入hostKey");
-      return;
-    }
-    try {
-      const res = await apiArticleSave(
-        {
-          Content: this.content,
-          CategoryIDs: this.checkList.join(","),
-          Title: this.title,
-          Personal: this.radioIschecked,
-          Tags: this.tags.join(","),
-          HostKey: this.hostKey
-        },
-        null
-      );
-      this.$message.success(res.Msg);
+      if (this.checkList.length === 0) {
+        this.$message.error("请至少选择一个文章分类");
+        return;
+      }
+      if (this.checkList.length > 3) {
+        this.$message.error("最多选择三个文章分类");
+        return;
+      }
+      if (this.hostKey === "") {
+        this.$message.error("请输入hostKey");
+        return;
+      }
+      try {
+        const res = await apiArticleSave(
+          {
+            Content: this.content,
+            CategoryIDs: this.checkList.join(","),
+            Title: this.title,
+            Personal: this.radioIschecked,
+            Tags: this.tags.join(","),
+            HostKey: this.hostKey
+          },
+          null
+        );
+        this.$message.success(res.Msg);
+        this.dialogVisible = false;
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
+    },
+    updateDoc(markdown, html) {
+      // 此时会自动将 markdown 和 html 传递到这个方法中
+      console.log("markdown内容: " + markdown);
+      console.log("html内容:" + markdown);
+    },
+    closeDialog() {
       this.dialogVisible = false;
-    } catch (e) {
-      this.$message.error(e.Msg);
+    },
+    async getCategoryList() {
+      try {
+        const res = await apiGetCategoryList({}, null);
+        this.checkboxData = res.Data.List;
+      } catch (e) {
+        this.$message.error(e.Msg);
+      }
+    },
+    saveArticle() {
+      this.dialogVisible = true;
     }
-  }
-  private updateDoc(markdown, html) {
-    // 此时会自动将 markdown 和 html 传递到这个方法中
-    console.log("markdown内容: " + markdown);
-    console.log("html内容:" + markdown);
-  }
-  private closeDialog() {
-    this.dialogVisible = false;
-  }
-  private async getCategoryList() {
-    try {
-      const res = await apiGetCategoryList({}, null);
-      this.checkboxData = res.Data.List;
-    } catch (e) {
-      this.$message.error(e.Msg);
-    }
-  }
-  private saveArticle() {
-    this.dialogVisible = true;
-  }
-  private mounted() {
+  },
+  created() {
     this.getCategoryList();
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .container {

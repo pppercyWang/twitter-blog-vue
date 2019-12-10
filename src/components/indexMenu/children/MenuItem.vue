@@ -27,8 +27,17 @@ export default {
       this.$router.push(this.index);
     }
   },
-  mounted() {
-    if (this.defaultActive) {
+  watch: {
+    $route(to, from) {
+      if (to.path == this.index) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    }
+  },
+  created() {
+    if (this.$route.path === this.index) {
       this.active = true;
     }
   }

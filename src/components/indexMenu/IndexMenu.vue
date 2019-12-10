@@ -2,7 +2,7 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <profile-heading></profile-heading>
+        <!-- <profile-heading :bigHeadShow="bigHeadShow"></profile-heading> -->
       </div>
       <div class="blogger-about">
         <BloggerInfo v-if="!isShowSearchBar" @fileclick="showSearchBar" class="animated fadeInUp"></BloggerInfo>
@@ -14,13 +14,7 @@
         ></SearchBar>
       </div>
       <div class="profile-nav-list">
-        <menu-item
-          class="menu-item"
-          title="文章"
-          number="46"
-          index="/welcome"
-          :default-active="true"
-        ></menu-item>
+        <menu-item class="menu-item" title="文章" number="46" index="/welcome"></menu-item>
         <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
       </div>
       <div class="right-btn">
@@ -39,7 +33,11 @@ import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
 import SearchBar from "@/components/indexMenu/children/SearchBar.vue";
 export default {
   data() {
-    return {};
+    return {
+      fixedFlag: false,
+      unFixedFlag: true,
+      bigHeadShow: true
+    };
   },
   props: ["isShowSearchBar", "searchBarText"],
   components: {
@@ -49,6 +47,7 @@ export default {
     BlogButton,
     SearchBar
   },
+
   methods: {
     closeSearchBar() {
       this.$emit("closeSearchBar");
@@ -60,7 +59,43 @@ export default {
     },
     showSearchBar() {
       this.$emit("showSearchBar");
+    },
+    handleScroll() {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      if (scrollTop > 296) {
+        if (!this.fixedFlag) {
+          this.bigHeadShow = false;
+          const obj = document.getElementById("profile-nav");
+          const obj2 = document.getElementById("fake-area");
+          obj.style.position = "fixed";
+          obj.style.top = "77px";
+          obj2.style.position = "fixed";
+          obj2.style.top = "47px";
+          this.fixedFlag = true;
+          this.unFixedFlag = false;
+        }
+      } else {
+        if (!this.unFixedFlag) {
+          this.bigHeadShow = true;
+          const obj = document.getElementById("profile-nav");
+          const obj2 = document.getElementById("fake-area");
+          obj.style.position = "";
+          obj.style.top = "";
+          obj2.style.position = "";
+          obj2.style.top = "";
+          this.unFixedFlag = true;
+          this.fixedFlag = false;
+        }
+      }
     }
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>

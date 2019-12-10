@@ -5,24 +5,28 @@
     </div>
   </transition>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  private content: string = "";
-  private visible: boolean = false;
-  private type: string = "info"; // 'success','error'
-  private startTimer() {
+
+<script>
+export default {
+  data() {
+    return {
+      content: "",
+      visible: false,
+      type: "info"
+    };
+  },
+  props: ["label", "value"],
+  methods: {
+    startTimer() {
     window.setTimeout(() => {
       this.visible = false;
     }, 3000);
-  }
-  private mounted() {
+    }
+  },
+  created() {
     this.startTimer();
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .message-wrap {

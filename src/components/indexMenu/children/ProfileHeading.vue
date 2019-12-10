@@ -2,12 +2,12 @@
   <div class="heading-wrap">
     <div class="big-heading">
       <transition name="slide-fade">
-        <img src="../../../assets/img/heading.jpg" v-if="getterBigHeadingShow" />
+        <img src="../../../assets/img/heading.jpg" v-if="bigHeadShow" />
       </transition>
     </div>
     <div class="small-heading">
       <transition name="slide-fade">
-        <div v-if="!getterBigHeadingShow">
+        <div v-if="!bigHeadShow">
           <div class="left">
             <img src="../../../assets/img/heading.jpg" />
           </div>
@@ -20,20 +20,23 @@
     </div>
   </div>
 </template>
-<script lang='ts'>
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import { Action, Mutation, State, Getter } from "vuex-class";
-@Component({
-  components: {}
-})
-export default class extends Vue {
-  @Action("bigHeadingShowTrue") private actionBigHeadingShowTrue;
-  @Action("bigHeadingShowFalse") private actionBigHeadingShowFalse;
-  @Getter("bigHeadingShow") private getterBigHeadingShow;
-  private pushGithub() {
-    window.open("https://github.com/pppercyWang");
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: ["bigHeadShow"],
+  methods: {
+    pushGithub() {
+      window.open("https://github.com/pppercyWang");
+    }
+  },
+  mounted() {
+    if (this.defaultActive) {
+      this.active = true;
+    }
   }
-}
+};
 </script>
 <style scoped lang="scss">
 .heading-wrap {
