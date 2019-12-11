@@ -70,7 +70,7 @@ export default {
 <style scoped lang="scss">
 .article-item-wrap {
   height: 120px;
-  margin: 10px;
+  margin: 5px 0px;
   border-bottom: 1px solid rgb(238, 238, 238);
   .row {
     display: flex;
