@@ -7,7 +7,12 @@
       :row="item"
     ></ArticleItem>
     <div class="footer">
-      <div class="alert" v-show="loading">加载中......</div>
+      <div class="alert loading" v-show="loading">
+        <img
+          src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/mantpl/img/base/loading_72b1da62.gif"
+        />
+        文章加载中......
+      </div>
       <div class="alert" v-show="!hasMore">没有更多文章......</div>
     </div>
   </div>
@@ -110,6 +115,11 @@ export default {
       text-align: center;
       font-size: 16px;
       font-weight: bold;
+    }
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
