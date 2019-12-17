@@ -2,9 +2,7 @@
 
 一直想着写一个博客,打算在工作之余模仿twitter的风格。手写所有用到的组件,后端使用golang进行开发，完成一个自己的博客。
 
-### 线上地址：http://106.12.221.34(身份证过期不能备案，暂时访问不了) gif图加载中.... 请稍等
-
-![image](https://github.com/pppercyWang/twitter-blog-vue/blob/master/src/assets/img/desc.gif)
+### 线上地址：http://106.12.221.34
 
 ### 模仿页面：https://twitter.com/dariel_noel 
 
