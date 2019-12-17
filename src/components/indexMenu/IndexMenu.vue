@@ -2,7 +2,7 @@
   <div class="cantainer" id="profile-nav">
     <div class="profile-nav-wrap">
       <div class="profile-heading">
-        <profile-heading :bigHeadShow="bigHeadShow"></profile-heading>
+        <!-- <profile-heading :bigHeadShow="bigHeadShow"></profile-heading> -->
       </div>
       <div class="blogger-about">
         <BloggerInfo v-if="!isShowSearchBar" @fileclick="showSearchBar" class="animated fadeInUp"></BloggerInfo>
@@ -15,8 +15,8 @@
         ></SearchBar>
       </div>
       <div class="profile-nav-list">
-        <menu-item class="menu-item" title="文章" number="46" index="/welcome"></menu-item>
-        <menu-item class="menu-item" title="收藏" number="5" index="/collections"></menu-item>
+        <menu-item class="menu-item" title="Skill" :number="skillTotal" index="/welcome"></menu-item>
+        <menu-item class="menu-item" title="Life" :number="lifeTotal" index="/life"></menu-item>
       </div>
       <div class="right-btn">
         <div class="right">
@@ -36,7 +36,9 @@ export default {
   data() {
     return {
       fixedFlag: false,
-      bigHeadShow: true
+      bigHeadShow: true,
+      lifeTotal: 0,
+      skillTotal: 0
     };
   },
   props: ["isShowSearchBar", "searchBarText"],
@@ -47,10 +49,9 @@ export default {
     BlogButton,
     SearchBar
   },
-
   methods: {
     closeSearchBar(flag) {
-      this.$emit("closeSearchBar",flag);
+      this.$emit("closeSearchBar", flag);
     },
     pushArticleEdit() {
       this.$router.push({
@@ -85,10 +86,21 @@ export default {
           this.fixedFlag = false;
         }
       }
+    },
+    getArticleCount() {
+      if (localStorage.getItem("lifeTotal")) {
+        this.lifeTotal = parseInt(localStorage.getItem("lifeTotal"));
+      }
+      if (localStorage.getItem("skillTotal")) {
+        this.skillTotal = parseInt(localStorage.getItem("skillTotal"));
+      }
     }
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
+    this.$bus.$on("articleCount", () => {
+      this.getArticleCount();
+    });
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);

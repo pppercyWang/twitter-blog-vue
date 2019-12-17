@@ -36,8 +36,8 @@
       </form-item>
       <form-item label="文章类型">
         <radio-group v-model="radioIschecked">
-          <radio label="个人" value="0"></radio>
-          <radio label="收藏" value="1"></radio>
+          <radio label="skill" value="0"></radio>
+          <radio label="life" value="1"></radio>
         </radio-group>
       </form-item>
       <form-item label="isHostKey">
@@ -135,7 +135,7 @@ export default {
             Content: this.content,
             CategoryIDs: this.checkList.join(","),
             Title: this.title,
-            Personal: this.radioIschecked,
+            Personal: this.radioIschecked,   // personal 0 技能文章 1 生活文章
             Tags: this.tags.join(","),
             HostKey: this.hostKey
           },

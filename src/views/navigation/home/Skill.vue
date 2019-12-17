@@ -44,7 +44,8 @@ export default {
         const res = await apiArticleList(
           {
             Page: ++this.page,
-            Size: this.size
+            Size: this.size,
+            Personal: 0
           },
           null
         );
@@ -64,11 +65,14 @@ export default {
         const res = await apiArticleList(
           {
             Page: this.page,
-            Size: this.size
+            Size: this.size,
+            Personal: 0
           },
           null
         );
         this.articleList = res.Data.List;
+        localStorage.setItem("skillTotal", res.Data.Total);
+        this.$bus.$emit("articleCount");
       } catch (e) {
         this.$message.error(e.Msg);
       }

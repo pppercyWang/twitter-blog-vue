@@ -1,15 +1,16 @@
 <template>
   <div class="container">
-    <!-- <ArticleItem
-      v-for="item in articleList"
-      @tagclick="handleTagClick"
-      v-bind:key="item.ID"
-      :row="item"
-    ></ArticleItem>
+    <div class="article-list-wrap">
+      <ArticleItem
+        v-for="item in articleList"
+        @tagclick="handleTagClick"
+        v-bind:key="item.ID"
+        :row="item"
+      ></ArticleItem>
+    </div>
     <div class="footer">
-      <div class="alert">{{this.hasMore?"正在加载...":"暂无更多文章..."}}</div>
-    </div> -->
-    aaaaaaaaaaaa
+      <div class="alert">没有更多文章......</div>
+    </div>
   </div>
 </template>
 <script>
@@ -33,38 +34,19 @@ export default {
     handleTagClick(text) {
       this.$parent.showSearchBarFlag(text);
     },
-    async fetchNewData() {
-      try {
-        const res = await apiArticleList(
-          {
-            Page: ++this.page,
-            Size: this.size
-          },
-          null
-        );
-        if (res.Data.List.length === 0) {
-          this.hasMore = false;
-          this.page--;
-          return false;
-        } else {
-          this.articleList = this.articleList.concat(res.Data.List);
-          return true;
-        }
-      } catch (e) {
-        this.$message.error(e.Msg);
-      }
-      return true;
-    },
     async getArticleList() {
       try {
         const res = await apiArticleList(
           {
             Page: this.page,
-            Size: this.size
+            Size: 200,
+            Personal: 1
           },
           null
         );
         this.articleList = res.Data.List;
+        localStorage.setItem("lifeTotal",res.Data.Total)
+        this.$bus.$emit("articleCount")
       } catch (e) {
         this.$message.error(e.Msg);
       }
@@ -80,14 +62,18 @@ export default {
 .container {
   margin-top: 20px;
   width: 920px;
-  .test {
-    height: 50px;
-  }
   .footer {
     .alert {
       height: 80px;
       line-height: 80px;
       text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

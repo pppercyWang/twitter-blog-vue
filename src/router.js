@@ -2,9 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from '@/views/navigation/Layout.vue';
 import About from '@/views/navigation/about/About.vue';
+import Comment from '@/views/navigation/comment/Comment.vue';
 import HomeLayout from '@/views/navigation/home/HomeLayout.vue';
-import Collection from '@/views/navigation/home/Collection.vue';
-import Personal from '@/views/navigation/home/Personal.vue';
+import Life from '@/views/navigation/home/Life.vue';
+import Skill from '@/views/navigation/home/Skill.vue';
 import ArticleEdit from '@/views/ArticleEdit.vue';
 import NotFound from '@/views/NotFound.vue';
 import ArticleBrowser from '@/views/ArticleBrowser.vue';
@@ -28,14 +29,12 @@ export default new Router({
           children: [{
               path: '/welcome',
               name: '文章',
-              component: Personal,
-              p:'home'
+              component: Skill,
             },
             {
-              path: '/collections',
-              name: '收藏',
-              component: Collection,
-              p: 'home'
+              path: '/life',
+              name: '生活',
+              component: Life,
             },
           ]
         },
@@ -43,6 +42,11 @@ export default new Router({
           path: '/about',
           name: '关于',
           component: About,
+        },
+        {
+          path: '/comment',
+          name: '留言',
+          component: Comment,
         },
         {
           path: '/article/:id',

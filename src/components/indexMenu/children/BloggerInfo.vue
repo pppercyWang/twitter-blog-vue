@@ -16,7 +16,7 @@
         </template>
       </text-underline>
     </div>
-    <div class="about">Everything will be OK</div>
+    <div class="about">路还尚远 不负年少</div>
     <div class="area">
       <text-underline
         @click="openChangsha"

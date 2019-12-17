@@ -17,7 +17,7 @@ export default {
   watch: {
     $route(to, from) {
       if (this.to === "/welcome") {
-        if (to.path === "/welcome" || to.path === "/collections") {
+        if (to.path === "/welcome" || to.path === "/life") {
           this.active = true;
         } else {
           this.active = false;
@@ -25,6 +25,13 @@ export default {
       }
       if (this.to === "/about") {
         if (to.path === "/about") {
+          this.active = true;
+        } else {
+          this.active = false;
+        }
+      }
+       if (this.to === "/comment") {
+        if (to.path === "/comment") {
           this.active = true;
         } else {
           this.active = false;
@@ -41,7 +48,7 @@ export default {
     if (this.to === "/welcome") {
       if (
         this.$route.path === "/welcome" ||
-        this.$route.path === "/collections"
+        this.$route.path === "/life"
       ) {
         this.active = true;
       } else {
