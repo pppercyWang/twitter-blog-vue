@@ -3,11 +3,11 @@
     <div class="container">
       <div class="menu-wrap">
         <div class="logo">
-          <!-- <img src="../../assets/img/home.png" /> -->
+          <img src="../../assets/img/home.png" />
         </div>
-        <menu-item class="menu-item" title="Home" to="/welcome"></menu-item>
-        <menu-item class="menu-item" title="About" to="/about"></menu-item>
-        <menu-item class="menu-item" title="Comment" to="/comment"></menu-item>
+        <menu-item class="menu-item" title="文章" to="/welcome"></menu-item>
+        <menu-item class="menu-item" title="关于我" to="/about"></menu-item>
+        <menu-item class="menu-item" title="留言墙" to="/comment"></menu-item>
         <div class="right">
           <div class="login-area-wrap" @click="showLogin" v-if="loginAreaShow">
             <div class="login">登录</div>

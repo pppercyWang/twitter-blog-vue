@@ -1,6 +1,8 @@
 <template>
-  <div class="about-wrap">
-    aaaaaaaaaa
+  <div class="message-wrap">
+    <div class="main">
+      <Comment></Comment>
+    </div>
   </div>
 </template>
 <script>
@@ -24,5 +26,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
+.message-wrap {
+  display: flex;
+  justify-content: center;
+  .main {
+    margin-top: 80px;
+    width: 1180px;
+  }
+}
 </style>

@@ -37,7 +37,6 @@
           </div>
         </div>
       </div>
-      <Comment></Comment>
     </div>
   </div>
 </template>
