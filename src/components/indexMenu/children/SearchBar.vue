@@ -153,7 +153,7 @@ export default {
     }
   }
   .article-list {
-    height: 600px;
+    height: 460px;
     overflow-y: scroll;
   }
   div::-webkit-scrollbar {
