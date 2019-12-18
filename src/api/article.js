@@ -10,3 +10,8 @@ export const apiArticleGet = (data, config) => {
     return http.post('article/fetch', data, config);
 };
 
+export const apiArticleCount = (data, config) => {
+    return http.post('article/count', data, config);
+};
+
+

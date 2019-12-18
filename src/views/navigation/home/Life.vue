@@ -45,8 +45,6 @@ export default {
           null
         );
         this.articleList = res.Data.List;
-        localStorage.setItem("lifeTotal",res.Data.Total)
-        this.$bus.$emit("articleCount")
       } catch (e) {
         this.$message.error(e.Msg);
       }

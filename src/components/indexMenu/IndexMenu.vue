@@ -32,6 +32,7 @@ import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
 import SearchBar from "@/components/indexMenu/children/SearchBar.vue";
+import { apiArticleCount } from "@/api/article";
 export default {
   data() {
     return {
@@ -94,13 +95,16 @@ export default {
       if (localStorage.getItem("skillTotal")) {
         this.skillTotal = parseInt(localStorage.getItem("skillTotal"));
       }
+    },
+    async getArticleCount() {
+      const res = await apiArticleCount();
+      this.lifeTotal = res.Data.Life;
+      this.skillTotal = res.Data.Skill;
     }
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
-    this.$bus.$on("articleCount", () => {
-      this.getArticleCount();
-    });
+    this.getArticleCount();
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);

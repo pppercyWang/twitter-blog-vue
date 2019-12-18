@@ -22,7 +22,7 @@
 <script>
 import SmallArticleItem from "@/components/personal/articleItem/SmallArticleItem.vue";
 import clickOutside from "@/directives/vueClickOutSize";
-import { apiArticleList } from "@/api/article";
+import { apiArticleList,apiArticleCount } from "@/api/article";
 export default {
   data() {
     return {
@@ -81,26 +81,33 @@ export default {
       }
     },
     async getArticleList() {
-      try {
-        const res = await apiArticleList(
-          {
-            Page: 1,
-            Size: 200
-          },
-          null
-        );
-        this.articleList = res.Data.List;
-        if (this.searchText === "") {
-          this.matchArticles = this.articleList;
-        } else {
-          this.getMatchArticle();
+      const articles = sessionStorage.getItem("articles");
+      if (articles) {
+        this.articleList = JSON.parse(articles);
+      } else {
+        try {
+          const res = await apiArticleList(
+            {
+              Page: 1,
+              Size: 200
+            },
+            null
+          );
+          this.articleList = res.Data.List;
+          sessionStorage.setItem("articles", JSON.stringify(res.Data.List));
+        } catch (e) {
+          console.log(e);
         }
-      } catch (e) {
-        console.log(e);
       }
-    }
+      if (this.searchText === "") {
+        this.matchArticles = this.articleList;
+      } else {
+        this.getMatchArticle();
+      }
+    },
+   
   },
-  mounted() {
+  created() {
     if (this.propText) {
       this.searchText = this.propText;
     } else {
