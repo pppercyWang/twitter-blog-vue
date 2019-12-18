@@ -7,10 +7,22 @@
         v-bind:key="index"
       >
         <div class="comments-list-item-heading" @click="openGithub(item.GithubUrl)">
-          <img :src="item.AvatarUrl" />
-          <span class="comments-list-item-username">{{item.Username}}</span>
+          <div class="left">
+            <img :src="item.AvatarUrl" />
+            <span class="comments-list-item-username">{{item.Username}}</span>
+          </div>
+          <div class="right">
+            <div class="date">{{item.CreatedAt.substring(0,10)}}</div>
+          </div>
         </div>
         <div class="comments-list-item-content" v-html="item.Content"></div>
+        <div class="comments-list-content-from" v-show="full">
+          来源:{{item.ArticleID===120008?'留言墙':''}}
+          <span
+            v-show="item.ArticleID!==120008"
+            @click="pushArticle(item.ArticleID)"
+          >{{item.ArticleTitle.length>15?item.ArticleTitle.substring(0,15)+"...":item.ArticleTitle}}</span>
+        </div>
       </div>
     </div>
     <textarea class="comment-input" placeholder="请输入内容" id="textpanel" v-model="content"></textarea>
@@ -57,7 +69,11 @@ export default {
     Emoji,
     BlogButton
   },
+  props: ["full"],
   methods: {
+    pushArticle(id) {
+      this.$router.push(`/article/${id}`);
+    },
     openGithub(url) {
       window.open(url);
     },
@@ -104,7 +120,11 @@ export default {
       try {
         const res = await apiCommentList(
           {
-            ArticleID: this.$route.params.id ? this.$route.params.id : 120008
+            ArticleID: this.full
+              ? null
+              : this.$route.params.id
+              ? this.$route.params.id
+              : 120008
           },
           null
         );
@@ -168,25 +188,46 @@ export default {
         border-bottom: 0;
       }
       .comments-list-item-heading {
-        display: inline-block;
-        &:hover {
-          cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        .left {
+          display: inline-block;
+          img {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            vertical-align: middle;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          .comments-list-item-username {
+            margin-left: 5px;
+            font-weight: bold;
+             &:hover {
+              cursor: pointer;
+              opacity: .8;
+            }
+          }
         }
-        img {
-          height: 32px;
-          width: 32px;
-          border-radius: 50%;
-          vertical-align: middle;
-        }
-        .comments-list-item-username {
-          margin-left: 5px;
-          font-weight: bold;
+        .right {
+          display: inline-block;
         }
       }
       .comments-list-item-content {
         margin: 10px 0px;
         span {
           vertical-align: top;
+        }
+      }
+      .comments-list-content-from {
+        text-align: right;
+        color: #c5c5c5;
+        span {
+          &:hover {
+            cursor: pointer;
+            color: #888;
+          }
         }
       }
     }

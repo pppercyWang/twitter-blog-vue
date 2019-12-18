@@ -1,7 +1,7 @@
 <template>
   <div class="message-wrap">
     <div class="main">
-      <Comment></Comment>
+      <comment :full="true"></comment>
     </div>
   </div>
 </template>

@@ -30,7 +30,7 @@ export default {
           this.active = false;
         }
       }
-       if (this.to === "/comment") {
+      if (this.to === "/comment") {
         if (to.path === "/comment") {
           this.active = true;
         } else {
@@ -46,10 +46,7 @@ export default {
   },
   created() {
     if (this.to === "/welcome") {
-      if (
-        this.$route.path === "/welcome" ||
-        this.$route.path === "/life"
-      ) {
+      if (this.$route.path === "/welcome" || this.$route.path === "/life") {
         this.active = true;
       } else {
         this.active = false;
@@ -57,6 +54,13 @@ export default {
     }
     if (this.to === "/about") {
       if (this.$route.path === "/about") {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    }
+    if (this.to === "/comment") {
+      if (this.$route.path === "/comment") {
         this.active = true;
       } else {
         this.active = false;
