@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import IndexMenu from "@/components/indexMenu/IndexMenu.vue";
+import IndexMenu from "@/components/home/indexMenu/IndexMenu.vue";
 export default {
   components: {
     IndexMenu

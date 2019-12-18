@@ -20,7 +20,7 @@
   </div>
 </template> 
 <script>
-import SmallArticleItem from "@/components/personal/articleItem/SmallArticleItem.vue";
+import SmallArticleItem from "@/components/home/articleItem/SmallArticleItem.vue";
 import clickOutside from "@/directives/vueClickOutSize";
 import { apiArticleList,apiArticleCount } from "@/api/article";
 export default {

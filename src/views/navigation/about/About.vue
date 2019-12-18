@@ -27,7 +27,7 @@
             <text-underline @click="openGithub" text=" 使劲儿戳" size="15" color="rgb(64,158,255)" underlineHeight="1">
               <template slot="icon">Github:</template>
             </text-underline>
-            <br />邮箱地址：845082868@qq.com
+            <br />邮箱地址：pppercywang@163.com
           </div>
           <div class="right">
             <div class="qrcode">

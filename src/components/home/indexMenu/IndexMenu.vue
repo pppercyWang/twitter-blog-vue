@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import MenuItem from "@/components/indexMenu/children/MenuItem.vue";
-import ProfileHeading from "@/components/indexMenu/children/ProfileHeading.vue";
+import MenuItem from "@/components/home/indexMenu/children/MenuItem.vue";
+import ProfileHeading from "@/components/home/indexMenu/children/ProfileHeading.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
-import BloggerInfo from "@/components/indexMenu/children/BloggerInfo.vue";
-import SearchBar from "@/components/indexMenu/children/SearchBar.vue";
+import BloggerInfo from "@/components/home/indexMenu/children/BloggerInfo.vue";
+import SearchBar from "@/components/home/indexMenu/children/SearchBar.vue";
 import { apiArticleCount } from "@/api/article";
 export default {
   data() {

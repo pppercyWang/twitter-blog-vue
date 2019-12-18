@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import ArticleItem from "@/components/personal/articleItem/ArticleItem.vue";
+import ArticleItem from "@/components/home/articleItem/ArticleItem.vue";
 import { apiArticleList } from "@/api/article";
 export default {
   data() {
