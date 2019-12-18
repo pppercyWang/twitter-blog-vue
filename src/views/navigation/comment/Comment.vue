@@ -1,7 +1,10 @@
 <template>
-  <div class="message-wrap">
+  <div class="comment-page-wrap" id="commentPage">
     <div class="main">
-      <comment :full="true"></comment>
+      <comment :full="true" class="comment-comp"></comment>
+      <div class="anchor">
+        <blog-button size="80" fontSize="12" @click="pushBottom" height="30" info="我也要留言"></blog-button>
+      </div>
     </div>
   </div>
 </template>
@@ -9,29 +12,40 @@
 import Divider from "@/components/commons/divider/Divider.vue";
 import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue";
 import Comment from "@/components/commons/comment/Comment.vue";
+import BlogButton from "@/components/commons/button/BlogButton.vue";
 export default {
   components: {
     Divider,
     TextUnderline,
-    Comment
+    Comment,
+    BlogButton
   },
   data() {
     return {};
   },
   methods: {
-    openGithub() {
-      window.open("https://github.com/pppercyWang");
+    pushBottom() {
+    window.scrollTo(100,10000);
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.message-wrap {
+.comment-page-wrap {
   display: flex;
   justify-content: center;
   .main {
-    margin-top: 80px;
+    margin-top: 20px;
     width: 1180px;
+    position: relative;
+    .comment-comp {
+      margin-top: 40px;
+    }
+    .anchor {
+      position: absolute;
+      top: 0;
+      left: 440px;
+    }
   }
 }
 </style>

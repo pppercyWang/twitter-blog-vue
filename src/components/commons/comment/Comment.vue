@@ -6,10 +6,13 @@
         v-for="(item,index) in comments"
         v-bind:key="index"
       >
-        <div class="comments-list-item-heading" @click="openGithub(item.GithubUrl)">
+        <div class="comments-list-item-heading">
           <div class="left">
-            <img :src="item.AvatarUrl" />
-            <span class="comments-list-item-username">{{item.Username}}</span>
+            <img :src="item.AvatarUrl" @click="openGithub(item.GithubUrl)" />
+            <span
+              class="comments-list-item-username"
+              @click="openGithub(item.GithubUrl)"
+            >{{item.Username}}</span>
           </div>
           <div class="right">
             <div class="date">{{item.CreatedAt.substring(0,10)}}</div>
@@ -102,14 +105,12 @@ export default {
           },
           null
         );
+        const temp = res.Data.comment;
         this.comments.push({
-          Content: this.content.replace(/:.*?:/g, this.emoji),
-          GithubUrl: userInfo.html_url,
-          ArticleID: this.$route.params.id ? this.$route.params.id : 120008,
-          Username: userInfo.login,
-          AvatarUrl: userInfo.avatar_url,
-          GitUserID: userInfo.id
-        }); // 替换":"符号包含的字符串,通过emoji方法生成表情<span></span>
+          ...temp,
+          Content: temp.Content.replace(/:.*?:/g, this.emoji)
+        });
+        this.getCommentList();
         this.content = "";
         this.isShowEmojiPanel = false;
       } catch (e) {
@@ -204,9 +205,9 @@ export default {
           .comments-list-item-username {
             margin-left: 5px;
             font-weight: bold;
-             &:hover {
+            &:hover {
               cursor: pointer;
-              opacity: .8;
+              opacity: 0.8;
             }
           }
         }
