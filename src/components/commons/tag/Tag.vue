@@ -4,17 +4,25 @@
     <div class="dot-wrap">
       <div class="dot"></div>
     </div>
-    <div :class="{'tag-text-wrap':true,'isNotCateFlag': !isCate}"  @click="handleTagClick">
+    <div :class="{'tag-text-wrap':true,'isNotCateFlag': !isCate}" @click="handleTagClick">
       <slot></slot>
     </div>
   </div>
 </template>
 <script>
+import { type } from "os";
 export default {
   data() {
     return {};
   },
-  props: ["type","isCate"],
+  props: {
+    type: {
+      type: String
+    },
+    isCate: {
+      type: Boolean
+    }
+  },
   methods: {
     handleTagClick(e) {
       this.$emit("tagclick");
@@ -27,8 +35,8 @@ export default {
   display: inline-block;
   margin-right: 5px;
   &:hover {
-      opacity: 0.8;
-    }
+    opacity: 0.8;
+  }
   .arrow {
     display: inline-block;
     width: 0;

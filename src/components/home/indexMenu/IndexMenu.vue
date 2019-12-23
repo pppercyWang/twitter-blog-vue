@@ -20,7 +20,7 @@
       </div>
       <div class="right-btn">
         <div class="right">
-          <blog-button @click="pushArticleEdit" info="写文章"></blog-button>
+          <blog-button @click="pushArticleEdit" >写文章</blog-button>
         </div>
       </div>
     </div>

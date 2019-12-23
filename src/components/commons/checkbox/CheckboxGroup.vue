@@ -1,5 +1,5 @@
 <template>
-  <div class="checkbox-group-wrap">
+  <div>
     <slot></slot>
   </div>
 </template>

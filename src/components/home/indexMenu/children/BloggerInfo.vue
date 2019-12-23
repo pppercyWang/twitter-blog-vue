@@ -1,16 +1,7 @@
 <template>
   <div class="blogger-info-wrap">
-    <div class="name">
-      <text-underline text="percy" size="20" underlineHeight="2" color="#000000" isBold="true"></text-underline>
-    </div>
     <div class="at">
-      <text-underline
-        text="pppercy_Wang"
-        size="12"
-        @click="openGithub"
-        underlineHeight="1"
-        color="#657786"
-      >
+      <text-underline text="pppercy_Wang" @click="openGithub" color="#657786">
         <template slot="at">
           <span style="font-weight:bold">@</span>
         </template>
@@ -18,24 +9,14 @@
     </div>
     <div class="about">路还尚远 不负年少</div>
     <div class="area">
-      <text-underline
-        @click="openChangsha"
-        text="Changsha"
-        size="12"
-        underlineHeight="1"
-      >
+      <text-underline @click="openChangsha" text="Changsha">
         <template slot="icon">
           <i class="iconfont percy-icon-Positioning"></i>
         </template>
       </text-underline>
     </div>
-     <div class="area">
-      <text-underline
-        @click="showSearchBar"
-        text=" 归档~"
-        size="12"
-        underlineHeight="1"
-      >
+    <div class="area">
+      <text-underline @click="showSearchBar" text=" 归档~">
         <template slot="icon">
           <i class="iconfont percy-icon-guidangxiangmu"></i>
         </template>
@@ -57,17 +38,17 @@ export default {
     TextUnderline
   },
   methods: {
-     openGithub() {
-    window.open("https://github.com/pppercyWang");
-  },
-  openChangsha() {
-    window.open(
-      "https://baike.baidu.com/item/%E9%95%BF%E6%B2%99/204237?fr=aladdin"
-    );
-  },
-  showSearchBar() {
-    this.$emit("fileclick");
-  }
+    openGithub() {
+      window.open("https://github.com/pppercyWang");
+    },
+    openChangsha() {
+      window.open(
+        "https://baike.baidu.com/item/%E9%95%BF%E6%B2%99/204237?fr=aladdin"
+      );
+    },
+    showSearchBar() {
+      this.$emit("fileclick");
+    }
   }
 };
 </script>

@@ -12,7 +12,11 @@ export default {
   data() {
     return {};
   },
-  props: ["label"]
+  props: {
+    label: {
+      type: String
+    }
+  }
 };
 </script>
 <style scoped lang="scss">

@@ -15,7 +15,14 @@ export default {
       isChecked: false
     };
   },
-  props: ["label", "value"],
+  props: {
+    label: {
+      type: String
+    },
+    value: {
+      type: [String,Number]
+    }
+  },
   methods: {
     handleClick() {
       this.isChecked = !this.isChecked;

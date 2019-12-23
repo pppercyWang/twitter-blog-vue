@@ -3,7 +3,7 @@
     <div class="main">
       <comment :full="true" class="comment-comp"></comment>
       <div class="anchor">
-        <blog-button size="80" fontSize="12" @click="pushBottom" height="30" info="我也要留言"></blog-button>
+        <blog-button @click="pushBottom" size="small">我也要留言</blog-button>
       </div>
     </div>
   </div>

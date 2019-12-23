@@ -10,7 +10,11 @@ export default {
       isChecked: true
     };
   },
-  props: ["value"],
+  props: {
+    value: {
+      type: [String, Number]
+    }
+  },
   methods: {
     dispatch(value) {
       // 调用所有子组件的checkIsActive方法

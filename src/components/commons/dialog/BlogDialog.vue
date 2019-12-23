@@ -5,17 +5,14 @@
         <div class="dialog-container">
           <div class="dialog-header">
             <div class="left">
-              <div class="title">发布文章</div>
+              <div class="title">{{title}}</div>
             </div>
             <div class="right">
               <blog-button
-                size="80"
-                fontSize="12"
-                height="30"
-                info="立即发布"
+                size="small"
                 @click="submit"
                 type="primary"
-              ></blog-button>
+              >{{confirm}}</blog-button>
             </div>
           </div>
           <div class="dialog-body">
@@ -42,7 +39,14 @@ export default {
   components: {
     BlogButton
   },
-  props: ["title", "cancel", "confirm"],
+  props: {
+    title: {
+      type: String
+    },
+    confirm: {
+      type: String
+    }
+  },
   methods: {
     dialogClose() {
       this.$emit("close");

@@ -2,10 +2,10 @@
   <div class="container">
     <div class="header">
       <div class="title-input">
-        <blog-input placeholder="请输入文章标题" width="100%" height="30" fontSize="18" v-model="title"></blog-input>
+        <blog-input placeholder="请输入文章标题" v-model="title"></blog-input>
       </div>
       <div class="push-article">
-        <blog-button info="发布文章" @click="saveArticle" type="primary"></blog-button>
+        <blog-button @click="saveArticle" type="primary">发布文章</blog-button>
       </div>
     </div>
     <div class="body">
@@ -15,9 +15,8 @@
       @close="closeDialog"
       @submit="handleSubmit"
       v-if="dialogVisible"
-      cancel="关闭窗口"
-      confirm="添加卡密"
-      title="添加卡密"
+      confirm="立即发布"
+      title="发布文章"
     >
       <form-item label="个人分类">
         <div class="scroller">
@@ -41,7 +40,7 @@
         </radio-group>
       </form-item>
       <form-item label="isHostKey">
-        <blog-input height="20" v-model="hostKey"></blog-input>
+        <blog-input size="small" v-model="hostKey"></blog-input>
       </form-item>
     </blog-dialog>
   </div>
@@ -135,7 +134,7 @@ export default {
             Content: this.content,
             CategoryIDs: this.checkList.join(","),
             Title: this.title,
-            Personal: this.radioIschecked,   // personal 0 技能文章 1 生活文章
+            Personal: this.radioIschecked, // personal 0 技能文章 1 生活文章
             Tags: this.tags.join(","),
             HostKey: this.hostKey
           },

@@ -105,7 +105,6 @@ export default {
         this.getMatchArticle();
       }
     },
-   
   },
   created() {
     if (this.propText) {

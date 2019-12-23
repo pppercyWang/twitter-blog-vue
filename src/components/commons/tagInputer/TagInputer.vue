@@ -9,7 +9,7 @@
       ></div>
       <div class="cross" @click="removeTag(index)"></div>
     </div>
-    <div class="plus" @click="pushTag" v-if="tags.length !== mmax">
+    <div class="plus" @click="pushTag" v-if="tags.length !== max">
       <div class="plus-icon"></div>
     </div>
   </div>
@@ -19,10 +19,14 @@ export default {
   data() {
     return {
       tags: [],
-      mmax: 3
     };
   },
-  props: ["max"],
+  props: {
+    max: {
+      type: Number,
+      default: 3,
+    }
+  },
   methods: {
     pushTag() {
       const temp = JSON.parse(JSON.stringify(this.tags));
@@ -41,13 +45,6 @@ export default {
       this.$emit("change", this.tags);
     }
   },
-  mounted() {
-    if (this.max) {
-      this.mmax = this.max;
-    } else {
-      this.mmax = 3;
-    }
-  }
 };
 </script>
 <style scoped lang="scss">

@@ -1,11 +1,11 @@
 <template>
-  <div class="checkbox-wrap">
-    <div class="left" :class="isChecked?'box-click':''" ref="box" @click="handleClick">
+  <div class="checkbox-main">
+    <div class="checkbox-check" :class="isChecked?'checkbox-check__active':''" ref="box" @click="handleClick">
       <transition name="fade">
         <div class="hook" v-show="isChecked"></div>
       </transition>
     </div>
-    <div class="right">{{label}}</div>
+    <div class="checkbox-label">{{label}}</div>
   </div>
 </template>
 
@@ -16,7 +16,14 @@ export default {
       isChecked: true
     };
   },
-  props: ["label", "value"],
+  props: {
+    "label" :{
+      type: String
+    },
+    "value" : {
+      type: [String,Number]
+    }
+  },
   methods: {
     handleClick() {
     this.isChecked = !this.isChecked;
@@ -41,13 +48,13 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-.checkbox-wrap {
+.checkbox-main {
   height: 24px;
   width: 50%;
   display: inline-block;
   vertical-align: center;
   margin-bottom: 5px;
-  .left {
+  .checkbox-check {
     height: 24px;
     width: 24px;
     border-radius: 7px;
@@ -65,10 +72,10 @@ export default {
       transform: rotate(40deg);
     }
   }
-  .left:hover {
+  .checkbox-check:hover {
     cursor: pointer;
   }
-  .right {
+  .checkbox-label {
     margin-left: 5px;
     padding-right: 10px;
     display: inline;
@@ -77,7 +84,7 @@ export default {
     color: #66757f; // 在mounted
     font-size: 15px;
   }
-  .box-click {
+  .checkbox-check__active {
     background-color: #1da1f2;
     border: 0.5px solid #cccccc;
   }

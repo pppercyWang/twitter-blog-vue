@@ -1,11 +1,13 @@
 <template>
   <input
-    :type="type"
     :value="value"
-    ref="blogInput"
     :placeholder="placeholder"
     @keyup.enter="keyup"
     @input="$emit('input',$event.target.value)"
+    :class="{
+    'input-size__small': size==='small',
+    'input-size__normal': size==='normal'
+  }"
   />
 </template>
 <script>
@@ -15,37 +17,21 @@ export default {
       isChecked: true
     };
   },
-  props: ["value", "placeholder", "type", "height", "width", "fontSize"],
+  props: {
+    value: {
+      type: [String, Number]
+    },
+    placeholder: {
+      type: String
+    },
+    size: {
+      type: String,
+      default: "normal"
+    }
+  },
   methods: {
     keyup() {
       this.$emit("keyupEnter");
-    }
-  },
-  mounted() {
-    if (this.height) {
-      if (!isNaN(Number(this.height))) {
-        const obj = this.$refs.blogInput;
-        obj.style.height = this.height + "px";
-      }
-    }
-    if (this.fontSize) {
-      if (!isNaN(Number(this.fontSize))) {
-        const obj = this.$refs.blogInput;
-        obj.style.fontSize = this.fontSize + "px";
-      }
-    }
-    if (this.width) {
-      if (this.width.endsWith("%")) {
-        const temp = this.width.substring(0, this.width.length - 1);
-        if (!isNaN(Number(temp))) {
-          const obj = this.$refs.blogInput;
-          obj.style.width = temp + "%";
-        }
-      }
-      if (!isNaN(Number(this.width))) {
-        const obj = this.$refs.blogInput;
-        obj.style.width = this.width + "px";
-      }
     }
   }
 };
@@ -53,15 +39,24 @@ export default {
 
 <style scoped lang="scss">
 input {
-  height: 27px;
+  height: 30px;
   font-size: 14px;
-  width: 230px;
+  width: 100%;
   border-radius: 2px;
   border: 1px solid #cccccc;
   text-indent: 5px;
+  font-size: 18px;
+  &:focus {
+    border: 1px solid #cccccc;
+    outline: none;
+  }
 }
-input:focus {
-  border: 1.3px solid $boder-color;
-  outline: none;
+.input-size__small {
+  height: 20px;
+  font-size: 12px;
+}
+.input-size__normal {
+  height: 30px;
+  font-size: 14px;
 }
 </style>

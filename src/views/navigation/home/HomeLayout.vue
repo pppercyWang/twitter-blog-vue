@@ -26,6 +26,7 @@
 </template>
 <script>
 import IndexMenu from "@/components/home/indexMenu/IndexMenu.vue";
+import { apiArticleList } from "@/api/article";
 export default {
   components: {
     IndexMenu
@@ -53,7 +54,28 @@ export default {
       } else {
         this.searchBarText = "";
       }
-    }
+    },
+    async getArticleListTotal() {
+      const articles = sessionStorage.getItem("articles");
+      if (!articles) {
+        try {
+          const res = await apiArticleList(
+            {
+              Page: 1,
+              Size: 200
+            },
+            null
+          );
+          this.articleList = res.Data.List;
+          sessionStorage.setItem("articles", JSON.stringify(res.Data.List));
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    },
+  },
+  created() {
+    this.getArticleListTotal();
   }
 };
 </script>

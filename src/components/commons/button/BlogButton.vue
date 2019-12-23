@@ -1,5 +1,17 @@
 <template>
-  <div :class="['btn-msg','bounce',isPrimary?'primary':'']" ref="btn" @click="handleClick">{{info}}</div>
+  <div
+    :class="{
+    'button-main': true,
+    'button__bounce': true,
+    'button-type__primary': type==='primary',
+    'button-type__info': type==='info',
+    'button-size__normal': size==='normal',
+    'button-size__small': size==='small',
+  }"
+    @click="handleClick"
+  >
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
@@ -8,61 +20,59 @@ export default {
       isPrimary: false
     };
   },
-  props: ["info", "type", "size", "height", "fontSize"],
+  props: {
+    type: {
+      type: String,
+      default: "info"
+    },
+    size: {
+      type: String,
+      default: "normal"
+    }
+  },
   methods: {
     handleClick(evt) {
       this.$emit("click", evt);
     }
   },
-  mounted() {
-    const elBtn = this.$refs.btn;
-    if (this.size) {
-      if (!isNaN(Number(this.size))) {
-        elBtn.style.width = this.size + "px";
-      }
-    }
-    if (this.fontSize) {
-      if (!isNaN(Number(this.fontSize))) {
-        elBtn.style.fontSize = this.fontSize + "px";
-      }
-    }
-    if (this.height) {
-      if (!isNaN(Number(this.height))) {
-        elBtn.style.height = this.height + "px";
-      }
-    }
-    if (this.type === "primary") {
-      this.isPrimary = true;
-    }
-  }
 };
 </script>
 <style scoped lang="scss">
-.btn-msg {
-  width: 105px;
-  height: 35.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $twitter-blue;
+.button-main {
+  display: inline-block;
+  border: 1px solid #1da1f2;
   border-radius: 100px;
   box-sizing: border-box;
-  color: $twitter-blue;
   font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 24px;
+  font-size: 15px;
+  color: #1da1f2;
+  &:hover {
+    cursor: pointer;
+    background-color: #e8f5fd;
+  }
 }
-:hover {
-  cursor: pointer;
+.button-size__normal {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 24px;
+  font-size: 15px;
 }
-.btn-msg:hover {
-  background-color: $button-hover;
+.button-size__small {
+  height: 28px;
+  line-height: 28px;
+  padding: 0 14px;
+  font-size: 12px;
 }
-.bounce {
+.button__bounce {
   position: relative;
 }
-.bounce:focus {
+.button__bounce:focus {
   outline: none;
 }
-.bounce:after {
+.button__bounce:after {
   content: "";
   display: block;
   position: absolute;
@@ -71,26 +81,32 @@ export default {
   right: 0px;
   bottom: 0px;
   border-radius: 100px;
-  border: 0px solid $twitter-blue;
+  border: 0px solid #1da1f2;
   opacity: 0.7;
   transition: all 0.1s;
 }
-.bounce:active:after {
-  //.bounce active时 伪元素:after的样式
+.button__bounce:active:after {
+  //.button__bounce active时 伪元素:after的样式
   opacity: 1;
   top: -5px;
   left: -5px;
   right: -5px;
   bottom: -5px;
   border-radius: 100px;
-  border: 2px solid $twitter-blue;
+  border: 2px solid #1da1f2;
   transition: all 0.2s;
 }
-.primary {
+.button-type__info {
+  color: #1da1f2;
+}
+.button-type__info:hover {
+  background-color: #e8f5fd;
+}
+.button-type__primary {
   color: #ffffff;
   background-color: #4ab3f4;
 }
-.primary:hover {
-  background-color: $twitter-blue;
+.button-type__primary:hover {
+  background-color: #1da1f2;
 }
 </style>

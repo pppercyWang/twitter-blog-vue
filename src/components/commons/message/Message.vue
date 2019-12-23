@@ -15,7 +15,6 @@ export default {
       type: "info"
     };
   },
-  props: ["label", "value"],
   methods: {
     startTimer() {
     window.setTimeout(() => {

@@ -1,16 +1,16 @@
 <template>
-  <div class="comment-wrap">
+  <div class="comment-main">
     <div class="comments-list">
       <div
-        class="comments-list-item animated slideInRight"
+        class="item animated slideInRight"
         v-for="(item,index) in comments"
         v-bind:key="index"
       >
-        <div class="comments-list-item-heading">
+        <div class="item-heading">
           <div class="left">
             <img :src="item.AvatarUrl" @click="openGithub(item.GithubUrl)" />
             <span
-              class="comments-list-item-username"
+              class="item-username"
               @click="openGithub(item.GithubUrl)"
             >{{item.Username}}</span>
           </div>
@@ -18,8 +18,8 @@
             <div class="date">{{item.CreatedAt.substring(0,10)}}</div>
           </div>
         </div>
-        <div class="comments-list-item-content" v-html="item.Content"></div>
-        <div class="comments-list-content-from" v-show="full">
+        <div class="item-content" v-html="item.Content"></div>
+        <div class="item-content-from" v-show="full">
           来源:{{item.ArticleID===120008?'留言墙':''}}
           <span
             v-show="item.ArticleID!==120008"
@@ -37,13 +37,10 @@
         <i class="iconfont">&#xe600;</i>
       </div>
       <blog-button
-        size="80"
-        fontSize="12"
         @click="saveComment"
-        height="30"
-        info="留个言儿"
         type="primary"
-      ></blog-button>
+        size="small"
+      >留个言儿</blog-button>
       <emoji-panel
         class="animated fadeIn"
         @onClose="closeEmojiPanel"
@@ -72,7 +69,12 @@ export default {
     Emoji,
     BlogButton
   },
-  props: ["full"],
+  props: {
+    "full": {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     pushArticle(id) {
       this.$router.push(`/article/${id}`);
@@ -162,7 +164,7 @@ export default {
 </script>
 <style  lang="scss">
 // 注意 这里因为v-html的原因 不能使用scoped 不然样式不能失效
-.comment-wrap {
+.comment-main {
   width: 522px;
   margin-bottom: 180px;
   .emoji-item-common {
@@ -182,13 +184,13 @@ export default {
   }
   .comments-list {
     margin-top: 20px;
-    .comments-list-item {
+    .item {
       margin-bottom: 20px;
       border-bottom: 1px solid #cccccc;
       &:last-child {
         border-bottom: 0;
       }
-      .comments-list-item-heading {
+      .item-heading {
         display: flex;
         justify-content: space-between;
         .left {
@@ -202,7 +204,7 @@ export default {
               cursor: pointer;
             }
           }
-          .comments-list-item-username {
+          .item-username {
             margin-left: 5px;
             font-weight: bold;
             &:hover {
@@ -215,13 +217,13 @@ export default {
           display: inline-block;
         }
       }
-      .comments-list-item-content {
+      .item-content {
         margin: 10px 0px;
         span {
           vertical-align: top;
         }
       }
-      .comments-list-content-from {
+      .item-content-from {
         text-align: right;
         color: #c5c5c5;
         span {

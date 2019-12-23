@@ -48,7 +48,8 @@ export default {
       } catch (e) {
         this.$message.error(e.Msg);
       }
-    }
+    },
+   
   },
   created() {
     this.getArticleList();
