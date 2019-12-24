@@ -10,6 +10,7 @@ module.exports = {
   },
   configureWebpack: config => {},
   runtimeCompiler: true,
+  productionSourceMap: false,
   devServer: {
     // 配置代理
     proxy: {

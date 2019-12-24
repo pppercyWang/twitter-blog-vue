@@ -5,8 +5,8 @@
         <divider title="关于我"></divider>
         <div class="self-wrap">
           <div class="left">
-            <img src="../../../assets/img/self.jpg" class="self-pic sunglass" />
-            <img src="../../../assets/img/moto.jpg" class="self-pic moto" />
+            <div  class="self-pic sunglass"></div>
+            <div  class="self-pic moto" ></div>
           </div>
           <div class="right">
             <p>
@@ -24,14 +24,20 @@
         <divider title="联系我"></divider>
         <div class="content-wrap">
           <div class="left">
-            <text-underline @click="openGithub" text=" 使劲儿戳" size="15" color="rgb(64,158,255)" underlineHeight="1">
+            <text-underline
+              @click="openGithub"
+              text=" 使劲儿戳"
+              size="15"
+              color="rgb(64,158,255)"
+              underlineHeight="1"
+            >
               <template slot="icon">Github:</template>
             </text-underline>
             <br />邮箱地址：pppercywang@163.com
           </div>
           <div class="right">
             <div class="qrcode">
-              <img src="../../../assets/img/qrcode.png" class="self-pic" />
+              <div class="self-pic wx-qrcode"></div>
               <div class="text">交个盆友~</div>
             </div>
           </div>
@@ -46,7 +52,7 @@ import TextUnderline from "@/components/commons/textUnderline/TextUnderline.vue"
 export default {
   components: {
     Divider,
-    TextUnderline,
+    TextUnderline
   },
   data() {
     return {};
@@ -59,54 +65,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// #gopng_qrcode_outer {
-// height: 150px;
-// width: 150px;
-// overflow: hidden;
-// }
-// #gopng_qrcode {
-// background: url(http://gopng/static/images/sprite.png) -0px -0px no-repeat;
-// width: 100%;
-// height: 100%;
-// _background: none;
-// _padding-left: 0px;
-// _margin-left: -0px;
-// _padding-top: 0px;
-// _margin-top: -0px;
-// _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
-// }
-// #gopng_self_outer {
-// height: 150px;
-// width: 150px;
-// overflow: hidden;
-// }
-// #gopng_self {
-// background: url(http://gopng/static/images/sprite.png) -150px -0px no-repeat;
-// width: 100%;
-// height: 100%;
-// _background: none;
-// _padding-left: 150px;
-// _margin-left: -150px;
-// _padding-top: 0px;
-// _margin-top: -0px;
-// _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
-// }
-// #gopng_moto_outer {
-// height: 150px;
-// width: 150px;
-// overflow: hidden;
-// }
-// #gopng_moto {
-// background: url(http://gopng/static/images/sprite.png) -300px -0px no-repeat;
-// width: 100%;
-// height: 100%;
-// _background: none;
-// _padding-left: 300px;
-// _margin-left: -300px;
-// _padding-top: 0px;
-// _margin-top: -0px;
-// _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
-// }
+#gopng_moto {
+  background: url("../../../assets/img/sprite.png") -300px -0px no-repeat;
+  width: 100%;
+  height: 100%;
+}
 .about-wrap {
   display: flex;
   justify-content: center;
@@ -131,11 +94,13 @@ export default {
             position: absolute;
             left: 20px;
             top: 20px;
+            background: url("../../../assets/img/sprite.png") -150px -0px no-repeat;
           }
           .moto {
             position: absolute;
             left: 200px;
             top: 160px;
+            background: url("../../../assets/img/sprite.png") -300px -0px no-repeat;
           }
         }
         .right {
@@ -171,6 +136,9 @@ export default {
           .qrcode {
             position: absolute;
             left: 50%;
+            .wx-qrcode{
+              background: url("../../../assets/img/sprite.png") -0px -0px no-repeat;
+            }
             .text {
               text-align: center;
             }
