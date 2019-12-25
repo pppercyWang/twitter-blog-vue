@@ -1,63 +1,54 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from '@/views/navigation/Layout.vue';
-import About from '@/views/navigation/about/About.vue';
-import Comment from '@/views/navigation/comment/Comment.vue';
-import HomeLayout from '@/views/navigation/home/HomeLayout.vue';
-import Life from '@/views/navigation/home/Life.vue';
-import Skill from '@/views/navigation/home/Skill.vue';
-import ArticleEdit from '@/views/ArticleEdit.vue';
-import NotFound from '@/views/NotFound.vue';
-import ArticleBrowser from '@/views/ArticleBrowser.vue';
 Vue.use(Router);
 export default new Router({
   routes: [{
       path: '/404',
       name: '找不到页面',
-      component: NotFound,
+      component: () => import('@/views/NotFound.vue'),
     },
     {
       path: '/',
-      component: Layout,
+      component: () => import('@/views/navigation/Layout.vue'),
       redirect: {
         path: "/welcome"
       },
       children: [{
           path: '/home',
           name: '首页',
-          component: HomeLayout,
+          component: () => import('@/views/navigation/home/HomeLayout.vue'),
           children: [{
               path: '/welcome',
               name: '文章',
-              component: Skill,
+              component: () => import('@/views/navigation/home/Skill.vue'),
             },
             {
               path: '/life',
               name: '生活',
-              component: Life,
+              component:  () => import('@/views/navigation/home/Life.vue'),
             },
           ]
         },
         {
           path: '/about',
           name: '关于',
-          component: About,
+          component: () => import('@/views/navigation/about/About.vue'),
         },
         {
           path: '/comment',
           name: '留言',
-          component: Comment,
+          component: () => import('@/views/navigation/comment/Comment.vue'),
         },
         {
           path: '/article/:id',
           name: '文章浏览',
-          component: ArticleBrowser,
+          component:  () => import('@/views/ArticleBrowser.vue'),
         },
       ]
     },
     {
       path: '/article/edit/:articleID',
-      component: ArticleEdit,
+      component: () => import('@/views/ArticleEdit.vue'),
     },
     {
       path: '/*',
