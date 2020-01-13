@@ -18,13 +18,13 @@
 export default {
   data() {
     return {
-      tags: [],
+      tags: []
     };
   },
   props: {
     max: {
       type: Number,
-      default: 3,
+      default: 3
     }
   },
   methods: {
@@ -44,7 +44,7 @@ export default {
       this.tags[index] = e.target.innerText;
       this.$emit("change", this.tags);
     }
-  },
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -94,7 +94,6 @@ export default {
       transform: rotate(-45deg);
     }
   }
-
   .plus {
     // 画加号
     &:hover {
@@ -117,7 +116,6 @@ export default {
       position: relative;
       width: 2px;
     }
-
     .plus-icon:after {
       background: $twitter-blue;
       content: "";

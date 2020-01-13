@@ -15,6 +15,7 @@ export default {
   },
   props: ["title", "to"],
   watch: {
+    // 看到这部分的兄弟别怪我 - - 我知道我错了 应该弄个父组件来记录状态的 半年前写的代码
     $route(to, from) {
       if (this.to === "/welcome") {
         if (to.path === "/welcome" || to.path === "/life") {
