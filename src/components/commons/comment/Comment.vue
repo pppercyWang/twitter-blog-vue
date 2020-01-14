@@ -177,6 +177,9 @@ export default {
   .emoji-size-small {
     // 表情大小
     zoom: 0.3;
+    &:hover{
+      cursor: default;
+    }
   }
   .emoji-size-large {
     zoom: 0.5; // emojipanel表情大小
