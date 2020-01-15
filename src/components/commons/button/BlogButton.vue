@@ -23,7 +23,8 @@ export default {
   props: {
     type: {
       type: String,
-      default: "info"
+      default: "info",
+      validator: value => ["info", "primary"].includes(value)
     },
     size: {
       type: String,
@@ -34,7 +35,7 @@ export default {
     handleClick(evt) {
       this.$emit("click", evt);
     }
-  },
+  }
 };
 </script>
 <style scoped lang="scss">
