@@ -1,18 +1,11 @@
 <template>
   <div class="comment-main">
     <div class="comments-list">
-      <div
-        class="item animated slideInRight"
-        v-for="(item,index) in comments"
-        v-bind:key="index"
-      >
+      <div class="item animated slideInRight" v-for="(item,index) in comments" v-bind:key="index">
         <div class="item-heading">
           <div class="left">
             <img :src="item.AvatarUrl" @click="openGithub(item.GithubUrl)" />
-            <span
-              class="item-username"
-              @click="openGithub(item.GithubUrl)"
-            >{{item.Username}}</span>
+            <span class="item-username" @click="openGithub(item.GithubUrl)">{{item.Username}}</span>
           </div>
           <div class="right">
             <div class="date">{{item.CreatedAt.substring(0,10)}}</div>
@@ -28,25 +21,23 @@
         </div>
       </div>
     </div>
-    <textarea class="comment-input" placeholder="请输入内容" id="textpanel" v-model="content"></textarea>
-    <div class="opration">
-      <div class="emoji-panel-btn" @click="showEmojiPanel">
-        <img src="../../../assets/img/face_logo.png" />
+    <div v-if="commentPanelShow">
+      <textarea class="comment-input" placeholder="请输入内容" id="textpanel" v-model="content"></textarea>
+      <div class="opration">
+        <div class="emoji-panel-btn" @click="showEmojiPanel">
+          <img src="../../../assets/img/face_logo.png" />
+        </div>
+        <div class="link-github" @click="login" title="github登录">
+          <i class="iconfont">&#xe600;</i>
+        </div>
+        <blog-button @click="saveComment" type="primary" size="small">留个言儿</blog-button>
+        <emoji-panel
+          class="animated fadeIn"
+          @onClose="closeEmojiPanel"
+          @emojiClick="appendEmoji"
+          v-if="isShowEmojiPanel"
+        ></emoji-panel>
       </div>
-      <div class="link-github" @click="login" title="github登录">
-        <i class="iconfont">&#xe600;</i>
-      </div>
-      <blog-button
-        @click="saveComment"
-        type="primary"
-        size="small"
-      >留个言儿</blog-button>
-      <emoji-panel
-        class="animated fadeIn"
-        @onClose="closeEmojiPanel"
-        @emojiClick="appendEmoji"
-        v-if="isShowEmojiPanel"
-      ></emoji-panel>
     </div>
   </div>
 </template>
@@ -61,7 +52,8 @@ export default {
     return {
       content: "",
       isShowEmojiPanel: false,
-      comments: []
+      comments: [],
+      commentPanelShow: false
     };
   },
   components: {
@@ -70,7 +62,7 @@ export default {
     BlogButton
   },
   props: {
-    "full": {
+    full: {
       type: Boolean,
       default: false
     }
@@ -136,7 +128,7 @@ export default {
           return item;
         });
         this.comments = newArr;
-        console.log(this.comments);
+        this.commentPanelShow = true;
       } catch (e) {
         this.$message.error(e.Msg);
       }
@@ -177,7 +169,7 @@ export default {
   .emoji-size-small {
     // 表情大小
     zoom: 0.3;
-    &:hover{
+    &:hover {
       cursor: default;
     }
   }
