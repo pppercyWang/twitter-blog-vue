@@ -20,6 +20,12 @@
           >{{item.ArticleTitle.length>15?item.ArticleTitle.substring(0,15)+"...":item.ArticleTitle}}</span>
         </div>
       </div>
+      <pagination
+        :page-index="pagination.page"
+        :total="pagination.total"
+        :page-size="pagination.size"
+        @change="updatePage"
+      ></pagination>
     </div>
     <div v-if="commentPanelShow">
       <textarea class="comment-input" placeholder="请输入内容" id="textpanel" v-model="content"></textarea>
@@ -47,19 +53,26 @@ import Emoji from "./Emoji.vue";
 import BlogButton from "@/components/commons/button/BlogButton.vue";
 import { apiCommentSave, apiCommentList } from "@/api/comment";
 import clickOutside from "@/directives/vueClickOutSize";
+import Pagination from "@/components/commons/pagination/Pagination.vue";
 export default {
   data() {
     return {
       content: "",
       isShowEmojiPanel: false,
       comments: [],
-      commentPanelShow: false
+      commentPanelShow: false,
+      pagination: {
+        page: 1,
+        total: 33,
+        size: 5
+      }
     };
   },
   components: {
     EmojiPanel,
     Emoji,
-    BlogButton
+    BlogButton,
+    Pagination
   },
   props: {
     full: {
@@ -68,6 +81,10 @@ export default {
     }
   },
   methods: {
+    updatePage(val) {
+      this.pagination.page = val;
+      this.getCommentList();
+    },
     pushArticle(id) {
       this.$router.push(`/article/${id}`);
     },
@@ -100,10 +117,10 @@ export default {
           null
         );
         const temp = res.Data.comment;
-        this.comments.push({
-          ...temp,
-          Content: temp.Content.replace(/:.*?:/g, this.emoji)
-        });
+        // this.comments.push({
+        //   ...temp,
+        //   Content: temp.Content.replace(/:.*?:/g, this.emoji)
+        // });
         this.getCommentList();
         this.content = "";
         this.isShowEmojiPanel = false;
@@ -113,21 +130,22 @@ export default {
     },
     async getCommentList() {
       try {
-        const res = await apiCommentList(
-          {
-            ArticleID: this.full
-              ? null
-              : this.$route.params.id
-              ? this.$route.params.id
-              : 120008
-          },
-          null
-        );
+        let params = {};
+        if (this.full) {
+          params.Page = this.pagination.page;
+          params.Size = this.pagination.size;
+        } else {
+          params.ArticleID = this.$route.params.id
+            ? this.$route.params.id
+            : 120008;
+        }
+        const res = await apiCommentList(params, null);
         const newArr = res.Data.List.map(item => {
           item.Content = item.Content.replace(/:.*?:/g, this.emoji);
           return item;
         });
         this.comments = newArr;
+        this.pagination.total = res.Data.Total;
         this.commentPanelShow = true;
       } catch (e) {
         this.$message.error(e.Msg);

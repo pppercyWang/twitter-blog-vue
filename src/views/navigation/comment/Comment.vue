@@ -1,10 +1,11 @@
 <template>
   <div class="comment-page-wrap" id="commentPage">
     <div class="main">
-      <comment :full="true" class="comment-comp"></comment>
+          <comment :full="true" class="comment-comp"></comment>
+<!--       
       <div class="anchor">
         <blog-button @click="pushBottom" size="small">我也要留言</blog-button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -18,15 +19,16 @@ export default {
     Divider,
     TextUnderline,
     Comment,
-    BlogButton
+    BlogButton,
   },
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
     pushBottom() {
-    window.scrollTo(100,10000);
-    }
+      window.scrollTo(100, 10000);
+    },
   }
 };
 </script>
