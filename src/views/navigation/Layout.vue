@@ -9,7 +9,7 @@
       </transition>
     </div>
     <div class="footer">
-      <div class="copyright">© 2019 wangwensheng</div>
+      <div class="copyright" @click="pushPage">湘ICP备20000907号</div>
     </div>
   </div>
 </template>
@@ -22,7 +22,11 @@ export default {
   components: {
     BlogHeader
   },
-  methods: {}
+  methods: {
+    pushPage(){
+      window.location.href="http://www.beian.miit.gov.cn"
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -46,7 +50,8 @@ export default {
       height: 60px;
       line-height: 60px;
       text-align: center;
-      color: #888888;
+      color: black;
+      cursor: pointer;
     }
   }
 }

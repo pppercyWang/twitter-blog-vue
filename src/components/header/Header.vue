@@ -3,7 +3,7 @@
     <div class="container">
       <div class="menu-wrap">
         <div class="logo">
-          <img src="../../assets/img/home.png" />
+          <!-- <img src="../../assets/img/home.png" /> -->
         </div>
         <menu-item class="menu-item" title="文章" to="/welcome"></menu-item>
         <menu-item class="menu-item" title="关于我" to="/about"></menu-item>
