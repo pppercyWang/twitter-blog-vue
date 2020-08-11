@@ -7,7 +7,6 @@
   </div>
 </template>
 <script>
-import BlogButton from "@/components/commons/button/BlogButton.vue";
 export default {
   data() {
     return {};

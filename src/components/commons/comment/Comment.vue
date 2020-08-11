@@ -154,10 +154,12 @@ export default {
     showEmojiPanel() {
       this.isShowEmojiPanel = !this.isShowEmojiPanel;
     },
+    // 转换将:smile:转换成相应的表情字符
     emoji(word) {
       const type = word.substring(1, word.length - 1);
       return `<span class="emoji-item-common emoji-${type} emoji-size-small" ></span>`;
     },
+    // 表情点击时，用双:包裹apend到输入框
     appendEmoji(text) {
       const el = document.getElementById("textpanel");
       this.content = el.value + ":" + text + ":";

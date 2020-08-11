@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-group-wrap">
+  <div>
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,6 @@
 export default {
   data() {
     return {
-      isChecked: true
     };
   },
   props: {
@@ -36,5 +35,3 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-</style>
