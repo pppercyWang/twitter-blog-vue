@@ -49,7 +49,7 @@ module.exports = {
     proxy: {
       '/api': {
         ws: false, //禁用websocket
-        target: 'http://localhost:8848/',
+        target: 'http://47.105.189.195:8848/',
         changeOrigin: true,
       }
     },

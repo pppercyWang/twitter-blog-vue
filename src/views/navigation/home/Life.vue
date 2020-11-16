@@ -12,6 +12,7 @@
       <div class="alert">没有更多文章......</div>
     </div>
   </div>
+  </div>
 </template>
 <script>
 import ArticleItem from "@/components/home/articleItem/ArticleItem.vue";
